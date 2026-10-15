@@ -19,19 +19,31 @@ const problems = [];
 const anchorsByRoute = new Map();
 const linkTargets = new Set();
 try {
-  server = await startLocalServer(sourceMode ? 'dev' : 'preview');
+  server = await startLocalServer(sourceMode ? 'dev' : 'static');
   browser = await chromium.launch({ channel: 'msedge' });
   const page = await browser.newPage();
   page.on('pageerror', error => problems.push(`JavaScript: ${error.message}`));
-  page.on('console', message => { if (message.type() === 'error') problems.push(`Console: ${message.text()}`); });
+  page.on('console', message => {
+    const expected404 = message.location().url.includes('/missing-page') && /404/.test(message.text());
+    if (message.type() === 'error' && !expected404) problems.push(`Console: ${message.text()}`);
+  });
   page.on('requestfailed', request => problems.push(`Resource: ${request.url()} (${request.failure()?.errorText})`));
-  page.on('response', response => { if (response.status() >= 400) problems.push(`HTTP ${response.status()}: ${response.url()}`); });
+  page.on('response', response => {
+    if (response.status() >= 400 && !(response.status() === 404 && response.request().isNavigationRequest() && response.url().endsWith('/missing-page'))) {
+      problems.push(`HTTP ${response.status()}: ${response.url()}`);
+    }
+  });
+  const appPath = pathname => {
+    assert.ok(pathname.startsWith(server.base), `URL escaped the app base: ${pathname}`);
+    return ('/' + pathname.slice(server.base.length)).replace(/\/$/, '') || '/';
+  };
 
   for (const width of [1440, 390, 320]) {
     await page.setViewportSize({ width, height: 900 });
     for (const route of routes) {
       try {
-        await page.goto(server.baseURL + route, { waitUntil: 'networkidle' });
+        const response = await page.goto(server.baseURL + route, { waitUntil: 'networkidle' });
+        if (!sourceMode) assert.equal(response.status(), route === '/missing-page' ? 404 : 200);
         await page.evaluate(async () => {
           // Load deferred images before checking them, including those below the fold.
           await Promise.all([...document.images].map(async img => {
@@ -64,9 +76,10 @@ try {
         for (const href of links) {
           if (!href.startsWith('/') && !href.startsWith('#')) continue;
           const target = new URL(href, server.baseURL + route);
-          linkTargets.add(target.pathname + target.hash);
-          assert.ok(routes.includes(target.pathname) || target.pathname === '/404', `Unknown internal route: ${href}`);
-          if (target.pathname === route && target.hash) {
+          const destination = appPath(target.pathname);
+          linkTargets.add(destination + target.hash);
+          assert.ok(routes.includes(destination) || destination === '/404', `Unknown internal route: ${href}`);
+          if (destination === route && target.hash) {
             assert.ok(await page.locator(`[id="${decodeURIComponent(target.hash.slice(1))}"]`).count(), `Missing anchor: ${route}${target.hash}`);
           }
         }
@@ -77,6 +90,22 @@ try {
       }
     }
   }
+  // Real clicks verify raw menu URLs as well as React Router basename links.
+  await page.goto(server.baseURL + '/', { waitUntil: 'networkidle' });
+  await page.locator('.gl-header__burger').click();
+  await page.locator('.gl-header__mobile-link').filter({ hasText: 'Обучение' }).click();
+  await page.waitForURL('**/learning/');
+  assert.equal(appPath(new URL(page.url()).pathname), '/learning');
+  await page.locator('.inner-page__breadcrumb-link').first().click();
+  await page.waitForURL(server.baseURL + '/');
+  assert.ok(await page.locator('.hero').isVisible());
+  const staticContext = await browser.newContext({ javaScriptEnabled: false });
+  const staticPage = await staticContext.newPage();
+  for (const route of routes.slice(0, -1)) {
+    await staticPage.goto(server.baseURL + route, { waitUntil: 'load' });
+    assert.equal(await staticPage.locator('h1').count(), 1, `SSG without JavaScript: ${route}`);
+  }
+  await staticContext.close();
   for (const target of linkTargets) {
     const url = new URL(target, server.baseURL);
     if (url.hash) assert.ok(anchorsByRoute.get(url.pathname)?.includes(decodeURIComponent(url.hash.slice(1))), `Missing linked anchor: ${target}`);

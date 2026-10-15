@@ -1,3 +1,4 @@
+import { sitePath } from '../../utils/sitePath';
 import './ReviewsSection.scss';
 
 export default function ReviewsSection() {
@@ -46,7 +47,7 @@ export default function ReviewsSection() {
             </div>
             <div className="reviews__card-media">
               <img
-                src="/images/home/brand-wristbands.webp"
+                src={sitePath('/images/home/brand-wristbands.webp')}
                 alt="Фирменные браслеты GL Study с надписью Учись здесь, Живи везде"
                 className="reviews__card-img"
                 width={800}
@@ -75,7 +76,7 @@ export default function ReviewsSection() {
             </div>
             <div className="reviews__card-media">
               <img
-                src="/images/home/camp-students.webp"
+                src={sitePath('/images/home/camp-students.webp')}
                 alt="Ученики языкового лагеря GL Study"
                 className="reviews__card-img"
                 width={800}

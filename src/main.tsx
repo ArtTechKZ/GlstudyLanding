@@ -7,7 +7,7 @@ import './styles/global.scss';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <CityProvider>
         <App />
       </CityProvider>

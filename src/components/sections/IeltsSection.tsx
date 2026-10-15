@@ -1,3 +1,4 @@
+import { sitePath } from '../../utils/sitePath';
 import { Link } from 'react-router-dom';
 import './IeltsSection.scss';
 
@@ -36,7 +37,7 @@ export default function IeltsSection() {
             {/* Visual poster composite with 3D target and graduate cap from Brandbook p. 31 */}
             <div className="ielts__poster-badge" aria-label="3D графика IELTS">
               <img
-                src="/images/home/ielts-target.webp"
+                src={sitePath('/images/home/ielts-target.webp')}
                 alt="Целевая подготовка к IELTS"
                 className="ielts__poster-img ielts__poster-img--target"
                 width={180}
@@ -44,7 +45,7 @@ export default function IeltsSection() {
                 loading="lazy"
               />
               <img
-                src="/images/home/graduate-cap.webp"
+                src={sitePath('/images/home/graduate-cap.webp')}
                 alt="Выпускница GL 2026"
                 className="ielts__poster-img ielts__poster-img--cap"
                 width={180}

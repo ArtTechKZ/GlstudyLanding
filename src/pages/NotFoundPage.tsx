@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import InnerPageLayout from '../components/layout/InnerPageLayout';
+import { SEO_METADATA } from '../data/seo';
 
 export default function NotFoundPage() {
   return (
@@ -7,6 +8,7 @@ export default function NotFoundPage() {
       title="404 — Страница не найдена"
       subtitle="К сожалению, запрашиваемая страница перемещена или не существует"
       heroColor="orange"
+      seo={SEO_METADATA.notFound}
     >
       <div className="container" style={{ textAlign: 'center', padding: '3rem 0 6rem' }}>
         <div style={{ fontSize: '7rem', fontFamily: 'var(--font-accent)', color: 'var(--gl-orange)', lineHeight: 1, marginBottom: '1.5rem', letterSpacing: '0.04em' }}>

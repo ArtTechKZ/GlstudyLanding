@@ -1,3 +1,4 @@
+import { sitePath } from '../../utils/sitePath';
 import { Link } from 'react-router-dom';
 import './OnlineOfflineSection.scss';
 
@@ -54,7 +55,7 @@ export default function OnlineOfflineSection() {
             {/* Photo from Brandbook p. 23 */}
             <div className="oo-card__media">
               <img
-                src="/images/home/offline-class.webp"
+                src={sitePath('/images/home/offline-class.webp')}
                 alt="Занятия в офлайн-классе GL Study"
                 className="oo-card__img"
                 width={800}

@@ -1,3 +1,4 @@
+import { sitePath } from '../utils/sitePath';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import InnerPageLayout from '../components/layout/InnerPageLayout';
@@ -86,7 +87,7 @@ export default function LearningPage() {
             {JUMP_LINKS.map(link => (
               <a
                 key={link.href}
-                href={link.href}
+                href={sitePath(link.href)}
                 className="btn btn-secondary"
                 style={{
                   fontSize: 'var(--fs-sm)',

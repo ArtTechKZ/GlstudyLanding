@@ -1,3 +1,4 @@
+import { sitePath } from '../../utils/sitePath';
 import './HeroSection.scss';
 
 export default function HeroSection() {
@@ -56,7 +57,7 @@ export default function HeroSection() {
             <div className="hero__visual-card gl-bg-pattern-gl-white">
               {/* High-res student cutout extracted from Brandbook GL STUDY.pdf p. 31 */}
               <img
-                src="/images/home/hero-student.webp"
+                src={sitePath('/images/home/hero-student.webp')}
                 alt="Студентка языковой школы GL Study с учебниками"
                 className="hero__student-img"
                 width={800}
@@ -68,7 +69,7 @@ export default function HeroSection() {
               {/* Floating brand badges with genuine design-system assets */}
               <div className="hero__float-badge hero__float-badge--top">
                 <img
-                  src="/images/home/brand-pin.webp"
+                  src={sitePath('/images/home/brand-pin.webp')}
                   alt=""
                   className="hero__float-pin-icon"
                   width={24}

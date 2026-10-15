@@ -1,3 +1,4 @@
+import { sitePath } from '../../utils/sitePath';
 import { Link } from 'react-router-dom';
 import { DEMO_PROGRAMS } from '../../data/demo';
 import './DirectionsSection.scss';
@@ -5,22 +6,22 @@ import './DirectionsSection.scss';
 // Image assets mapping from official Brandbook GL STUDY 2026
 const CARD_MEDIA: Record<string, { image: string; alt: string; bullet: string }> = {
   'english-children': {
-    image: '/images/home/direction-kids.webp',
+    image: sitePath('/images/home/direction-kids.webp'),
     alt: 'Девочка в наушниках с планшетом — английский для детей',
     bullet: 'Увлекательные уроки в игровой форме',
   },
   'english-teens': {
-    image: '/images/home/direction-teens.webp',
+    image: sitePath('/images/home/direction-teens.webp'),
     alt: 'Подросток с тетрадями — английский для подростков',
     bullet: 'Свободная речь и подготовка к карьере',
   },
   'english-adults': {
-    image: '/images/home/direction-adults.webp',
+    image: sitePath('/images/home/direction-adults.webp'),
     alt: 'Студентка с ноутбуком — английский для взрослых',
     bullet: 'Для работы, путешествий и личного роста',
   },
   'ielts-prep': {
-    image: '/images/home/ielts-target.webp',
+    image: sitePath('/images/home/ielts-target.webp'),
     alt: '3D мишень со стрелой — подготовка к IELTS',
     bullet: 'Стратегии всех 4 блоков экзамена',
   },
@@ -122,7 +123,7 @@ export default function DirectionsSection() {
                   {media?.bullet && (
                     <div className="directions__card-bullet">
                       <img
-                        src="/images/home/brand-pin.webp"
+                        src={sitePath('/images/home/brand-pin.webp')}
                         alt=""
                         className="directions__card-pin-icon"
                         width={16}

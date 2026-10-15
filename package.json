@@ -14,7 +14,9 @@
     "test:contrast": "node scripts/test-contrast.js",
     "check:contrast": "node scripts/check-contrast.js",
     "test:browser": "node scripts/check-browser.js",
-    "typecheck": "tsc -b"
+    "typecheck": "tsc -b",
+    "pages:prepare": "node scripts/publish-pages.js",
+    "pages:deploy": "node scripts/publish-pages.js --push"
   },
   "dependencies": {
     "react": "^19.2.8",
@@ -27,6 +29,7 @@
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.7",
     "@vitejs/plugin-react": "^6.1.1",
+    "gh-pages": "6.1.1",
     "oxlint": "^1.81.0",
     "playwright": "^1.64.0",
     "typescript": "~6.0.2",

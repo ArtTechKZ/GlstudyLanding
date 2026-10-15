@@ -1,3 +1,4 @@
+import { sitePath } from '../../utils/sitePath';
 import { Link } from 'react-router-dom';
 import { useCityContext } from '../../hooks/useCityContext';
 import './Footer.scss';
@@ -17,7 +18,7 @@ export default function Footer() {
           <div className="footer__brand">
             <Link to="/" className="footer__logo" aria-label="GL Study — главная">
               <img
-                src="/brand/logo-white.svg"
+                src={sitePath('/brand/logo-white.svg')}
                 alt="GL Study"
                 className="footer__logo-img"
                 width="156"
@@ -59,8 +60,8 @@ export default function Footer() {
               <h3 className="footer__nav-heading">Школа</h3>
               <ul role="list">
                 <li><Link to="/branches">Филиалы</Link></li>
-                <li><a href="/#reviews">Отзывы</a></li>
-                <li><a href="/#faq">FAQ</a></li>
+                <li><a href={sitePath('/#reviews')}>Отзывы</a></li>
+                <li><a href={sitePath('/#faq')}>FAQ</a></li>
                 <li><Link to="/legal#privacy">Политика конфиденциальности</Link></li>
                 <li><Link to="/legal#consent">Согласие на обработку ПД</Link></li>
               </ul>
@@ -91,7 +92,7 @@ export default function Footer() {
               </p>
             )}
 
-            <a href="/#lead-form" className="btn btn-primary footer__cta">
+            <a href={sitePath('/#lead-form')} className="btn btn-primary footer__cta">
               Бесплатный урок
             </a>
           </div>
@@ -116,7 +117,7 @@ export default function Footer() {
 
       {/* Mobile sticky CTA */}
       <div className="footer__mobile-sticky" role="complementary" aria-label="Быстрые действия">
-        <a href="/#lead-form" className="btn btn-primary footer__mobile-cta">
+        <a href={sitePath('/#lead-form')} className="btn btn-primary footer__mobile-cta">
           Бесплатный урок
         </a>
         {activeBranch?.whatsapp ? (

@@ -1,3 +1,4 @@
+import { sitePath } from '../../utils/sitePath';
 import { Link } from 'react-router-dom';
 import { TRAVEL_PROGRAMS } from '../../data/demo';
 import './TravelSection.scss';
@@ -29,7 +30,7 @@ export default function TravelSection() {
           <article className="travel__card travel__card--prague gl-bg-pattern-gl-white">
             <div className="travel__card-photo-box">
               <img
-                src="/images/home/travel-prague.webp"
+                src={sitePath('/images/home/travel-prague.webp')}
                 alt="Архитектура Праги и Европы — зимняя образовательная программа GL Study"
                 className="travel__card-photo"
                 width={800}
@@ -88,7 +89,7 @@ export default function TravelSection() {
           <article className="travel__card travel__card--malaysia gl-bg-pattern-grid-violet">
             <div className="travel__card-photo-box">
               <img
-                src="/images/home/travel-malaysia.webp"
+                src={sitePath('/images/home/travel-malaysia.webp')}
                 alt="Куала-Лумпур, башни Петронас — программа обучения в Малайзии GL Study"
                 className="travel__card-photo"
                 width={800}

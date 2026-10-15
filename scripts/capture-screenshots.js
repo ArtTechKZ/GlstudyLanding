@@ -202,9 +202,9 @@ async function run() {
     results.screenshots.push(mobileMenuPath);
 
     // Click a link in mobile menu to test navigation to /learning
-    const learningLink = mobilePage.locator('#mobile-menu a[href="/learning"]');
+    const learningLink = mobilePage.locator(`#mobile-menu a[href="${preview.base}learning"]`);
     await learningLink.click();
-    await mobilePage.waitForURL('**/learning');
+    await mobilePage.waitForURL(url => url.pathname.replace(/\/$/, '') === preview.base + 'learning');
     const mobileH1 = await mobilePage.locator('h1').textContent();
     const menuClosedAfterNav = !(await mobilePage.locator('#mobile-menu').isVisible());
 

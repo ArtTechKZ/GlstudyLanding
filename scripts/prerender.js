@@ -35,8 +35,6 @@ async function run() {
   let preview;
   let browser;
 
-  const generated = [];
-
   try {
     preview = await startLocalServer();
     browser = await chromium.launch({ channel: 'msedge' });
@@ -61,20 +59,14 @@ async function run() {
       fs.writeFileSync(targetPath, html, 'utf-8');
       const sizeKb = (Buffer.byteLength(html, 'utf-8') / 1024).toFixed(1);
       console.log(`✓ Wrote ${item.target} (${sizeKb} KB)`);
-      generated.push({ route: item.route, target: item.target, sizeKb: `${sizeKb} KB` });
     }
   } finally {
     try { await browser?.close(); } finally { await preview?.close(); }
   }
 
   console.log('\n--- Pre-rendering completed successfully ---');
-  console.log(`Total pre-rendered static HTML routes: ${generated.length}`);
-  fs.writeFileSync(
-    path.join(distDir, 'prerender-manifest.json'),
-    JSON.stringify(generated, null, 2),
-    'utf-8'
-  );
-  console.log('Updated dist/prerender-manifest.json');
+  console.log(`Total pre-rendered static HTML routes: ${routesToPrerender.length}`);
+  fs.writeFileSync(path.join(distDir, '.nojekyll'), '');
 
 }
 

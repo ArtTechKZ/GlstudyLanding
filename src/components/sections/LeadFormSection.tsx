@@ -1,3 +1,4 @@
+import { sitePath } from '../../utils/sitePath';
 import { useState, useId } from 'react';
 import { useCityContext } from '../../hooks/useCityContext';
 import './LeadFormSection.scss';
@@ -82,7 +83,7 @@ export default function LeadFormSection() {
             <div className="lead-form__benefits">
               <div className="lead-form__benefit-item">
                 <img
-                  src="/images/home/brand-pin.webp"
+                  src={sitePath('/images/home/brand-pin.webp')}
                   alt=""
                   className="lead-form__pin-icon"
                   width={18}
@@ -93,7 +94,7 @@ export default function LeadFormSection() {
               </div>
               <div className="lead-form__benefit-item">
                 <img
-                  src="/images/home/brand-pin.webp"
+                  src={sitePath('/images/home/brand-pin.webp')}
                   alt=""
                   className="lead-form__pin-icon"
                   width={18}
@@ -104,7 +105,7 @@ export default function LeadFormSection() {
               </div>
               <div className="lead-form__benefit-item">
                 <img
-                  src="/images/home/brand-pin.webp"
+                  src={sitePath('/images/home/brand-pin.webp')}
                   alt=""
                   className="lead-form__pin-icon"
                   width={18}
@@ -254,11 +255,11 @@ export default function LeadFormSection() {
                   />
                   <span className="lead-form__consent-text">
                     Я согласен(а) на{' '}
-                    <a href="/legal#consent" target="_blank" rel="noopener noreferrer" className="lead-form__consent-link">
+                    <a href={sitePath('/legal#consent')} target="_blank" rel="noopener noreferrer" className="lead-form__consent-link">
                       обработку персональных данных
                     </a>{' '}
                     в соответствии с{' '}
-                    <a href="/legal#privacy" target="_blank" rel="noopener noreferrer" className="lead-form__consent-link">
+                    <a href={sitePath('/legal#privacy')} target="_blank" rel="noopener noreferrer" className="lead-form__consent-link">
                       политикой конфиденциальности
                     </a>
                   </span>

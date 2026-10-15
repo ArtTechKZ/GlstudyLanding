@@ -1,3 +1,4 @@
+import { sitePath } from '../../utils/sitePath';
 import { useState, useEffect, useCallback } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useCityContext } from '../../hooks/useCityContext';
@@ -52,7 +53,7 @@ export default function Header() {
           {/* Logo with safe zone */}
           <Link to="/" className="gl-header__logo" aria-label="GL Study — на главную">
             <img
-              src="/brand/logo-color.svg"
+              src={sitePath('/brand/logo-color.svg')}
               alt="GL Study"
               className="gl-header__logo-img"
               width="148"
@@ -65,7 +66,7 @@ export default function Header() {
             <ul className="gl-header__nav-list" role="list">
               {NAV_LINKS.map(link => (
                 <li key={link.label}>
-                  <a href={link.href} className="gl-header__nav-link">
+                  <a href={sitePath(link.href)} className="gl-header__nav-link">
                     {link.label}
                   </a>
                 </li>
@@ -108,7 +109,7 @@ export default function Header() {
             {/* Phone — only shown when real data available */}
 
             {/* CTA */}
-            <a href="/#lead-form" className="btn btn-violet gl-header__cta">
+            <a href={sitePath('/#lead-form')} className="btn btn-violet gl-header__cta">
               Бесплатный урок
             </a>
 
@@ -141,7 +142,7 @@ export default function Header() {
           <div className="gl-header__mobile-top">
             <Link to="/" onClick={() => setMenuOpen(false)} aria-label="GL Study — главная">
               <img
-                src="/brand/logo-white.svg"
+                src={sitePath('/brand/logo-white.svg')}
                 alt="GL Study"
                 className="gl-header__mobile-logo"
                 width="140"
@@ -172,7 +173,7 @@ export default function Header() {
               {NAV_LINKS.map(link => (
                 <li key={link.label}>
                   <a
-                    href={link.href}
+                    href={sitePath(link.href)}
                     className="gl-header__mobile-link"
                     onClick={() => setMenuOpen(false)}
                   >
@@ -184,7 +185,7 @@ export default function Header() {
           </nav>
 
           <a
-            href="/#lead-form"
+            href={sitePath('/#lead-form')}
             className="btn btn-primary gl-header__mobile-cta"
             onClick={() => setMenuOpen(false)}
           >
