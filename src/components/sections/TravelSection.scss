@@ -1,0 +1,330 @@
+@use '../../styles/tokens' as *;
+
+.travel {
+  background-color: var(--gl-white);
+}
+
+.travel__header {
+  margin-bottom: var(--sp-8);
+
+  @media (max-width: 767px) {
+    margin-bottom: var(--sp-6);
+  }
+}
+
+.travel__tag-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--gl-violet-light);
+  border: 1px solid rgba(141, 59, 237, 0.2);
+  color: var(--gl-violet);
+  padding: 0.35rem 0.95rem;
+  border-radius: var(--radius-pill);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: var(--sp-2);
+}
+
+.travel__tag-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--gl-orange);
+}
+
+.travel__heading {
+  font-family: var(--font-display);
+  font-weight: var(--fw-extrabold); // Inter 800
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  line-height: 0.96;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--gl-black);
+}
+
+.travel__heading-accent {
+  color: var(--gl-violet);
+}
+
+.travel__sub {
+  font-size: var(--fs-body);
+  color: rgba(0, 0, 0, 0.7);
+  max-width: 36rem;
+  line-height: var(--lh-normal);
+  margin-top: var(--sp-2);
+}
+
+.travel__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-6);
+
+  @media (max-width: 1023px) {
+    grid-template-columns: 1fr;
+    gap: var(--sp-4);
+  }
+}
+
+// ─── Travel cards ─────────────────────────────────────────────────────────────
+.travel__card {
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 36px rgba(141, 59, 237, 0.12);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &:hover { transform: none; }
+  }
+
+  // ── Prague Card (Electric Violet)
+  &--prague {
+    background-color: var(--gl-violet);
+    color: var(--gl-white);
+
+    .travel__card-title   { color: var(--gl-white); }
+    .travel__card-destination { color: var(--gl-white); }
+    .travel__card-btn     {
+      background: var(--gl-orange);
+      color: var(--gl-white);
+      border-color: var(--gl-orange);
+      font-size: 1.1875rem; // 19px Inter Bold — Large Text (3.61:1 >= 3:1)
+      font-weight: var(--fw-bold);
+
+      &:hover {
+        background: var(--gl-orange-alt);
+        border-color: var(--gl-orange-alt);
+        color: var(--gl-white);
+      }
+    }
+    .travel__card-includes li { color: var(--gl-white); }
+    .travel__price-amount { color: var(--gl-white); } // STRICT WCAG: white on violet
+    .travel__price-currency { color: var(--gl-white); }
+    .travel__price-note   { color: var(--gl-white); }
+    .travel__addon        { background: rgba(0, 0, 0, 0.25); border: 1px solid rgba(255, 255, 255, 0.3); }
+    .travel__addon-text strong { color: var(--gl-white); }
+    .travel__addon-text span { color: var(--gl-white); }
+    .travel__addon-price  { color: var(--gl-white); } // STRICT WCAG: white on violet
+    .travel__group-note   { color: rgba(255, 255, 255, 0.95); }
+    .travel__tag          { background: rgba(0, 0, 0, 0.6); color: var(--gl-white); }
+  }
+
+  // ── Malaysia Card (Soft Orange-Light)
+  &--malaysia {
+    background-color: var(--gl-orange-light);
+    color: var(--gl-black);
+    border: 1px solid rgba(242, 76, 10, 0.18);
+
+    .travel__card-title   { color: var(--gl-black); } // STRICT WCAG: black on light orange
+    .travel__card-destination { color: var(--gl-black); font-weight: var(--fw-semibold); }
+    .travel__card-btn     {
+      background: var(--gl-orange);
+      color: var(--gl-white);
+      border-color: var(--gl-orange);
+      font-size: 1.1875rem; // 19px Inter Bold — Large Text (3.61:1 >= 3:1)
+      font-weight: var(--fw-bold);
+
+      &:hover {
+        background: var(--gl-orange-alt);
+        border-color: var(--gl-orange-alt);
+        color: var(--gl-white);
+      }
+    }
+    .travel__card-includes li { color: var(--gl-black); }
+    .travel__tag          { background: rgba(255, 255, 255, 0.95); color: var(--gl-black); border: 1px solid rgba(0, 0, 0, 0.15); }
+    .travel__price-pending { color: var(--gl-black); font-weight: var(--fw-bold); }
+    .travel__price-note   { color: rgba(0, 0, 0, 0.85); }
+  }
+}
+
+// ─── Photo Box ────────────────────────────────────────────────────────────────
+.travel__card-photo-box {
+  position: relative;
+  width: 100%;
+  height: 240px;
+  overflow: hidden;
+
+  @media (max-width: 479px) {
+    height: 180px;
+  }
+}
+
+.travel__card-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform var(--transition-slow);
+
+  .travel__card:hover & {
+    transform: scale(1.04);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .travel__card:hover & {
+      transform: none;
+    }
+  }
+}
+
+.travel__card-badge-top {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  right: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.travel__card-flag {
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+.travel__tag {
+  display: inline-flex;
+  padding: 0.3rem 0.8rem;
+  border-radius: var(--radius-pill);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.04em;
+  backdrop-filter: blur(6px);
+}
+
+// ─── Card Body ────────────────────────────────────────────────────────────────
+.travel__card-body {
+  padding: var(--sp-6) var(--sp-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  flex: 1;
+
+  @media (max-width: 479px) {
+    padding: var(--sp-5) var(--sp-4);
+  }
+}
+
+.travel__card-title {
+  font-family: var(--font-display);
+  font-weight: var(--fw-extrabold); // Inter 800
+  font-size: clamp(1.5rem, 2.8vw, 2.1rem);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+}
+
+.travel__card-destination {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+}
+
+.travel__card-fact-badge {
+  background: var(--gl-white);
+  color: var(--gl-violet);
+  border: 1px solid rgba(141, 59, 237, 0.2);
+  border-radius: var(--radius-lg);
+  padding: 0.65rem 1rem;
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-bold);
+}
+
+.travel__card-price {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.travel__price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.travel__price-amount {
+  font-family: var(--font-accent);
+  font-weight: var(--fw-extrabold);
+  font-size: 2.8rem;
+  line-height: 0.9;
+}
+
+.travel__price-currency {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+}
+
+.travel__price-note {
+  font-size: var(--fs-xs);
+}
+
+.travel__card-includes {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  li {
+    font-size: var(--fs-sm);
+    line-height: 1.4;
+  }
+}
+
+.travel__addon {
+  border-radius: var(--radius-xl);
+  padding: var(--sp-3) var(--sp-4);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-2);
+  flex-wrap: wrap;
+}
+
+.travel__addon-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+
+  strong {
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-bold);
+  }
+
+  span {
+    font-size: var(--fs-xs);
+  }
+}
+
+.travel__addon-price {
+  font-family: var(--font-accent);
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+.travel__group-note {
+  font-size: var(--fs-xs);
+}
+
+.travel__card-actions {
+  margin-top: auto;
+  padding-top: var(--sp-2);
+}
+
+.travel__card-btn {
+  width: 100%;
+  font-size: var(--fs-sm);
+  padding: 0.95rem 2rem;
+  border-radius: var(--radius-pill);
+  font-weight: var(--fw-bold);
+  text-align: center;
+  justify-content: center;
+}

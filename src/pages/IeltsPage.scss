@@ -1,0 +1,14 @@
+// Keep white labels on a solid brand surface, including the small WRITING badge.
+.ielts-module.surface-orange {
+  .ielts-module__badge {
+    background-color: var(--gl-violet);
+    border-color: var(--gl-violet);
+    color: var(--gl-white);
+  }
+}
+
+#kostanay .sticker {
+  max-width: 100%;
+  white-space: normal;
+  text-align: center;
+}

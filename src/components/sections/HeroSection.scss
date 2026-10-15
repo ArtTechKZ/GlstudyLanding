@@ -1,0 +1,396 @@
+@use '../../styles/tokens' as *;
+
+// ─── Hero section — Brandbook GL STUDY 2026 ──────────────────────────────────
+// Electric violet full-bleed stage; WCAG-compliant white display headline; brand composite right
+
+.hero {
+  background-color: var(--gl-white);
+  overflow: hidden;
+}
+
+.hero__stage {
+  background-color: var(--gl-violet);
+  border-radius: 0 0 var(--radius-2xl) var(--radius-2xl);
+  padding-block: var(--sp-8) var(--sp-10);
+  position: relative;
+  overflow: hidden;
+
+  @media (max-width: 767px) {
+    border-radius: 0 0 var(--radius-xl) var(--radius-xl);
+    padding-block: var(--sp-6) var(--sp-8);
+  }
+}
+
+.hero__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: var(--sp-6);
+  align-items: center;
+  position: relative;
+  z-index: var(--z-card);
+
+  @media (max-width: 1023px) {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: var(--sp-4);
+  }
+
+  @media (max-width: 767px) {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+  }
+}
+
+// ─── Left content ─────────────────────────────────────────────────────────────
+.hero__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+  padding-top: var(--sp-2);
+  min-width: 0;
+  max-width: 100%;
+}
+
+// Official Slogan Badge (PDF, page 7)
+.hero__slogan-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: var(--gl-white);
+  padding: 0.4rem 1.1rem;
+  border-radius: var(--radius-pill);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  width: fit-content;
+  backdrop-filter: blur(8px);
+}
+
+.hero__slogan-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--gl-orange);
+  display: inline-block;
+}
+
+// ─── Headline (Inter ExtraBold 800) — STRICT WCAG AA COMPLIANCE ─────────────
+.hero__headline {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15em;
+  font-family: var(--font-display);
+  font-weight: var(--fw-extrabold); // Inter 800
+  font-size: clamp(1.85rem, 5.2vw, 4.2rem);
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--gl-white); // 5.28:1 contrast on #8D3BED
+  min-width: 0;
+}
+
+.hero__headline-line {
+  display: block;
+
+  &--nowrap {
+    @media (min-width: 480px) {
+      white-space: nowrap;
+    }
+  }
+
+  &--brand {
+    color: var(--gl-white);
+    letter-spacing: 0.02em;
+  }
+}
+
+// ─── Sub text ─────────────────────────────────────────────────────────────────
+.hero__sub {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  font-weight: var(--fw-medium);
+  color: var(--gl-white); // 5.28:1 contrast on #8D3BED
+  line-height: var(--lh-normal);
+  max-width: 32rem;
+}
+
+// ─── CTA row ─────────────────────────────────────────────────────────────────
+.hero__ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+  align-items: center;
+}
+
+.hero__cta-main {
+  background-color: var(--gl-orange);
+  color: var(--gl-white);
+  border-color: var(--gl-orange);
+  font-size: clamp(1.1875rem, 2vw, 1.25rem); // 19-20px Inter Bold — Large Text (>= 18.67px bold, ratio 3.61:1 >= 3:1)
+  font-weight: var(--fw-bold);
+  padding: 1rem 2.2rem;
+  border-radius: var(--radius-pill);
+
+  &:hover {
+    background-color: var(--gl-orange-alt);
+    border-color: var(--gl-orange-alt);
+    color: var(--gl-white);
+  }
+}
+
+.hero__cta-secondary {
+  font-size: var(--fs-sm);
+  padding: 0.95rem 1.75rem;
+  border-radius: var(--radius-pill);
+  color: var(--gl-white);
+  border-color: var(--gl-white);
+
+  &:hover {
+    background-color: var(--gl-white);
+    color: var(--gl-black);
+  }
+}
+
+// Trust badges below CTA
+.hero__trust-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-3);
+  padding-top: var(--sp-1);
+}
+
+.hero__trust-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  color: var(--gl-white); // 5.28:1 contrast on #8D3BED
+}
+
+.hero__trust-pin {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--gl-orange);
+}
+
+// ─── Right Visual Composite ──────────────────────────────────────────────────
+.hero__visual {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  min-height: 440px;
+
+  @media (max-width: 1023px) {
+    min-height: 380px;
+  }
+
+  @media (max-width: 767px) {
+    min-height: 340px;
+    margin-top: var(--sp-2);
+  }
+}
+
+.hero__visual-card {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  height: 500px;
+  border-radius: var(--radius-2xl);
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: visible;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+
+  @media (max-width: 1023px) {
+    height: 440px;
+    max-width: 380px;
+  }
+
+  @media (max-width: 767px) {
+    height: 380px;
+    max-width: 280px;
+    margin-inline: auto;
+  }
+}
+
+.hero__student-img {
+  position: absolute;
+  bottom: 0;
+  max-width: 90%;
+  max-height: 108%;
+  object-fit: contain;
+  object-position: bottom center;
+  pointer-events: none;
+  filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.3));
+}
+
+// ─── Floating Badges ─────────────────────────────────────────────────────────
+.hero__float-badge {
+  position: absolute;
+  z-index: 3;
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
+  animation: float-slow 4s ease-in-out infinite alternate;
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+
+  &--top {
+    top: 24px;
+    left: -20px;
+    background: var(--gl-white);
+    color: var(--gl-black);
+    padding: 0.65rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+
+    @media (max-width: 479px) {
+      left: 0;
+      top: 10px;
+      padding: 0.5rem 0.75rem;
+    }
+  }
+
+  &--bottom {
+    bottom: 24px;
+    left: -16px;
+    background: var(--gl-violet);
+    color: var(--gl-white);
+    padding: 0.75rem 1.1rem;
+    border-radius: var(--radius-xl);
+    border: 2px solid var(--gl-orange);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
+    animation-delay: -2s;
+
+    @media (max-width: 479px) {
+      left: 0;
+      bottom: 12px;
+      padding: 0.5rem 0.85rem;
+    }
+  }
+
+  &--pill {
+    top: 70px;
+    right: -16px;
+    background: rgba(255, 255, 255, 0.95);
+    color: var(--gl-violet);
+    padding: 0.45rem 1rem;
+    border-radius: var(--radius-pill);
+    font-size: var(--fs-xs);
+    font-weight: var(--fw-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    border: 1px solid rgba(141, 59, 237, 0.2);
+    animation-delay: -1s;
+
+    @media (max-width: 479px) {
+      right: 0;
+      top: 50px;
+    }
+  }
+}
+
+.hero__float-pin-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.hero__float-text {
+  display: flex;
+  flex-direction: column;
+
+  strong {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: var(--fw-bold);
+    color: var(--gl-black);
+    line-height: 1.1;
+  }
+
+  small {
+    font-size: 0.75rem;
+    color: rgba(0, 0, 0, 0.7);
+    font-weight: var(--fw-medium);
+  }
+}
+
+.hero__float-tag {
+  font-family: var(--font-accent);
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  color: var(--gl-orange-light);
+  line-height: 1;
+  margin-bottom: 2px;
+}
+
+.hero__float-desc {
+  display: flex;
+  flex-direction: column;
+
+  strong {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: var(--fw-extrabold);
+    line-height: 1.1;
+    color: var(--gl-white); // 5.28:1 contrast on violet (WCAG AA pass!)
+  }
+
+  small {
+    font-size: 0.75rem;
+    font-weight: var(--fw-semibold);
+    color: var(--gl-white); // 5.28:1 contrast on violet (WCAG AA pass!)
+  }
+}
+
+@keyframes float-slow {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-8px); }
+}
+
+// ─── Clean ambient lights using approved gradient stops ───────────────────────
+.hero__ambient {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+  overflow: hidden;
+
+  &--1 {
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(188, 131, 255, 0.25), transparent 70%);
+    bottom: 0;
+    right: 0;
+
+    @media (max-width: 767px) {
+      display: none;
+    }
+  }
+
+  &--2 {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 166, 131, 0.2), transparent 70%);
+    top: 5%;
+    left: 35%;
+
+    @media (max-width: 767px) {
+      display: none;
+    }
+  }
+}

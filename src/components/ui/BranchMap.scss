@@ -1,0 +1,179 @@
+@use '../../styles/tokens' as *;
+
+.branch-map-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  width: 100%;
+}
+
+.branch-map-viewport {
+  width: 100%;
+  min-height: 320px;
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+  background-color: var(--gl-violet-light);
+  border: 1px solid rgba(141, 59, 237, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: inset 0 2px 10px rgba(141, 59, 237, 0.05);
+
+  @media (max-width: 767px) {
+    min-height: 260px;
+    border-radius: var(--radius-xl);
+  }
+}
+
+.branch-map-ui-controls {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  z-index: 2;
+}
+
+.branch-map-ui-btn {
+  width: 32px;
+  height: 32px;
+  background: var(--gl-white);
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: var(--fw-bold);
+  font-size: 1.1rem;
+  color: var(--gl-black);
+  user-select: none;
+}
+
+.branch-map-preview {
+  text-align: center;
+  padding: var(--sp-4);
+  max-width: 26rem;
+  margin-inline: auto;
+  position: relative;
+  z-index: 1;
+}
+
+.branch-map-pin-pulse {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  background: rgba(141, 59, 237, 0.12);
+  border-radius: 50%;
+  margin-bottom: var(--sp-2);
+  animation: pulse-ring 2.5s infinite;
+}
+
+.branch-map-pin-icon {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(141, 59, 237, 0.4); }
+  70% { transform: scale(1); box-shadow: 0 0 0 16px rgba(141, 59, 237, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(141, 59, 237, 0); }
+}
+
+.branch-map-preview__title {
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-h3);
+  color: var(--gl-violet);
+  margin-bottom: var(--sp-1);
+}
+
+.branch-map-preview__desc {
+  font-size: var(--fs-sm);
+  color: var(--gl-black); // 18.7:1 contrast on soft violet
+  line-height: var(--lh-normal);
+  margin-bottom: var(--sp-3);
+}
+
+.branch-map-preview__badge {
+  display: inline-block;
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-bold);
+  background: var(--gl-white);
+  border: 1px solid rgba(141, 59, 237, 0.2);
+  color: var(--gl-violet);
+  padding: 0.35rem 0.95rem;
+  border-radius: var(--radius-pill);
+}
+
+// ─── Textual List ─────────────────────────────────────────────────────────────
+.branch-map-text-list {
+  background: var(--gl-white);
+  border-radius: var(--radius-xl);
+  padding: var(--sp-4);
+  border: 1px solid rgba(141, 59, 237, 0.15);
+}
+
+.branch-map-text-list__heading {
+  font-family: var(--font-display);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--gl-violet);
+  margin-bottom: var(--sp-2);
+}
+
+.branch-map-text-list__items {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.branch-map-text-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: var(--fs-sm);
+  padding-bottom: var(--sp-2);
+  border-bottom: 1px solid rgba(141, 59, 237, 0.08);
+
+  &:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+}
+
+.branch-map-text-item__header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.branch-map-text-item__name {
+  font-weight: var(--fw-bold);
+  color: var(--gl-black);
+}
+
+.branch-map-text-item__badge {
+  font-size: 0.7rem;
+  font-weight: var(--fw-bold);
+  background: var(--gl-violet-light);
+  color: var(--gl-violet);
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+}
+
+.branch-map-text-item__pending {
+  color: rgba(0, 0, 0, 0.82); // 9.5:1 contrast on white (WCAG AA pass!)
+  font-size: var(--fs-xs);
+}
+
+.branch-map-text-item__phone a {
+  color: var(--gl-violet);
+  font-weight: var(--fw-semibold);
+  text-decoration: underline;
+}

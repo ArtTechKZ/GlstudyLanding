@@ -1,0 +1,210 @@
+@use '../../styles/tokens' as *;
+
+.branches {
+  background-color: var(--gl-white);
+}
+
+.branches__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: var(--sp-4);
+  margin-bottom: var(--sp-6);
+}
+
+.branches__tag-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--gl-violet-light);
+  border: 1px solid rgba(141, 59, 237, 0.2);
+  color: var(--gl-violet);
+  padding: 0.35rem 0.95rem;
+  border-radius: var(--radius-pill);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: var(--sp-2);
+}
+
+.branches__tag-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--gl-orange);
+}
+
+.branches__heading {
+  font-family: var(--font-display);
+  font-weight: var(--fw-extrabold); // Inter 800
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  line-height: 0.96;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--gl-black);
+}
+
+.branches__heading-accent {
+  color: var(--gl-violet);
+}
+
+.branches__sub {
+  font-size: var(--fs-body);
+  color: rgba(0, 0, 0, 0.7);
+  line-height: var(--lh-normal);
+  margin-top: var(--sp-2);
+}
+
+// ─── City tabs ────────────────────────────────────────────────────────────────
+.branches__city-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-1);
+}
+
+.branches__city-tab {
+  padding: 0.6rem 1.4rem;
+  border-radius: var(--radius-pill);
+  border: 2px solid var(--gl-violet);
+  background: transparent;
+  color: var(--gl-violet);
+  font-family: var(--font-body);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-sm);
+  cursor: pointer;
+  transition: background var(--transition-fast), color var(--transition-fast);
+
+  &.is-active,
+  &:hover {
+    background: var(--gl-violet);
+    color: var(--gl-white);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--gl-white);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px var(--gl-black);
+    border-radius: var(--radius-pill);
+  }
+}
+
+// ─── Layout ───────────────────────────────────────────────────────────────────
+.branches__layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-6);
+  align-items: start;
+
+  @media (max-width: 1023px) {
+    grid-template-columns: 1fr;
+    gap: var(--sp-4);
+  }
+}
+
+// ─── Branch cards ─────────────────────────────────────────────────────────────
+.branches__cards {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+
+.branches__card {
+  background-color: var(--gl-white);
+  border-radius: var(--radius-2xl);
+  padding: var(--sp-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  border: 1px solid rgba(141, 59, 237, 0.18);
+  box-shadow: 0 4px 16px rgba(141, 59, 237, 0.05);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+
+  &:hover {
+    border-color: var(--gl-violet);
+    box-shadow: 0 8px 24px rgba(141, 59, 237, 0.1);
+  }
+}
+
+.branches__card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-2);
+}
+
+.branches__card-city {
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--gl-violet);
+}
+
+.branches__card-badge {
+  display: inline-flex;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-pill);
+  background: var(--gl-violet-light);
+  color: var(--gl-violet);
+  font-size: 0.75rem;
+  font-weight: var(--fw-bold);
+}
+
+.branches__card-name {
+  font-family: var(--font-display);
+  font-weight: var(--fw-extrabold);
+  font-size: var(--fs-h2);
+  color: var(--gl-black);
+}
+
+.branches__card-address,
+.branches__card-info-item,
+.branches__card-schedule {
+  font-size: var(--fs-sm);
+  color: var(--gl-black); // 21:1 contrast on white
+  line-height: var(--lh-normal);
+}
+
+.branches__card-info-sub {
+  color: rgba(0, 0, 0, 0.8);
+  font-style: italic;
+}
+
+.branches__card-phone {
+  font-size: var(--fs-sm);
+  color: var(--gl-violet);
+  font-weight: var(--fw-bold);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.branches__card-note {
+  font-size: var(--fs-xs);
+  color: rgba(0, 0, 0, 0.82); // 9.5:1 contrast on white
+  font-style: italic;
+  padding-top: var(--sp-1);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+// ─── Bottom CTA ───────────────────────────────────────────────────────────────
+.branches__cta-row {
+  margin-top: var(--sp-8);
+  text-align: center;
+}
+
+.branches__all-btn.btn {
+  font-size: clamp(1.1875rem, 2vw, 1.25rem); // 19-20px Inter Bold — Large Text (3.61:1 >= 3:1)
+  padding: 0.875rem 1.5rem;
+  border-radius: var(--radius-pill);
+  font-weight: var(--fw-bold);
+  white-space: normal;
+  text-align: center;
+  max-width: 100%;
+
+  @media (max-width: 360px) {
+    font-size: 1.1875rem;
+    padding: 0.75rem 0.85rem;
+  }
+}

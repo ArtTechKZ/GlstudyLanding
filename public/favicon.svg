@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" rx="8" fill="#8D3BED"/>
+  <!-- GL Mark in official colors -->
+  <text x="7" y="23" font-family="'Inter', Arial, sans-serif" font-weight="800" font-size="16" fill="#F24C0A">G</text>
+  <text x="18" y="23" font-family="'Inter', Arial, sans-serif" font-weight="800" font-size="16" fill="#FFFFFF">L</text>
+</svg>

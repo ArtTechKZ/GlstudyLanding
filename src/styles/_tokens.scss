@@ -1,0 +1,112 @@
+// GL Study — Design Tokens
+
+
+
+// ─── Colors (PDF pages 13–15) ─────────────────────────────────────────────────
+:root {
+  // Primary brand colors (PDF, p. 14)
+  --gl-white:         #FFFFFF;   // Pure white — background, text on violet
+  --gl-black:         #000000;   // Pure black — primary text, text on orange
+  --gl-violet:        #8D3BED;   // Primary violet — hero, primary surfaces, links, CTA
+  --gl-orange:        #F24C0A;   // Primary orange — accent, buttons, badges, highlights
+
+  // Additional brand colors (PDF, p. 15)
+  --gl-violet-light:  #F5EDFD;   // Light violet — cards, soft surfaces
+  --gl-orange-light:  #FEEFE9;   // Light orange — cards, warm surfaces
+  --gl-violet-alt:    #9345EE;   // Additional violet accent
+  --gl-orange-alt:    #F35516;   // Additional orange accent
+
+  // Approved gradients (PDF, p. 15)
+  --gl-gradient-orange: linear-gradient(90deg, #F24C0A 0%, #FFA683 50%, #F24C0A 100%);
+  --gl-gradient-violet: linear-gradient(90deg, #8D3BED 0%, #BC83FF 50%, #8D3BED 100%);
+
+  // Semantic aliases
+  --color-bg:                 var(--gl-white);
+  --color-text:               var(--gl-black);
+  --color-primary:            var(--gl-violet);
+  --color-accent:             var(--gl-orange);
+  --color-on-primary:         var(--gl-white);
+  --color-on-accent:          var(--gl-white);
+  --color-surface-violet-light: var(--gl-violet-light);
+  --color-surface-orange-light: var(--gl-orange-light);
+
+  // Backward-compatible migration bridge to prevent temporary broken variables
+  --gl-paper:                 var(--gl-white);
+  --gl-ink:                   var(--gl-black);
+  --gl-lime:                  var(--gl-orange);
+  --gl-pink:                  var(--gl-orange-light);
+  --gl-cyan:                  var(--gl-violet-light);
+  --gl-lavender:              var(--gl-violet-light);
+
+  // ─── Typography (PDF pages 16–18) ───────────────────────────────────────────
+  // Headings: Inter ExtraBold (800) / Bold (700)
+  --font-display:  'Inter', Arial, sans-serif;
+  // Body: Inter Medium (500)
+  --font-body:     'Inter', Arial, sans-serif;
+  // Accent numbers & callouts: Bebas Neue
+  --font-accent:   'Bebas Neue', 'Inter', Arial, sans-serif;
+
+  --fw-regular:   500;  // Brandbook: text font is Inter Medium 500
+  --fw-medium:    500;  // Inter Medium
+  --fw-semibold:  600;  // Inter SemiBold (subheadings auxiliary)
+  --fw-bold:      700;  // Inter Bold (subheadings)
+  --fw-extrabold: 800;  // Inter ExtraBold (main display headings)
+
+  // Display sizes — fluid clamp scaling from 320px
+  --fs-hero:    clamp(2rem, 5.2vw, 4.2rem);   // Main hero headline
+  --fs-display: clamp(2rem, 4.5vw, 3.5rem);   // Section display headings
+  --fs-h1:      clamp(1.75rem, 3.5vw, 2.75rem);
+  --fs-h2:      clamp(1.35rem, 2.5vw, 2rem);
+  --fs-h3:      clamp(1.125rem, 1.8vw, 1.375rem);
+  --fs-body:    1rem;        // 16px
+  --fs-sm:      0.875rem;    // 14px
+  --fs-xs:      0.75rem;     // 12px
+
+  --lh-display: 1.02;
+  --lh-tight:   1.15;
+  --lh-normal:  1.55;
+
+  --tracking-display: -0.02em;
+  --tracking-tight:   -0.01em;
+
+  // ─── Spacing (8px baseline) ─────────────────────────────────────────────────
+  --sp-1:  0.5rem;   //  8px
+  --sp-2:  1rem;     // 16px
+  --sp-3:  1.5rem;   // 24px
+  --sp-4:  2rem;     // 32px
+  --sp-5:  2.5rem;   // 40px
+  --sp-6:  3rem;     // 48px
+  --sp-8:  4rem;     // 64px
+  --sp-10: 5rem;     // 80px
+  --sp-12: 6rem;     // 96px
+  --sp-16: 8rem;     // 128px
+
+  // Section vertical rhythm
+  --section-gap: clamp(3rem, 6vw, 6rem);
+  --section-pad: clamp(3rem, 5vw, 5rem);
+
+  // ─── Border radius & Safe margins ───────────────────────────────────────────
+  --radius-sm:   8px;
+  --radius-md:   16px;
+  --radius-lg:   24px;
+  --radius-xl:   32px;
+  --radius-2xl:  48px;  // Main card panels
+  --radius-pill: 100px; // Pill CTAs
+
+  // ─── Layout ─────────────────────────────────────────────────────────────────
+  --max-width:   1200px;
+  --grid-cols:   12;
+  --gutter:      clamp(1rem, 2.5vw, 2rem);
+
+  // ─── Transitions ────────────────────────────────────────────────────────────
+  --transition-fast:   0.15s ease;
+  --transition-base:   0.2s ease-in-out;
+  --transition-slow:   0.3s ease;
+
+  // ─── Z-index ────────────────────────────────────────────────────────────────
+  --z-base:    1;
+  --z-card:    2;
+  --z-sticky:  100;
+  --z-modal:   200;
+  --z-overlay: 300;
+}
