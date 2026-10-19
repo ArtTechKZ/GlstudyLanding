@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://arttechkz.github.io/GlstudyLanding/sitemap.xml
