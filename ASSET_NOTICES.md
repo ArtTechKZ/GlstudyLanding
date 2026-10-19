@@ -15,6 +15,8 @@ According to the supplied asset register, the following files were extracted fro
 | `public/images/home/graduate-cap.webp`, `ielts-target.webp` | Page 31 |
 | `public/images/home/travel-prague.webp` | Page 31 |
 | `public/images/home/travel-malaysia.webp`, `offline-class.webp`, `camp-students.webp` | Page 23 |
+| `public/images/home/offline-students.webp`, `offline-students-240.webp`, `offline-students-480.webp` | Page 23, embedded two-person GL Study textbook cutout; original PDF alpha retained, proportional WebP downscales only |
+| `public/images/home/offline-class-1200.webp` | Page 23, proportional 1200×1800 derivative of the same classroom frame as `offline-class.webp` |
 | `public/images/home/brand-wristbands.webp` | Page 43 |
 | `public/images/home/brand-pin.webp` | Page 31 |
 

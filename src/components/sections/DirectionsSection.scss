@@ -439,6 +439,7 @@
   .directions__card-bullet { align-self: start; margin: 0; line-height: 1.4; }
   .directions__card-media { height: 200px; margin: 0; justify-content: center; }
   .directions__card-img { height: 200px; width: auto; max-width: 100%; max-height: 100%; object-position: center; filter: none; }
+  .directions__card[data-program='offline'] .directions__card-img { object-position: center bottom; }
   .directions__card:hover .directions__card-img { transform: none; }
   .directions__card-actions { margin: 0; gap: 8px; padding-top: 8px; align-self: end; flex-direction: row; align-items: center; }
   .directions__card-cta { padding-inline: 12px; min-height: 44px; width: auto; max-width: 100%; white-space: normal; overflow-wrap: anywhere; }

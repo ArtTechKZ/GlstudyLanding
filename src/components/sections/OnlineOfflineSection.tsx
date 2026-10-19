@@ -54,8 +54,8 @@ export default function OnlineOfflineSection() {
             <div className="oo-card__media">
               <img
                 src={sitePath('/images/home/offline-class.webp')}
-                srcSet={`${sitePath('/images/home/offline-class-240.webp')} 240w, ${sitePath('/images/home/offline-class-480.webp')} 480w, ${sitePath('/images/home/offline-class.webp')} 800w`}
-                sizes="(max-width: 767px) 90vw, 640px"
+                srcSet={`${sitePath('/images/home/offline-class-240.webp')} 240w, ${sitePath('/images/home/offline-class-480.webp')} 480w, ${sitePath('/images/home/offline-class.webp')} 800w, ${sitePath('/images/home/offline-class-1200.webp')} 1200w`}
+                sizes="(min-width: 1200px) 544px, (min-width: 1024px) 46vw, calc(100vw - 32px)"
                 alt={copy("Занятия в офлайн-классе GL Study")}
                 className="oo-card__img"
                 width={800}

@@ -379,5 +379,31 @@
 
 .oo-card--offline .study-field label { color:var(--gl-white); }
 
+// Keep the classroom photograph broad instead of squeezing it beside the copy.
+.oo-card--offline {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0;
+
+  .oo-card__media {
+    aspect-ratio: 4 / 3;
+    min-height: 0;
+    padding: 0;
+
+    @media (max-width: 639px) {
+      aspect-ratio: 1;
+    }
+  }
+
+  .oo-card__img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 35%;
+    border-radius: 0;
+  }
+}
+
 // 19: localized words wrap within the existing type scale and layout.
 .oo-card__title { overflow-wrap:anywhere;hyphens:auto; }

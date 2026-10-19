@@ -2,6 +2,7 @@
 // Legal body keys contain the notice only; no unapproved legal translation is rendered.
 import type {UiKey} from './core';
 export const messages = {
+  "DirectionsSection.offlineStudents": "GL Study оқулықтарын ұстаған адамдар — брендбуктан алынған сурет",
   "Lead.chooseChannel": "Байланыс тәсілін таңдаңыз.",
   "Lead.chooseFormat": "Оқу форматын таңдаңыз.",
   "Lead.chooseProgram": "Оқу бағытын таңдаңыз.",

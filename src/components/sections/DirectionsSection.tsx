@@ -33,7 +33,7 @@ const cardMedia = (t: Translator): Record<string, { image: string; alt: string; 
     bullet: t("DirectionsSection.strategii.vsekh.4.blokov.ekzamena"),
   },
   online: { image: sitePath('/images/home/direction-adults.webp'), width: 594, height: 900, alt: t("DirectionsSection.illyustratsiya.distantsionnogo.obucheniya.devushka.s"), bullet: t("DirectionsSection.zhivoe.obshchenie.v.zoom") },
-  offline: { image: sitePath('/images/home/offline-class.webp'), width: 800, height: 1200, alt: t("DirectionsSection.illyustratsiya.ochnogo.zanyatiya.iz.brendbuka"), bullet: t("DirectionsSection.obshchenie.i.komandnaya.rabota") },
+  offline: { image: sitePath('/images/home/offline-students.webp'), width: 800, height: 534, alt: t("DirectionsSection.offlineStudents"), bullet: t("DirectionsSection.obshchenie.i.komandnaya.rabota") },
   travel: { image: sitePath('/images/home/travel-prague.webp'), width: 800, height: 635, alt: t("DirectionsSection.evropeyskaya.arkhitektura.reklamnaya.illyustratsiya.iz"), bullet: t("DirectionsSection.yazyk.puteshestviya.i.novye.znakomstva") },
 });
 
@@ -162,8 +162,8 @@ export default function DirectionsSection() {
                     <div className="directions__card-media">
                       <img
                         src={media.image.replace('.webp', '-480.webp')}
-                        srcSet={`${media.image.replace('.webp', '-240.webp')} 240w, ${media.image.replace('.webp', '-480.webp')} 480w`}
-                        sizes="(max-width: 639px) 180px, 200px"
+                        srcSet={`${media.image.replace('.webp', '-240.webp')} 240w, ${media.image.replace('.webp', '-480.webp')} 480w${prog.id === 'offline' ? `, ${media.image} 800w` : ''}`}
+                        sizes={prog.id === 'offline' ? '(max-width: 639px) calc(100vw - 80px), 300px' : '(max-width: 639px) 180px, 200px'}
                         alt={copy(media.alt)}
                         className="directions__card-img"
                         width={media.width}

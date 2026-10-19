@@ -1,6 +1,7 @@
 import {contentRu} from './content-ru';
 // Authoritative Russian UI copy; legal documents and business data stay in their sources.
 export const ru = {
+  "DirectionsSection.offlineStudents": "Люди с учебниками GL Study — иллюстрация из брендбука",
   "Lead.chooseChannel": "Выберите способ связи.",
   "Lead.chooseFormat": "Выберите формат обучения.",
   "Lead.chooseProgram": "Выберите направление обучения.",

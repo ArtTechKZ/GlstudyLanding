@@ -2,9 +2,9 @@
   "profile": "public-ru",
   "delivery": "demo",
   "site": "https://arttechkz.github.io/GlstudyLanding/",
-  "files": 111,
+  "files": 114,
   "html": 22,
-  "aggregateSha256": "901c24d8c283348d524463c76a1602aada4ed4af606cb7a20572cfb1cc77cf13",
+  "aggregateSha256": "3b9bb61e4a5f5325f8fc1c1413fae15f851e9a8442b2acb71d709e9fb47d2861",
   "contentRevision": "989d42c7114100a19fce87b609a17f1d9c5b6d5e0bce6187aa95b3d36405980a",
   "upstreamRevision": "be191b4ae568d7bf7ab982cadd6af11c7fce6ea238711c26d82dbea9baef95db",
   "records": [
@@ -14,44 +14,39 @@
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
     {
-      "path": ".vite/manifest.json",
-      "bytes": 9583,
-      "sha256": "f8ad1493a1b78c04b9ff42245b2c199c36057180f621529a0b63b87ea056b5af"
+      "path": "404/index.html",
+      "bytes": 152107,
+      "sha256": "735d948b0f2049e4f4de1dd230e342578b7e98f39b7b22f6e2c5c5128fe5495b"
     },
     {
       "path": "404.html",
-      "bytes": 151656,
-      "sha256": "7a60767e3c11b381ebe7b1f441b2b0a1cf7b97ca7f8b8fdfbc7a947365afa936"
+      "bytes": 152107,
+      "sha256": "735d948b0f2049e4f4de1dd230e342578b7e98f39b7b22f6e2c5c5128fe5495b"
     },
     {
-      "path": "404/index.html",
-      "bytes": 151656,
-      "sha256": "7a60767e3c11b381ebe7b1f441b2b0a1cf7b97ca7f8b8fdfbc7a947365afa936"
+      "path": "assets/Application-CM4y6_Vg.css",
+      "bytes": 64240,
+      "sha256": "bb57942df685d4eeab474116ccb7077c8c24791af0258ad6f9e30f39baeb892c"
     },
     {
-      "path": "assets/Application-BSoYExqs.js",
-      "bytes": 64742,
-      "sha256": "1cfbef52200b89e42f1a5f75f72f02d97ba5effe903cb58110931de05fc05efa"
+      "path": "assets/Application-D5DRtws9.js",
+      "bytes": 64913,
+      "sha256": "b2fe24fd698bc5e443c9879ea583473635cab26cd84e73114dbe2e0b66c04605"
     },
     {
-      "path": "assets/Application-DfTd-fyt.css",
-      "bytes": 63789,
-      "sha256": "190879c1eece9a0c5f2626778075e448b6fdccc2c763cdbe6b3064433caedfba"
-    },
-    {
-      "path": "assets/BranchMap-VrQ1BMup.js",
-      "bytes": 7095,
-      "sha256": "b2602665dc137bf4c06592090838b5861f2b1f26a4af4c9c7fd7a10cc90a5d03"
-    },
-    {
-      "path": "assets/BranchesPage-DcSJSFav.js",
+      "path": "assets/BranchesPage-Cv1mEuy8.js",
       "bytes": 1266,
-      "sha256": "eb05ee96b61bcbd1cef4f835e45a69c005645879c21320b3d4d65a09502f06ca"
+      "sha256": "6fc691f0ec36318f172dbdf79fd2ef5f2d15205d3c150188f9f7e4cf3912712e"
     },
     {
-      "path": "assets/BriefSections-CRFUPjm8.js",
+      "path": "assets/BranchMap-DDWsTOAU.js",
+      "bytes": 7095,
+      "sha256": "9d90877065913ea024f379c145bbdc6c159762bbad5a1220e4a18c6f79c355a7"
+    },
+    {
+      "path": "assets/BriefSections-C11HzhSf.js",
       "bytes": 4811,
-      "sha256": "9e35d5bf9c2bcb64287add52da798c56137ecc8fdcae40d1fd65401d6340cfd7"
+      "sha256": "636214159b91cdee9ff181cf47a27bc42a7b05cf16e34063789c4adc9d79b486"
     },
     {
       "path": "assets/BriefSections-DG4vI4LB.css",
@@ -59,24 +54,24 @@
       "sha256": "54d52baf02047db13170aaccebce4d923ca55903e8955d133607890479c50401"
     },
     {
-      "path": "assets/CityPage-DbhriEDX.js",
+      "path": "assets/CityPage-nIwPaE9b.js",
       "bytes": 1710,
-      "sha256": "8cdc7d05370f1bb0c1e7fbc0e01d0b08a3accc089302ec00ec20548622dc31f6"
+      "sha256": "7a46074db267f04fbb65c571d6db1b0c7b36bdd14a0b1ba9a48b8d95255c82fc"
     },
     {
-      "path": "assets/CityPicker-O5nhtOzG.js",
+      "path": "assets/CityPicker-Dz67PwcN.js",
       "bytes": 501,
-      "sha256": "8ac9b494e049df492d4d0d558ed9a7286b906c97098b6110524904b683b8f7a5"
+      "sha256": "194a5eee18d9d82b34e897c731e8a88dcc3986f6658838d6be40d3b814fedced"
     },
     {
-      "path": "assets/ExamPage-BkTqhWD1.js",
+      "path": "assets/ExamPage-BQrMOZee.js",
       "bytes": 1588,
-      "sha256": "1032bb91ea8a4c73f60b981cf11def136d97fb62144362d2aacd988b7d0bfc59"
+      "sha256": "39c24897ad5d189b1d172b403f55e9d95ae63a6ce143c392ab4be74d39260f17"
     },
     {
-      "path": "assets/FaqAccordion-BhhSL66v.js",
+      "path": "assets/FaqAccordion-BJtpDB6G.js",
       "bytes": 620,
-      "sha256": "d3dc5b8a60e3b8f1962a0ca0f1698d4f64422671c86d303195b4fea3ae836498"
+      "sha256": "5c6caa6e05555a16152d8d407e63966d67797d8df99e2e32711682f13c9aecf5"
     },
     {
       "path": "assets/FaqAccordion-F5ze9m_a.css",
@@ -84,9 +79,19 @@
       "sha256": "40f6e10b68626a23c584a9393f639340fd6e89364b3e7cc226cbbf6caee651b7"
     },
     {
+      "path": "assets/format-B31z3Fr-.js",
+      "bytes": 916,
+      "sha256": "ce6ee39f4772fececc1cb262bb83560bdc15d2ff82fbbaccd99be8871b9ce1bb"
+    },
+    {
       "path": "assets/FullPages-BtxXgEXY.css",
       "bytes": 1017,
       "sha256": "be4a65108fa62357c2af0ccbb5941852b2c19478734863bde3a84979340af5b2"
+    },
+    {
+      "path": "assets/i18n-BAz1gAYP.js",
+      "bytes": 150220,
+      "sha256": "98458107f86d1fb7763a101ac8ea8480457f3bcc0bc1c74e68bda820a0f8a209"
     },
     {
       "path": "assets/Icon-BE47bRUS.css",
@@ -94,14 +99,14 @@
       "sha256": "02033b752ccbb1e30222ac269d2d931938ffa9807c3f8da52be77a20f9e1a65b"
     },
     {
-      "path": "assets/Icon-C-ABEjDp.js",
+      "path": "assets/Icon-CCPjpVIh.js",
       "bytes": 12246,
-      "sha256": "d528d26cd9911421d8cc0a32d789662fac3c2137ae918eb7cd0d0fe41cd00b47"
+      "sha256": "f3c83aa4af48fa3f6414b6d1ca12f526a68f9b30c6f4ba7cebb03e815a878477"
     },
     {
-      "path": "assets/IeltsPage-BdcLkifh.js",
+      "path": "assets/IeltsPage-CFhyevBd.js",
       "bytes": 13634,
-      "sha256": "39b167454cb50d1f29fdb80c47f70ee8ace0205be2630ea838eea36477172cc2"
+      "sha256": "63825aaf3ecfe0528d073946b2414076261f49b6d61baf91e172dd0d68311226"
     },
     {
       "path": "assets/IeltsPage-DcZlS_rX.css",
@@ -109,9 +114,9 @@
       "sha256": "53e2389c3369b332654f2a083014a3c8890b9b2ac0732ca5a21368ff83c2f032"
     },
     {
-      "path": "assets/InnerPageLayout-1UVR3SBn.js",
-      "bytes": 1639,
-      "sha256": "12c15789628d3e568a00e9734711d5923cc986bca0ff8fe0c8eff673cfa84969"
+      "path": "assets/index-BQi1du2v.js",
+      "bytes": 1966,
+      "sha256": "9daba5aa518e5c4f1906f5d3bfcf4d03e2ba643312f9524dc9e2a57b891896b1"
     },
     {
       "path": "assets/InnerPageLayout-DZx8CSn9.css",
@@ -119,14 +124,19 @@
       "sha256": "14ef637c25122c6d7c568cf3b5a1c29211f0184795070bfa6c430f4d9c4afbe0"
     },
     {
+      "path": "assets/InnerPageLayout-ZgMSFnhM.js",
+      "bytes": 1639,
+      "sha256": "77207d9f4204bb60ead2eea49bc274f889437eedda7108b5a8f104671ae010f1"
+    },
+    {
       "path": "assets/LeadFormSection-CRfJ-9Uq.css",
       "bytes": 7639,
       "sha256": "de32fa403336db13c9c98e503b23f668e5cbfb9f23d0fb1982ec85bd6498cae7"
     },
     {
-      "path": "assets/LeadFormSection-f05ZTMoj.js",
+      "path": "assets/LeadFormSection-Db-MyNtN.js",
       "bytes": 22729,
-      "sha256": "b69520f4aad133b04ff251ad3b2946634675d0b698c08adbf21b8a0e8adb408d"
+      "sha256": "abdd911e17e95eea56979fd2122d3ed10bcaf301599a63401c5454d1aea797c3"
     },
     {
       "path": "assets/LearningPage-B2XmVgEr.css",
@@ -134,24 +144,24 @@
       "sha256": "5ba37c6c2119208d75c68ad7eb9022d8ff7619c8bb5e4f2112b348506e5c49da"
     },
     {
-      "path": "assets/LearningPage-CEH3mSLZ.js",
+      "path": "assets/LearningPage-CXzCig7A.js",
       "bytes": 20241,
-      "sha256": "5998ce7f1f193f09042c4c6b06a570f430aff8a8b9d2d8df18528fbff73d7cd4"
+      "sha256": "a6994eb6945518ea4fde34133ec9c426d06041f8fc12c445036aee8b07d37a0e"
     },
     {
-      "path": "assets/LegalDocumentPage-DRGf38rp.js",
+      "path": "assets/LegalDocumentPage-VUBffiax.js",
       "bytes": 857,
-      "sha256": "cb1c06f0af8181804b3d3300b1903c27895c7fec75c8fc6acb5437647677fa79"
+      "sha256": "f4efc500ac6bf341a24a422c83836f8fe8c86fb8f2b41fd9ec8b4f8c7a30cc9e"
     },
     {
-      "path": "assets/LegalPage-BzahCTX4.js",
+      "path": "assets/LegalPage-DqYI7XB4.js",
       "bytes": 12421,
-      "sha256": "4be6b4e1884315e0b656c91db0336fc83fbcefccfd14466272e0871a64e77d01"
+      "sha256": "33780f790b0d4ad8a2d8bb11cb24f4bab6ff237fe9f62cc33ab363a27b93faef"
     },
     {
-      "path": "assets/LiveBranchMap-BCv7sFUx.js",
+      "path": "assets/LiveBranchMap-Dc_NooXq.js",
       "bytes": 150403,
-      "sha256": "97df942eb34f6a7200710b1cc808f27ede29b9c78beb8b467f2c433916bc0e4c"
+      "sha256": "8a7ef674552e68dc7c7de029e6f14e15cc05d2d5113bfef1f105103f4e879cf2"
     },
     {
       "path": "assets/LiveBranchMap-vh-t_kPv.css",
@@ -159,44 +169,9 @@
       "sha256": "86d3d093fad979e1d185c8a93258f5f124d863fd13ca894c0b9f50bb68b66997"
     },
     {
-      "path": "assets/NotFoundPage-DyUhaWhR.js",
-      "bytes": 1330,
-      "sha256": "1db58164a8f4f79244d385c67bcee22fcff30d43b0259c03f76207536d1670b9"
-    },
-    {
-      "path": "assets/ProgrammeLinks-C83lIp8y.js",
-      "bytes": 578,
-      "sha256": "e137cd7b5bcd30110e763d831486734a89e264e52f4493064a6de3c60737efda"
-    },
-    {
-      "path": "assets/ProgrammePage-DkJ9X30b.js",
-      "bytes": 3114,
-      "sha256": "045051cb25e9a4a8a104dc0d21583cb457aa94200f890704805ee4100317bcd4"
-    },
-    {
-      "path": "assets/TravelPage-E8ToZwS6.js",
-      "bytes": 5752,
-      "sha256": "c552521fa82f777eaf7af8b69fb5d960973d933897f074d0e11b9858d8694fba"
-    },
-    {
-      "path": "assets/format-B31z3Fr-.js",
-      "bytes": 916,
-      "sha256": "ce6ee39f4772fececc1cb262bb83560bdc15d2ff82fbbaccd99be8871b9ce1bb"
-    },
-    {
-      "path": "assets/i18n-DPz93OhF.js",
-      "bytes": 150089,
-      "sha256": "28371607cb778741c757aba20b5bc1e70cca6aa9d1327c3089451f0570c33506"
-    },
-    {
-      "path": "assets/index-DCCAdJDW.js",
-      "bytes": 1966,
-      "sha256": "e2e4132f0e8a6422b9fd2ca30a02d7bde7c551f36e9afa5a2d495baf25fcd166"
-    },
-    {
-      "path": "assets/main-1h1lIMwo.js",
+      "path": "assets/main-CIpNHEpE.js",
       "bytes": 209007,
-      "sha256": "6a4465fb319b5fdc23f2f5b6ffe50ba6049f5c7b58a66e08dd5d0a168b3ce31e"
+      "sha256": "0361b561aaeb7dd6fe7c379d6433402c77b22c776af7b6954c261e61e185c7ac"
     },
     {
       "path": "assets/main-EWr8Elrg.css",
@@ -204,49 +179,69 @@
       "sha256": "c2aac96bc4ee32bed46c37c6fcba4c9478b3f0c1defc5f982c26660796e39b4b"
     },
     {
+      "path": "assets/NotFoundPage-DG_VZ2gU.js",
+      "bytes": 1330,
+      "sha256": "158b08bc01d72956527b3fc04c1b0cac1175c3cf0357bcc9e442fad7550840e8"
+    },
+    {
       "path": "assets/preload-helper-CIoUowC9.js",
       "bytes": 1534,
       "sha256": "24478b1e1273e8ec7eeb309d312b3675dce1fc009a6d3a48bb5d005b7cf5312d"
     },
     {
-      "path": "assets/ssg-bqzLrh1o.js",
-      "bytes": 202238,
-      "sha256": "0d513627a67eb58a123d5e7051d5c9bd7db48b50cc8a3cb9ade5f71644d4b8b8"
+      "path": "assets/ProgrammeLinks-DoSrF2j4.js",
+      "bytes": 578,
+      "sha256": "14f0c5af1eedbfd653ee95d70393cc3bb0cf082071bbbb2b97788e846a8816dc"
     },
     {
-      "path": "assets/usePageSeo-CNKqpXjM.js",
+      "path": "assets/ProgrammePage-VOjn2U5a.js",
+      "bytes": 3114,
+      "sha256": "f38571aaab63e96b0c11fdb26657ce832a1784f443b07b7f9be9f80cae2538f1"
+    },
+    {
+      "path": "assets/ssg-lXIPDvyk.js",
+      "bytes": 202238,
+      "sha256": "062b7c0eadb0c78d1d775b459b4c83c48315ded922fa27845c8d5163f6052c33"
+    },
+    {
+      "path": "assets/TravelPage-z7_KEaT1.js",
+      "bytes": 5752,
+      "sha256": "6fca95ea06385e738dba62df0523c7f12b616a9bcca1de6eefb2c4cabc4b37d1"
+    },
+    {
+      "path": "assets/usePageSeo-CArMLmzp.js",
       "bytes": 11121,
-      "sha256": "57e789b8e22367149af692f6fc6f67bc7ec02f4179aca1915288a5f26f38e181"
+      "sha256": "70b3953038d4607d2f7bb54b98d30beb0c484d3ad5ef720a6b68367e29887c55"
     },
     {
       "path": "branches/almaty/index.html",
-      "bytes": 165458,
-      "sha256": "8efaf3e7920a0e87ad00949db5c5200bd680016a5694fea3bd4f2636f905fff8"
+      "bytes": 165909,
+      "sha256": "0e5a390d08519726b5d3ec8cc3f707d8e8ceaa81deec26912e68aa49a862d947"
     },
     {
       "path": "branches/astana/index.html",
-      "bytes": 165458,
-      "sha256": "9494e63bf8e1a3c49d0af3525aeb048ac074f576d1c5daf246fd27381a5e4a55"
+      "bytes": 165909,
+      "sha256": "0fb23cf0d75616cc1fac4c9dcb064d5a268b05c01a32ad9a0401ec91c8619553"
     },
     {
       "path": "branches/index.html",
-      "bytes": 162482,
-      "sha256": "d223854978f0c283a28d84819273c6f319759caefb334f379d90f1fd78d23a85"
+      "bytes": 162933,
+      "sha256": "b0dbbc8f122f45d8dcc988437eade0e5b12d22a933ab8b24c1ab2327e29f590a"
     },
     {
       "path": "branches/kostanay/index.html",
-      "bytes": 165522,
-      "sha256": "710d74d5f6b36b0dba0a30580e75fb26fd4a87c4fe57fc148b72a14ba4fdb854"
+      "bytes": 165973,
+      "sha256": "45b5ece2ad578696018b7c03bfec59c136bdac8491feb758b9d3ad380c9dd83e"
     },
     {
       "path": "branches/rudny/index.html",
-      "bytes": 165448,
-      "sha256": "94e24df2b069edb0690cc0887c419bf03e3952ac139c584c1ffde1c6803b26f0"
+      "bytes": 165899,
+      "sha256": "e82126f88483ce7675d7c3337a76a8d811a9984f1b440b8d658dbad6514b3403"
     },
     {
       "path": "branches/taraz/index.html",
-      "bytes": 165426,
-      "sha256": "9b2e28d0441de6388a4b1dd90e3ac375d1f6d4162ffb6cfe8ba3e5f15992198f"
+      "bytes": 165877,
+      "sha256": "4a36f968c3d23a807760b5519822ceba73c758678eec0c333b3212b5f66a7e0a"
     },
     {
       "path": "brand/logo-color.svg",
@@ -334,14 +329,14 @@
       "sha256": "5c66f9e07e90c6d4ac4922cc68d60de26c17b1858e677fb5e603fce3952b3ff2"
     },
     {
-      "path": "ielts-kostanay/index.html",
-      "bytes": 167833,
-      "sha256": "f8fdfca82b594415d7790e1f0dde0d87b2f410e0cd64f60cd636869d232a5d06"
+      "path": "ielts/index.html",
+      "bytes": 183209,
+      "sha256": "b8e580a193d3028764eda4794e7728e8d14baee5286d6bcf86d054ed1b0c681c"
     },
     {
-      "path": "ielts/index.html",
-      "bytes": 182758,
-      "sha256": "97e957cf8e3fd62688556143f270b850679e082a0312dc343c315a8dab62724b"
+      "path": "ielts-kostanay/index.html",
+      "bytes": 168284,
+      "sha256": "9ff5cc77b83c496449f360d77b27b427732181eb7915b2fe94dbffc03dbc5b0b"
     },
     {
       "path": "images/home/brand-pin.webp",
@@ -439,6 +434,11 @@
       "sha256": "df206da08fb4b98869f35099aabbf8a98ea8c6cf9fc87ef0d9363b4fed018580"
     },
     {
+      "path": "images/home/offline-class-1200.webp",
+      "bytes": 84072,
+      "sha256": "3649d2761002efc14db3ea253af8aadce828c6df8372b63132643e9654f7d751"
+    },
+    {
       "path": "images/home/offline-class-240.webp",
       "bytes": 10008,
       "sha256": "178177c125ed94f7207b3cbe01ba36cc036635b21d1b8cdc198390e61fdbe462"
@@ -452,6 +452,21 @@
       "path": "images/home/offline-class.webp",
       "bytes": 60444,
       "sha256": "7a12294e250aa4288cda3dd993240d5c19837f6c8bbe55e4c4949e69f2437265"
+    },
+    {
+      "path": "images/home/offline-students-240.webp",
+      "bytes": 13002,
+      "sha256": "1a4fb74be2096dd0cac43c4283e0ea7931871d8695d4f167c9a3d6137b8e0611"
+    },
+    {
+      "path": "images/home/offline-students-480.webp",
+      "bytes": 31922,
+      "sha256": "c83367ab823c036fcb1f40f91459df6695d511f035cc41f346c5275e0b55a7b8"
+    },
+    {
+      "path": "images/home/offline-students.webp",
+      "bytes": 62248,
+      "sha256": "1a014901838e71fbb10368199e552d0f49a230510284471e46f22d6af88fbcbd"
     },
     {
       "path": "images/home/travel-malaysia.webp",
@@ -475,18 +490,18 @@
     },
     {
       "path": "index.html",
-      "bytes": 216366,
-      "sha256": "cd5b917d6208d15ad994c66dbb69b7cafe48e6362cf134b57d01d7e71b4d45fe"
+      "bytes": 216961,
+      "sha256": "8d2054ba8f17aeab346ad0986431fed2dbbbfd4a26f6f78272ce3417a51f03bf"
     },
     {
       "path": "learning/index.html",
-      "bytes": 206629,
-      "sha256": "6136ebe07696e73be93bfe32fd67d22a2e6ce163a3663de1958912cd9f2db6ba"
+      "bytes": 207080,
+      "sha256": "99faa3756f6ef1a2f9df5a1af3f5fe8eba7432960403ec70bb4efe6afe619754"
     },
     {
       "path": "legal/index.html",
-      "bytes": 163009,
-      "sha256": "15536ac4bb4aa31a16e925c0ace362651e40657f2f6be73beeac2e05dc1302fa"
+      "bytes": 163460,
+      "sha256": "e4968cd9c21d6dc4c4b23638e53c31d1cada82db3fa1b4c87dbca7d656304204"
     },
     {
       "path": "licenses/bebasneue-ofl.txt",
@@ -510,38 +525,38 @@
     },
     {
       "path": "offline/index.html",
-      "bytes": 167495,
-      "sha256": "5e7a8e35cfdeca1901f27b9f0106c0299725f2c85c2b0c3bb3845eb8ee6519cc"
+      "bytes": 167946,
+      "sha256": "72048fb3540a952856f307002333cae51c3ef86ff051c91bc646edb7d6ae43f0"
     },
     {
       "path": "online/index.html",
-      "bytes": 167534,
-      "sha256": "b85b2cf35b9250504517ea59a25e8ea16d2dc2f466aa6507e477e11c86a65b64"
+      "bytes": 167985,
+      "sha256": "ee2a20ca90a4e1e4c00d7a61a0e5583935f03f52d1f90aa89b8d592b27c7af96"
     },
     {
       "path": "personal-data-consent/index.html",
-      "bytes": 154205,
-      "sha256": "6bbb17ed49507f1b068f9be34c32beffb55ab9bceb8281d1bb732163fdd0ded9"
+      "bytes": 154656,
+      "sha256": "174761afb12836161be51e1b06feac281b671fb729966147cb301aa16911e635"
     },
     {
       "path": "privacy-policy/index.html",
-      "bytes": 154027,
-      "sha256": "98f2a1f224fd13bccdb8db0ab8ffb611dc603107edb097c2865d72cac16da810"
+      "bytes": 154478,
+      "sha256": "aa1fee8793f5a365fe82571d97e313efd6aa3f9d0b31fb06d1f23fe6f932ff8f"
     },
     {
       "path": "programs/english-adults/index.html",
-      "bytes": 169158,
-      "sha256": "714fc46edad8a54041a51fd49a3490a60017f0371c53ffec0e17792b78016ef5"
+      "bytes": 169609,
+      "sha256": "a34a185ee6fb03d8aa1250f90f5696f4773a2aaf69e6051a9644c58c1f99dbfd"
     },
     {
       "path": "programs/english-children/index.html",
-      "bytes": 168820,
-      "sha256": "c6fa0b8d8ea15c13f94a6d6406a2aa046e26d8ca44e2ecc1481e488640ffc546"
+      "bytes": 169271,
+      "sha256": "0676e6868213fac2412037cd9f4e585d823ed1af8877e7426212d6557587d6c0"
     },
     {
       "path": "programs/english-teens/index.html",
-      "bytes": 169218,
-      "sha256": "a199503173e04909f3813d804aa02186ba176ab49409c334dea33c12081713f3"
+      "bytes": 169669,
+      "sha256": "213f6d933932121e761d93496424af82f59b741bf6757165f8f21df66ba55b41"
     },
     {
       "path": "robots.txt",
@@ -555,13 +570,13 @@
     },
     {
       "path": "travel/europe-winter-2027/index.html",
-      "bytes": 170860,
-      "sha256": "051ffd17db2219fcb4894d5d84e034364ef6372e87fa0bf0975129ab8759a81a"
+      "bytes": 171311,
+      "sha256": "1ef3d6a8f08b864037498c831c3baf353d12a395fd140495fb44c9f7e0738389"
     },
     {
       "path": "travel/malaysia/index.html",
-      "bytes": 169908,
-      "sha256": "e811813cc6ff75dbe1b288a20d2164c032fcb5a0643489af6cecbfaaa6520b7d"
+      "bytes": 170359,
+      "sha256": "90202cf41fbf3636042842f0b0d7613e86931922358be0b36cdab5f7ea4145d6"
     }
   ]
 }
