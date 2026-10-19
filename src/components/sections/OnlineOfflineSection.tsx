@@ -1,9 +1,8 @@
-import {ContentPicture} from '../ui/ContentPicture';
 import {Link} from '../../i18n/Link';
 import { useCopy } from '../../i18n/copy';
 import CityPicker from '../ui/CityPicker';
 import Icon from '../ui/Icon';
-
+import { sitePath } from '../../utils/sitePath';
 
 import './OnlineOfflineSection.scss';
 
@@ -51,9 +50,18 @@ export default function OnlineOfflineSection() {
               </div>
             </div>
 
-            {/* Company classroom photograph from the supplied gallery */}
+            {/* Photo from Brandbook p. 23 */}
             <div className="oo-card__media">
-              <ContentPicture section="offline" className="oo-card__img" loading="lazy" sizes="(max-width: 767px) 90vw, 640px"/>
+              <img
+                src={sitePath('/images/home/offline-class.webp')}
+                srcSet={`${sitePath('/images/home/offline-class-240.webp')} 240w, ${sitePath('/images/home/offline-class-480.webp')} 480w, ${sitePath('/images/home/offline-class.webp')} 800w`}
+                sizes="(max-width: 767px) 90vw, 640px"
+                alt={copy("Занятия в офлайн-классе GL Study")}
+                className="oo-card__img"
+                width={800}
+                height={1200}
+                loading="lazy"
+              />
               <div className="oo-card__badge-float">
                 <span>{copy("Интерактивные аудитории")}</span>
               </div>

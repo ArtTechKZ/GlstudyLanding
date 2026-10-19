@@ -1,5 +1,5 @@
 # Frozen public content
 
-`public-ru-study24.json` is the checked RU projection with revision `2a1af762fd6d9b44d7f5220f47b37d83bf225f67d96162b3da052f708d8f9810`.
-`npm run build:public` projects the checked-in upstream `src/data/content-snapshot.json` (revision `1f1a42934b179318807cb00b297e68cb48e314b41087ae9448fdcfb712839620`) and verifies its public structure. No live CMS or private credentials are needed. The build generates its own ignored scratch output; it does not require pre-existing `.qa` files.
-KK/EN source catalogs remain for local development, with publication approval false. The public build emits RU only. Synthetic records and CMS runtime are excluded.
+The checked public snapshot is `public-ru-study24.json`; its historical filename is retained for compatibility. GL-STUDY-26 removes the withdrawn stage24 media from both this projection and `src/data/content-snapshot.json`. All other content and RU/KK/EN approvals are preserved.
+
+`npm run build:public` projects the checked-in upstream snapshot. No live CMS, private QA input or admin token is required. CMS export and snapshot/release validation enforce `../media-policy.json`, preventing replay of withdrawn record IDs, native files, known byte hashes and public derivative paths. Original private media/history is retained.

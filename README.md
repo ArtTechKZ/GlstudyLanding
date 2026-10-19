@@ -21,9 +21,9 @@ The public build reads the committed `src/data/content-snapshot.json` and projec
 
 ## Content and publication
 
-RU publication approval remains true, KK/EN false. KK/EN source dictionaries remain in the repository, while public HTML, client catalogs, navigation and sitemap use RU only. Legal pages are clearly drafts and retain noindex. Confirmed company media, full image framing, licenses and provenance are preserved; see [ASSET_NOTICES.md](ASSET_NOTICES.md).
+RU publication approval remains true, KK/EN false. KK/EN source dictionaries remain in the repository, while public HTML, client catalogs, navigation and sitemap use RU only. Legal pages are clearly drafts and retain noindex. Pre24 brandbook imagery, licenses and provenance are preserved; withdrawn stage24 media is excluded; see [ASSET_NOTICES.md](ASSET_NOTICES.md).
 
-The accepted GL-STUDY-24 static candidate has 151 files / 22 HTML, aggregate manifest SHA-256 `4f268b2cc53e6d6e9f67a38edfcd3b1bdc8aec89bd57b71726dc341a5b4e17f0`, content revision `2a1af762fd6d9b44d7f5220f47b37d83bf225f67d96162b3da052f708d8f9810`. The full per-file manifest is [release-manifest.json](release-manifest.json). Its aggregate is the hash of artifact records; it is not the raw JSON-file hash. GL-STUDY-25 verifies the release tree against that candidate before ordinary atomic main/gh-pages push.
+The GL-STUDY-26 candidate restores all pre24 brandbook imagery and removes the withdrawn stage24 company galleries/video. It has 112 files / 22 HTML, aggregate manifest SHA-256 `d7228b3eed1ef2a4b01c311ed505bcd5ee5b69961ed27d8cb78752edfec0bb81`, content revision `eafd2256bfcce1622aabb33dd16395f638d61b397674036b6039c2f697dc15ac`. Per-file records are in [release-manifest.json](release-manifest.json). The aggregate hashes JSON.stringify(records), not the raw manifest JSON file. CMS export and snapshot/release validation apply `cms/media-policy.json`, so old approved records cannot replay the withdrawn media. Private originals and prior Git history are retained.
 
 The existing `pages:*` helper predates the company-media allowlist; GL-STUDY-25 prepares separate fast-forward release worktrees and verifies every Git blob explicitly. Never publish the full local build or use force/orphan history.
 

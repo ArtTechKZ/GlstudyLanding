@@ -37,7 +37,7 @@ Lucide React 1.57.0: application UI pictograms use explicit named exports, curre
 GL-STUDY-11 adds proportional hero-student-400.webp and hero-student-640.webp derivatives (WebP quality 85) of the existing page 31 asset. The original 800×1200 image is retained as the largest srcset candidate. No composition, logo or gradient was redrawn.
 
 
-## GL-STUDY-24 — provided company archives
+## Historical GL-STUDY-24 — withdrawn in GL-STUDY-26 — provided company archives
 
 The director supplied the five public sources below for use on this website. Eight selected originals (six gallery JPEGs and two archive videos) are preserved privately in `.qa/study24/media-originals`; they are excluded from static builds. Source dates and individual model releases were not supplied. No depicted person is assigned a name, staff role, review, IELTS score or destination based on appearance.
 
@@ -50,3 +50,7 @@ The director supplied the five public sources below for use on this website. Eig
 | [Group activity archive](https://disk.yandex.kz/d/jcqHJ6OpIZQ8nA) | песню поют.MP4 | Native manually controlled video with poster, muted by default |
 
 Gallery originals were obtained through the source's enabled **Original size / Download** action. Photographer credit: Ксения Гольдрат. Public WebP derivatives preserve the complete frame with orientation applied; EXIF/GPS are removed, people and marks are not retouched. Directus native file relationships produce hashed 480/900px responsive derivatives. The selected MP4 is served locally; metadata sanitization preserves sample offsets and audio, with no autoplay or external iframe. No transcript was supplied; the description is not a verbatim subtitle track. The file registry, original/derivative SHA-256, dimensions, rights basis and RU/KK/EN alt/captions are in private `.qa/study24/media-registry.json` and the CMS approved snapshot. KK/EN copy remains a draft under the existing approval gate.
+
+## GL-STUDY-26 restoration
+
+The user withdrew approval for the eight stage24 company photos/frame/video. Their public derivatives and UI blocks were removed. Only the pre24 `images/home` brandbook imagery and its unchanged responsive derivatives remain in the site. The historical provenance above is retained for traceability; it is not a statement that these rejected files are still published. Private original archives and previous evidence/backups are preserved. A checked-in media policy blocks the rejected identities/file IDs/hashes/paths from CMS export and snapshot validation. No new imagery was generated.

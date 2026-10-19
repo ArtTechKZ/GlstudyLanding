@@ -1,11 +1,12 @@
 import {exportApprovedAssets} from './media-export.mjs';
+import {isWithdrawnMedia} from './media-policy.mjs';
 import fs from 'node:fs';import path from 'node:path';import {pathToFileURL} from 'node:url';import {DirectusDataAdapter} from './directus-adapter.mjs';import {fields,publicFields,contentHash,validateSnapshot} from './content-contract.mjs';
 const keys=['cities','branches','programs','texts','images','trips','faq','reviews','seo','cta','documents','redirects','teachers','schedules'];
 export function recordFingerprint(record){return contentHash(Object.fromEntries(Object.entries(record).filter(([k])=>!['status','approved_ru','approved_kk','approved_en','approval_hash','publish_at','unpublish_at'].includes(k))))}
 export function mapCmsContent(tables,{now=Date.now(),locales=['ru']}={}){
  const active=r=>{for(const date of [r.publish_at,r.unpublish_at].filter(Boolean))if(!Number.isFinite(Date.parse(date))||!date.endsWith('Z'))throw Error('Invalid publication schedule');if(r.publish_at&&Date.parse(r.publish_at)>now||r.unpublish_at&&Date.parse(r.unpublish_at)<=now)return false;if(r.approval_hash!==recordFingerprint(r))throw Error('Published content changed since approval: '+r.id);return true};
  const native=(record,mapping)=>Object.fromEntries(Object.entries(mapping).filter(([key,target])=>record[key]!=null&&(!Array.isArray(record[key])||record[key].length||Object.hasOwn(record.public_data??{},target))).map(([key,target])=>[target,record[key]]));
- const selected=Object.fromEntries(keys.map(k=>[k,(tables[k]??[]).filter(active)]));const entities=(key,extra=()=>({}))=>selected[key].map(r=>publicFields({...r.public_data,...extra(r)},fields[key]));
+ const selected=Object.fromEntries(keys.map(k=>[k,(tables[k]??[]).filter(r=>k!=='images'||!isWithdrawnMedia(r)).filter(active)]));const entities=(key,extra=()=>({}))=>selected[key].map(r=>publicFields({...r.public_data,...extra(r)},fields[key]));
  const cities=entities('cities',r=>({id:r.slug,name:r.name_ru,nameKk:r.name_kk??undefined,nameEn:r.name_en??undefined,branches:[]})).sort((a,b)=>a.name.localeCompare(b.name,'ru'));
  for(const b of selected.branches){const data=publicFields({...b.public_data,...native(b,{name_ru:'name',address:'address',phone:'phone',whatsapp:'whatsapp',latitude:'lat',longitude:'lng',schedule:'schedule',programs:'programs',photos:'photos'})},fields.branches),city=cities.find(c=>c.id===b.city);if(!city)throw Error('Orphan branch');city.branches.push({...data,cityId:city.id})}
  const programs=entities('programs',r=>({...native(r,{format:'format',age_group:'ageGroup'}),id:r.slug,slug:r.slug,title:r.title_ru,description:r.body_ru,published:true})).sort((a,b)=>a.order-b.order);
@@ -25,6 +26,7 @@ export function mapCmsContent(tables,{now=Date.now(),locales=['ru']}={}){
 export async function exportContent({url,token,target='src/data/content-snapshot.json',locales=['ru'],now=Date.now(),fetchImpl=fetch,localIntegration=false}){
  const u=new URL(url);if(localIntegration&&!['127.0.0.1','localhost'].includes(u.hostname))throw Error('Local CMS E2E requires loopback');if(!token)throw Error('Build read token required');const adapter=new DirectusDataAdapter({url,token,fetchImpl});
  for(let attempt=0;attempt<3;attempt++){const before=await adapter.revision(),tables={};for(const key of keys)tables[key]=await adapter.read(key,'ru');const after=await adapter.revision();if(before!==after)continue;
+ tables.images=tables.images.filter(r=>!isWithdrawnMedia(r));
  for(const r of tables.images)if(r.approval_hash!==recordFingerprint(r))throw Error('Media not approved after edit');
  const approvedImages=await exportApprovedAssets(adapter,tables.images);const materialized={...tables,images:approvedImages};
  // The derivative paths are deterministic; approval applies to source fields, before materialization.

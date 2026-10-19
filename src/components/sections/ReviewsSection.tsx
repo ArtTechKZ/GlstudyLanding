@@ -1,4 +1,3 @@
-import {ContentPicture} from '../ui/ContentPicture';
 import { useCopy } from '../../i18n/copy';
 import { sitePath } from '../../utils/sitePath';
 import './ReviewsSection.scss';
@@ -13,8 +12,7 @@ export default function ReviewsSection() {
             <span className="reviews__tag-dot" aria-hidden="true" />
             {copy("О школе и сообществе")}</div>
           <h2 className="reviews__heading" id="reviews-heading">
-            {copy("ЖИЗНЬ")}<br />
-            <span className="reviews__heading-accent">GL STUDY</span>
+            {copy("Отзывы")}
           </h2>
           <p className="reviews__sub">
             {copy("Языковая среда, где каждый студент находит мотивацию учиться, общаться и достигать амбициозных целей.")}</p>
@@ -71,7 +69,14 @@ export default function ReviewsSection() {
               </div>
             </div>
             <div className="reviews__card-media">
-              <ContentPicture section="camp" className="reviews__card-img"/>
+              <img
+                src={sitePath('/images/home/camp-students.webp')}
+                alt={copy("Ученики языкового лагеря GL Study")}
+                className="reviews__card-img"
+                width={800}
+                height={1067}
+                loading="lazy"
+              />
             </div>
           </article>
         </div>

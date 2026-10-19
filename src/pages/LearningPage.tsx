@@ -1,4 +1,3 @@
-import CompanyMedia from '../components/sections/CompanyMedia';
 import ProgrammeLinks from '../components/ui/ProgrammeLinks';
 import {Link} from '../i18n/Link';
 import { useCopy } from '../i18n/copy';
@@ -412,7 +411,7 @@ export default function LearningPage() {
       </div>
 
       {/* Trial lesson form */}
-      <CompanyMedia section="learning"/><LeadFormSection />
+      <LeadFormSection />
     </InnerPageLayout>
   );
 }

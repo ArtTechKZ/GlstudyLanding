@@ -1,3 +1,4 @@
+import {isWithdrawnMedia} from '../cms/media-policy.mjs';
 import site from '../src/config/site.json' with {type:'json'};
 import {localizedRoutes} from '../src/config/locale-routes.js';
 import fs from 'node:fs';
@@ -16,6 +17,7 @@ export function validatePublicRelease(directory = process.env.GL_DIST_DIR??'dist
   assert.equal(files.filter(file=>file.endsWith('.html')).length,site.routes.length+1,'RU-only: registered pages and technical 404');
   assert.ok(files.includes('.nojekyll'));
   for(const file of files){
+    assert.ok(!isWithdrawnMedia({src:'/'+file}),'Withdrawn media file in release: '+file);
     assert.ok(file==='.nojekyll'||/\.(?:html|js|css|svg|webp|avif|png|ico|mp4|vtt|woff2|txt|xml|json)$/.test(file),'Static release file type: '+file);
     assert.doesNotMatch(file,/(?:^|\/)(?:cms|server|uploads|backups|fixtures|\.git|originals|logs)(?:\/|$)|\.(?:sqlite|db|mov|jpe?g|docx?|zip|env|pem|log|csv|xlsx?)$/i,'Private/source file in release: '+file);
     assert.doesNotMatch(file,/^(?:kk|en)\/|(?:^|\/)(?:src|docs|scripts|node_modules|\.qa|\.env[^/]*)(?:\/|$)|\.map$/);

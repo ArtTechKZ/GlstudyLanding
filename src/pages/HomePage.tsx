@@ -1,4 +1,3 @@
-import CompanyMedia from '../components/sections/CompanyMedia';
 import { useCopy } from '../i18n/copy';
 import { AdditionalLanguages, TrialProcess, AdmissionsSection } from '../components/sections/BriefSections';
 import HeroSection from '../components/sections/HeroSection';
@@ -39,7 +38,7 @@ export default function HomePage() {
       <BranchesSection />
 
       {/* 7. Отзывы / компания */}
-      <ReviewsSection /><CompanyMedia/>
+      <ReviewsSection />
 
       {/* 8. Форма заявки */}
       <div className="container"><TrialProcess /></div>

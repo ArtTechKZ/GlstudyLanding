@@ -1,4 +1,3 @@
-import {ContentPicture} from '../ui/ContentPicture';
 import { useCopy } from '../../i18n/copy';
 import { sitePath } from '../../utils/sitePath';
 import './HeroSection.scss';
@@ -54,8 +53,18 @@ export default function HeroSection() {
           {/* Right side — Authentic brand photo composition from Brandbook p. 31 */}
           <div className="hero__visual" aria-label={copy("Иллюстрация GL Study")}>
             <div className="hero__visual-card gl-bg-pattern-gl-white">
-              {/* Original company photograph supplied in GL-STUDY-24; full frame retained */}
-              <ContentPicture section="hero" className="hero__student-img" loading="eager" sizes="(max-width: 767px) 300px, (max-width: 1023px) 360px, 480px"/>
+              {/* High-res student cutout extracted from Brandbook GL STUDY.pdf p. 31 */}
+              <img
+                src={sitePath('/images/home/hero-student.webp')}
+                srcSet={`${sitePath('/images/home/hero-student-400.webp')} 400w, ${sitePath('/images/home/hero-student-640.webp')} 640w, ${sitePath('/images/home/hero-student.webp')} 800w`}
+                sizes="(max-width: 767px) 300px, (max-width: 1023px) 360px, 480px"
+                alt={copy("Девушка с учебниками — иллюстрация из брендбука")}
+                className="hero__student-img"
+                width={800}
+                height={1200}
+                loading="eager"
+                fetchPriority="auto"
+              />
 
               {/* Floating brand badges with genuine design-system assets */}
               <div className="hero__float-badge hero__float-badge--top">
