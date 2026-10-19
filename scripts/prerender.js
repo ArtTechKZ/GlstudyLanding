@@ -43,7 +43,7 @@ async function run() {
     if (!interaction?.file) throw Error('Missing interaction entry in Vite manifest');
     const preloadFiles = [interaction.file];
     preview = await startLocalServer();
-    browser = await chromium.launch({ channel: 'msedge' });
+    browser = await chromium.launch(process.env.GL_BROWSER_EXECUTABLE_PATH ? { executablePath: process.env.GL_BROWSER_EXECUTABLE_PATH } : process.env.GL_BROWSER_CHANNEL === 'chromium' ? {} : { channel: process.env.GL_BROWSER_CHANNEL || 'msedge' });
     const context = await browser.newContext({ viewport: { width: 1440, height: 900 } });
     await context.addInitScript(() => { window.__GL_SSG__ = true; });
     const page = await context.newPage();

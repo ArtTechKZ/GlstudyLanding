@@ -299,7 +299,7 @@ export default function LearningPage() {
                 <strong style={{ fontSize: 'var(--fs-sm)', color: 'var(--gl-violet)', textTransform: 'uppercase', display: 'block' }}>
                   {copy("Что нужно для подключения:")}</strong>
                 <span style={{ fontSize: 'var(--fs-sm)', color: 'rgba(0,0,0,0.7)' }}>
-                  {copy("Ноутбук, планшет или ПК с камерой и микрофоном, интернет от 10 Мбит/с.")}</span>
+                  {copy("Ноутбук, планшет или ПК с камерой и микрофоном, стабильный доступ в интернет.")}</span>
               </div>
               <a href="#lead-form" className="btn btn-primary" style={{ padding: '0.6rem 1.5rem' }}>
                 {copy("Попробовать онлайн")}</a>

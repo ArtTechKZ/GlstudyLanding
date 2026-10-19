@@ -22,7 +22,7 @@ const linkTargets = new Set();
 let phase = 'setup';
 try {
   server = await startLocalServer(sourceMode ? 'dev' : 'static');
-  browser = await chromium.launch({ channel: 'msedge' });
+  browser = await chromium.launch(process.env.GL_BROWSER_EXECUTABLE_PATH ? { executablePath: process.env.GL_BROWSER_EXECUTABLE_PATH } : process.env.GL_BROWSER_CHANNEL === 'chromium' ? {} : { channel: process.env.GL_BROWSER_CHANNEL || 'msedge' });
   let page;
   const watch = page => {
   page.on('pageerror', error => problems.push(`JavaScript: ${error.message}`));

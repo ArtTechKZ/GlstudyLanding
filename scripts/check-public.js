@@ -15,7 +15,7 @@ const directory=process.env.GL_DIST_DIR??'dist';const files=validatePublicReleas
 const dir=evidencePath(remote?'.qa/public-live':'.qa/public-local');fs.mkdirSync(dir,{recursive:true});
 const server=remote?undefined:await startStaticServer({directory});
 const base=remote?.replace(/\/$/,'')??server.baseURL;
-const browser=await chromium.launch({channel:'msedge'}),results={pages:[],widths:[],assets:[],errors:[],posts:[],external:[]};
+const browser=await chromium.launch(process.env.GL_BROWSER_EXECUTABLE_PATH ? { executablePath: process.env.GL_BROWSER_EXECUTABLE_PATH } : process.env.GL_BROWSER_CHANNEL === 'chromium' ? {} : { channel: process.env.GL_BROWSER_CHANNEL || 'msedge' }),results={pages:[],widths:[],assets:[],errors:[],posts:[],external:[]};
 const filesContext=await browser.newContext();
 const sha=b=>crypto.createHash('sha256').update(b).digest('hex');
 try{

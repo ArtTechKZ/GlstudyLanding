@@ -7,9 +7,11 @@ export default function BranchPicker() {
   const t = useUi();
   const { selectedCity, activeBranch, selectBranch } = useCityContext();
   const id = useId();
+  const branches = selectedCity.branches.filter(b => b.status === 'active');
+  if (!branches.length) return null;
   return <div className="study-field"><label htmlFor={id}>{t("BranchPicker.filial")}{copy(selectedCity.name)}</label>
     <select id={id} name="branch" value={activeBranch?.id ?? ''} onChange={e => selectBranch(e.target.value)}>
       <option value="">{copy(selectedCity.branches.length ? t("BranchPicker.vyberite.filial") : 'Филиал уточнит менеджер')}</option>
-      {selectedCity.branches.filter(b => b.status === 'active').map(b => <option key={b.id} value={b.id}>{copy(b.name)}</option>)}
+      {branches.map(b => <option key={b.id} value={b.id}>{copy(b.name)}</option>)}
     </select></div>;
 }

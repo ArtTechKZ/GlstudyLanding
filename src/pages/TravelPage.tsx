@@ -6,7 +6,6 @@ import {useParams} from 'react-router-dom';
 import InnerPageLayout from '../components/layout/InnerPageLayout';
 import FaqAccordion from '../components/ui/FaqAccordion';
 import TripItinerary from '../components/ui/TripItinerary';
-import StudyGallery from '../components/ui/StudyGallery';
 import LeadFormSection from '../components/sections/LeadFormSection';
 import {TRAVEL_PROGRAMS} from '../data/demo';
 import {COMPANY} from '../data/company';
@@ -37,9 +36,8 @@ export default function TravelPage({slug}:{slug?:string}={}) {
  <section><h2 className="section-heading">{copy("В ПРОГРАММЕ")}</h2><ul style={{paddingLeft:'1.5rem',lineHeight:1.8}}>{program.included?.map(item=><li key={item}>{copy(item)}</li>)}</ul></section>
  <section className="study-panel"><h2>{copy("Оплачивается отдельно")}</h2><p>{formatList(program.notIncluded?.map(item=>copy(item))??[],t.locale??'ru')}</p></section>
  {program.additionalOption&&<section className="study-panel surface-orange-light"><h2>{copy("Дополнительный тур: ")}{copy(program.additionalOption.title)}</h2><p>{copy(formatList(program.additionalOption.includes.map(item=>copy(item)),t.locale??'ru'))}</p><p>{copy("Условия проведения дополнительного тура уточняются.")}</p></section>}
- <TripItinerary program={program}/><section className="study-panel"><h2>{t("Full.safety")}</h2><p>{copy(isPrague?"Сопровождение кураторов 24/7":"Сопровождение групп-лидеров")}</p><p>{t("Full.safetyPending")}</p></section><section className="study-panel surface-violet-light"><h2>{copy("Подробности поездки")}</h2><p>{copy("Программа по дням, город вылета, сроки подачи заявки, наличие мест и дополнительные условия уточняются у менеджера.")}</p></section>
+ {!!program.itinerary?.length && <TripItinerary program={program}/>}<section className="study-panel"><h2>{t("Full.safety")}</h2><p>{copy(isPrague?"Сопровождение кураторов 24/7":"Сопровождение групп-лидеров")}</p><p>{t("Full.safetyPending")}</p></section><section className="study-panel surface-violet-light"><h2>{copy("Подробности поездки")}</h2><p>{copy("Программа по дням, город вылета, сроки подачи заявки, наличие мест и дополнительные условия уточняются у менеджера.")}</p></section>
  <section aria-labelledby="travel-faq-heading"><h2 className="section-heading" id="travel-faq-heading">{copy("Вопросы о программе")}</h2><FaqAccordion items={faq}/></section>
- <StudyGallery images={[]}/>
  </div><LeadFormSection/>
  </InnerPageLayout>;
 }

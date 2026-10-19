@@ -150,7 +150,7 @@ export default function IeltsPage() {
             >
               {copy("СДАЧА IELTS В КОСТАНАЕ")}</h2>
             <p style={{ fontSize: 'var(--fs-body)', color: 'rgba(0, 0, 0, 0.8)', maxWidth: '42rem', lineHeight: 1.6 }}>
-              {copy("IELTS Academic и General Training проводятся на компьютере. Адрес проведения экзамена: ул. Тәуелсіздік, 83, кабинет 305. Это место сдачи экзамена, а не подтверждённый адрес филиала школы.")}</p>
+              {copy("IELTS Academic и General Training проводятся на компьютере. Место сдачи экзамена: ул. Тәуелсіздік, 83, кабинет 305.")}</p>
           </div>
 
           {/* 3 Steps */}
@@ -199,7 +199,7 @@ export default function IeltsPage() {
               <strong style={{ fontSize: 'var(--fs-sm)', color: 'var(--gl-violet)', textTransform: 'uppercase', display: 'block', marginBottom: '4px' }}>
                 {copy("Место проведения экзамена:")}</strong>
               <p style={{ fontSize: 'var(--fs-sm)', color: 'rgba(0,0,0,0.75)', margin: 0, lineHeight: 1.5 }}>
-                <Icon name="location" size={18} /> {copy(" ул. Тәуелсіздік, 83, кабинет 305. Ссылка на регистрацию и ближайшие даты уточняются.")}</p>
+                <Icon name="location" size={18} /> {copy(" ул. Тәуелсіздік, 83, кабинет 305. Ближайшие даты и порядок регистрации уточняйте на консультации.")}</p>
             </div>
           </div>
 
@@ -222,7 +222,7 @@ export default function IeltsPage() {
             lineHeight: 1.5
           }}
         >
-          <Icon name="info" size={18} /> <strong>{copy("Правовое уведомление:")}</strong> {copy(" Ссылка на регистрацию и ближайшие даты экзамена будут добавлены после подтверждения. Консультация через форму не заменяет официальную регистрацию на экзамен.")}</div>
+          <Icon name="info" size={18} /> <strong>{copy("Запись на экзамен:")}</strong> {copy(" Уточните ближайшие даты и порядок записи. Консультация через форму не заменяет официальную регистрацию на экзамен.")}</div>
 
         {/* Block 5: FAQ */}
         <section style={{ marginBottom: 'var(--sp-10)' }}>

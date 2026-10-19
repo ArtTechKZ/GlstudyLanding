@@ -1,5 +1,6 @@
 import { useCopy } from '../../i18n/copy';
 import { sitePath } from '../../utils/sitePath';
+import { COMPANY } from '../../data/company';
 import './ReviewsSection.scss';
 
 export default function ReviewsSection() {
@@ -60,12 +61,12 @@ export default function ReviewsSection() {
               <span className="reviews__card-tag reviews__card-tag--violet">{copy("Сообщество выпускников")}</span>
               <h3 className="reviews__card-title reviews__card-title--dark">{copy("Языковые лагеря и проекты")}</h3>
               <p className="reviews__card-text reviews__card-text--dark">
-                {copy("Бесплатный Speaking Club доступен всем. Расписание можно уточнить у менеджера. Материалы с отзывами и результатами учеников будут добавлены после согласования публикации.")}</p>
+                {copy("Бесплатный Speaking Club открыт для всех. Узнайте у менеджера о ближайшей встрече и присоединяйтесь к разговорной практике.")}</p>
               <div className="reviews__feedback-cta-box">
                 <p className="reviews__feedback-cta-text">
                   {copy("Выпускник или родитель? Поделитесь своими впечатлениями об обучении в GL Study.")}</p>
-                <a href="#lead-form" className="btn btn-violet reviews__feedback-btn">
-                  {copy("Оставить отзыв")}</a>
+                <a href={COMPANY.instagram} target="_blank" rel="noreferrer" className="btn btn-violet reviews__feedback-btn">
+                  {copy("Открыть Instagram")}</a>
               </div>
             </div>
             <div className="reviews__card-media">

@@ -75,32 +75,28 @@ export default function Footer() {
 
           {/* Contacts — only real data */}
           <div className="footer__contacts">
-            <p>{copy("Основной телефон: ")}<a className="study-phone-number" href={COMPANY.phoneHref}>{copy(COMPANY.phone)}</a></p>
+            <p>{copy("Общий телефон для подбора филиала: ")}<a className="study-phone-number" href={COMPANY.phoneHref}>{copy(COMPANY.phone)}</a></p>
             <p><a href={COMPANY.internationalWhatsApp} target="_blank" rel="noreferrer">{copy("WhatsApp зарубежных программ: ")}<span className="study-phone-number">{copy(COMPANY.internationalPhone)}</span></a></p>
             <p><a href={COMPANY.instagram} target="_blank" rel="noreferrer">Instagram @glstudy.kz</a></p>
-            <div className="study-connect-entry">
-              {!__GL_PUBLIC_RU__ && <button type="button" className="study-button" data-connect-open><Icon name="speaking" />{copy('Чат недоступен')}</button>}
+            {!__GL_PUBLIC_RU__ && <div className="study-connect-entry">
+              <button type="button" className="study-button" data-connect-open><Icon name="speaking" />{copy('Чат недоступен')}</button>
               <p>{copy('Чат временно недоступен. Свяжитесь с нами по телефону или в WhatsApp зарубежных программ.')}</p>
-            </div>
+            </div>}
             <h3 className="footer__contacts-heading">{t("Footer.kontakty")}{copy(selectedCity.name)}
             </h3>
-            <BranchPicker />
-            <p>{copy(activeBranch?.schedule ?? t("Footer.raspisanie.utochnyaetsya"))}</p>
+            {selectedCity.branches.length > 0 && <BranchPicker />}
+            {activeBranch?.schedule && <p>{copy(activeBranch.schedule)}</p>}
+            <p>{copy("Менеджер поможет выбрать удобный район, филиал и подходящую группу.")}</p>
+            <p>{copy("Расписание занятий подбирается индивидуально с менеджером.")}</p>
 
-            {activeBranch?.phone ? (
+            {activeBranch?.phone && (
               <a href={`tel:${activeBranch.phone}`} className="footer__phone study-phone-number">
                 {copy(activeBranch.phone)}
               </a>
-            ) : (
-              <p className="footer__contact-placeholder">{t("Footer.telefon")}<em>{t("Footer.ozhidaetsya.ot.zakazchika")}</em>
-              </p>
             )}
 
-            {activeBranch?.address ? (
+            {activeBranch?.address && (
               <address className="footer__address">{copy(activeBranch.address)}</address>
-            ) : (
-              <p className="footer__contact-placeholder">{t("Footer.adres")}<em>{t("Footer.ozhidaetsya.ot.zakazchika")}</em>
-              </p>
             )}
 
             <a href={sitePath('/#lead-form')} className="btn btn-primary footer__cta">{t("Footer.besplatnyy.urok")}</a>
