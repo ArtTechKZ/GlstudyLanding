@@ -32,3 +32,5 @@ The existing `pages:*` helper predates the company-media allowlist; GL-STUDY-25 
 Company legal/CRM/provider configuration, Directus editor permissions, native Android acceptance and homepage LCP remain open. Local Lighthouse 13.5 mobile diagnostic: homepage gzip LCP about 2.86 s (above the 2.5 s target); raw delivery also exceeds target. Desktop/mobile-viewport checks are not physical Android proof. This repository does not claim real company delivery or full production readiness.
 
 Server/CMS directories contain source and non-working examples only. Runtime databases, credentials, receipts, backups, private evidence, original company archives and local correspondence are excluded. Real services require separate approved hosting, configuration and tests.
+
+The LF HTML entry deliberately retains one blank line before the inert Connect configuration. This preserves the accepted SSG serialization after Git newline normalization; it does not load Connect or change rendered content.
