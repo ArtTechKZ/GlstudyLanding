@@ -4,15 +4,17 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="%BASE_URL%favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+    <style>html[data-gl-consent="chosen"] .study-cookie{display:none}</style>
     <title>GL Study — Школа английского языка | Онлайн и офлайн в Казахстане</title>
     <meta name="description" content="Школа английского языка GL Study: обучение детей, подростков и взрослых. Подготовка к IELTS, зарубежные поездки и лагеря. Алматы, Астана, Костанай." />
-    <!-- Fonts: Inter (body 500, subheads 600/700, display 800) + Bebas Neue (accents) - Official Brandbook GL STUDY 2026 -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@500;600;700;800&subset=latin,cyrillic&display=swap" rel="stylesheet">
+    <!-- Official Inter variable, Cyrillic + Latin; no external CSS/font handshake. -->
+    <link rel="preload" href="%BASE_URL%fonts/inter-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="%BASE_URL%fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <script type="module" src="/src/bootstrap.ts"></script>
+    <!-- BLOCKED: retained inert provider configuration; never loaded until an approved safe embed is supplied. -->
+    <template id="gl-connect-template"><script src="https://connect.tekvora.kz/widget.js?org=6ac724e2d81b48ec3f0751a1" async referrerpolicy="no-referrer"></script></template>
   </body>
 </html>

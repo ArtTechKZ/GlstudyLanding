@@ -1,0 +1,5 @@
+// Preserve sample/track offsets: metadata boxes become equally-sized ISO BMFF free boxes.
+// No re-encoding, watermark removal, encryption changes, or audio alteration.
+export function stripMp4Metadata(input){const data=Buffer.from(input),containers=new Set(['moov','trak','mdia','minf','stbl','edts','dinf','mvex']);let removed=0;
+ function walk(start,end){for(let at=start;at+8<=end;){let size=data.readUInt32BE(at),header=8;const type=data.toString('latin1',at+4,at+8);if(size===1){if(at+16>end)throw Error('Invalid MP4 box');const n=data.readBigUInt64BE(at+8);if(n>BigInt(Number.MAX_SAFE_INTEGER))throw Error('MP4 box too large');size=Number(n);header=16}else if(size===0)size=end-at;if(size<header||at+size>end)throw Error('Invalid MP4 box length');if(['udta','meta','uuid'].includes(type)){data.write('free',at+4,4,'latin1');data.fill(0,at+header,at+size);removed++}else if(containers.has(type))walk(at+header,at+size);at+=size}}
+ walk(0,data.length);return {bytes:data,removedMetadataBoxes:removed};}

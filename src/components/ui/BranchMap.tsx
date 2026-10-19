@@ -1,102 +1,26 @@
-import { useState, useRef, useEffect } from 'react';
+import { useCopy } from '../../i18n/copy';
+import { useUi } from "../../i18n/index";
+import { useEffect, useMemo, useRef, useState } from 'react';
 import type { Branch, City } from '../../types';
-import './BranchMap.scss';
-
-interface BranchMapProps {
-  city: City;
-  branches: Branch[];
-}
-
-export default function BranchMap({ city, branches }: BranchMapProps) {
-  const [mapLoaded, setMapLoaded] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (!('IntersectionObserver' in window) || !containerRef.current) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setMapLoaded(true);
-            observer.disconnect();
-          }
-        });
-      },
-      { rootMargin: '200px' }
-    );
-
-    observer.observe(containerRef.current);
-    return () => observer.disconnect();
-  }, []);
-
-  const branchesWithCoords = branches.filter((b) => b.lat !== undefined && b.lng !== undefined);
-  const hasRealCoords = branchesWithCoords.length > 0;
-
-  return (
-    <div className="branch-map-container" ref={containerRef} aria-label={`Карта филиалов — ${city.name}`}>
-      {/* Polished interactive-styled UI preview */}
-      <div className="branch-map-viewport gl-bg-pattern-grid-violet">
-        {/* Mockup Map Controls */}
-        <div className="branch-map-ui-controls" aria-hidden="true">
-          <div className="branch-map-ui-btn">+</div>
-          <div className="branch-map-ui-btn">−</div>
-        </div>
-
-        {hasRealCoords && mapLoaded ? (
-          <div className="branch-map-live">
-            <div className="branch-map-ready-msg">
-              Интерактивная карта готова к подключению провайдера.
-            </div>
-          </div>
-        ) : (
-          <div className="branch-map-preview">
-            <div className="branch-map-pin-pulse">
-              <span className="branch-map-pin-icon" aria-hidden="true">📍</span>
-            </div>
-            <h4 className="branch-map-preview__title">Филиалы в г.&nbsp;{city.name}</h4>
-            <p className="branch-map-preview__desc">
-              Удобные локации рядом с транспортом и учебными заведениями.
-              Точный маршрут и парковку подскажет координатор филиала.
-            </p>
-            <div className="branch-map-preview__badge">
-              <span>📍 Навигация и адреса по запросу</span>
-            </div>
-          </div>
-        )}
-      </div>
-
-      {/* Accessible textual fallback list */}
-      <div className="branch-map-text-list" aria-label="Адреса и контакты филиалов">
-        <h5 className="branch-map-text-list__heading">Список отделений — {city.name}:</h5>
-        <ul className="branch-map-text-list__items" role="list">
-          {branches.map((b) => (
-            <li key={b.id} className="branch-map-text-item">
-              <div className="branch-map-text-item__header">
-                <strong className="branch-map-text-item__name">{b.name}</strong>
-                {b.hasIelts && <span className="branch-map-text-item__badge">IELTS центр</span>}
-              </div>
-              <div className="branch-map-text-item__addr">
-                {b.address ? (
-                  <span>📍 {b.address}</span>
-                ) : (
-                  <span className="branch-map-text-item__pending">Адрес: центральный район города (уточняйте у менеджера)</span>
-                )}
-              </div>
-              <div className="branch-map-text-item__phone">
-                {b.phone ? (
-                  <a href={`tel:${b.phone}`}>📞 {b.phone}</a>
-                ) : (
-                  <span className="branch-map-text-item__pending">Телефон: единая линия консультаций</span>
-                )}
-              </div>
-              {b.schedule && (
-                <div className="branch-map-text-item__schedule">🕒 {b.schedule}</div>
-              )}
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>
-  );
+import { useCityContext } from '../../hooks/useCityContext';
+import StudyDialog from './StudyDialog';
+import { BranchDetails } from './BranchDetails';
+import BranchMapLoader from './BranchMapLoader';
+export default function BranchMap({ city, branches }: { city: City; branches: Branch[] }) {
+  const copy = useCopy();
+  const t = useUi();
+  const { activeBranch, selectBranch } = useCityContext();
+  const [visible, setVisible] = useState(() => typeof window !== 'undefined' && !('IntersectionObserver' in window)), [expanded, setExpanded] = useState(false), [attempt, setAttempt] = useState(0), [state, setState] = useState<'loading' | 'ready' | 'error'>('loading');
+  const ref = useRef<HTMLDivElement>(null);
+  const points = useMemo(() => branches.filter(b => Number.isFinite(b.lat) && Number.isFinite(b.lng) && Math.abs(b.lat!) <= 90 && Math.abs(b.lng!) <= 180), [branches]);
+  useEffect(() => { if (!('IntersectionObserver' in window)) return; const o = new IntersectionObserver(entries => { if (entries.some(e => e.isIntersecting)) { setVisible(true); o.disconnect(); } }, { rootMargin: '150px' }); o.observe(ref.current!); return () => o.disconnect(); }, []);
+  const content = <><p>{t("BranchMap.karta")}{copy(city.name)}</p>{points.length === 0 ? <p className="study-map-empty">{t("BranchMap.podtverzhdyonnye.koordinaty.filialov.poka.ne")}</p> : <>
+    {state === 'loading' && <p role="status">{t("BranchMap.zagruzka.karty")}</p>}{state === 'error' && <div role="alert"><p>{t("BranchMap.ne.udalos.zagruzit.kartu.adresa")}</p><button className="study-button" onClick={() => { setState('loading'); setAttempt(v => v + 1); }}>{t("BranchMap.povtorit.zagruzku")}</button></div>}
+    {visible && <BranchMapLoader key={`${city.id}-${attempt}-${expanded}`} branches={points} selected={activeBranch?.id} onSelect={selectBranch} onState={setState} />}
+    {points.map(b => <button key={b.id} className="study-button" onClick={() => selectBranch(b.id)} aria-pressed={activeBranch?.id === b.id}>{t("BranchMap.otkryt")}{copy(b.name)}</button>)}
+  </>}{activeBranch && <div className="study-map-details"><h3>{copy(activeBranch.name)}</h3><BranchDetails branch={activeBranch} />{points.some(b => b.id === activeBranch.id) && <a className="study-button" target="_blank" rel="noreferrer" href={`https://www.openstreetmap.org/directions?to=${activeBranch.lat},${activeBranch.lng}`}>{t("BranchMap.postroit.marshrut")}</a>}</div>}</>;
+  return <div ref={ref} className="study-panel study-map" aria-label={t("BranchMap.karta.filialov.v0", {v0: copy(city.name)})}>
+    <button className="study-button" onClick={() => { setVisible(true); setExpanded(true); }}>{t("BranchMap.otkryt.kartu.na.ves.ekran")}</button>
+    {copy(!expanded && content)}{expanded && <StudyDialog title={t("BranchMap.karta.v0", {v0: copy(city.name)})} wide onClose={() => setExpanded(false)}>{copy(content)}</StudyDialog>}
+  </div>;
 }

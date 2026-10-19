@@ -3,6 +3,7 @@
 
 // ─── i18n / Locale ────────────────────────────────────────────────────────────
 export type Locale = 'ru' | 'kk' | 'en';
+export type {LocalizedContent,ContentTranslations} from '../i18n/content';
 
 // ─── SEO ─────────────────────────────────────────────────────────────────────
 export interface SeoMeta {
@@ -50,6 +51,7 @@ export interface Program {
   title: string;
   titleKk?: string;
   titleEn?: string;
+  translations?: Partial<Record<Exclude<Locale,'ru'>,Partial<Pick<Program,'title'|'description'|'shortDesc'|'ageRange'>>>>;
   description: string;
   shortDesc: string;
   format: ProgramFormat;
@@ -79,9 +81,10 @@ export interface TravelProgram {
 
   dateStart?: string;    // "2027-01-02"
   dateEnd?: string;      // "2027-01-12"
+  dateLabel: string;
   duration: string;      // "11 дней / 10 ночей"
   ageMin: number;
-  ageMax: number;
+  ageMax?: number;
   price?: string;
   priceNote?: string;    // "Виза и перелёт оплачиваются отдельно"
   groupMin?: number;     // Prague: 25
@@ -94,7 +97,7 @@ export interface TravelProgram {
   ctaLabel?: string;
   additionalOption?: {
     title: string;
-    price: string;
+    price?: string;
     includes: string[];
   };
   published: boolean;

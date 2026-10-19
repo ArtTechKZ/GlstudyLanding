@@ -1,0 +1,4 @@
+.study-icon { display: inline-block; flex: 0 0 auto; vertical-align: -.18em; color: inherit; }
+.icon-label { display: inline-flex; align-items: center; gap: .45em; max-width: 100%; }
+.icon-label > .study-icon { align-self: center; }
+@media (prefers-reduced-motion:reduce) { .faq__icon .study-icon,[data-faq-question] span { transition:none!important; } }

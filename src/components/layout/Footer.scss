@@ -254,3 +254,15 @@
     background: rgba(255, 255, 255, 0.1);
   }
 }
+
+// Labels may wrap; numbers remain atomic, even with enlarged text.
+.footer { --gutter:clamp(16px,2.5vw,32px); }
+.footer__inner { grid-template-columns:minmax(0,.65fr) minmax(0,1.25fr) minmax(0,1.3fr); }
+.footer__inner > *, .footer__nav-col { min-width:0; }
+.footer__nav { grid-template-columns:repeat(3,minmax(0,1fr)); }
+.footer__nav, .footer__contacts { overflow-wrap:anywhere; }
+@media(max-width:1023px){ .footer__inner { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media(max-width:767px){ .footer__inner { grid-template-columns:minmax(0,1fr); } }
+@media(max-width:579px){ .footer__nav { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+
+.footer__mobile-cta, .footer__cta { min-width:0; max-width:100%; overflow-wrap:anywhere; padding-inline:12px; }

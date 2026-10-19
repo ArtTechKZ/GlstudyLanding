@@ -1,0 +1,111 @@
+{
+  "origin": "https://arttechkz.github.io",
+  "base": "/GlstudyLanding/",
+  "routes": [
+    {
+      "path": "/",
+      "target": "index.html",
+      "seo": "home"
+    },
+    {
+      "path": "/learning",
+      "target": "learning/index.html",
+      "seo": "learning"
+    },
+    {
+      "path": "/ielts",
+      "target": "ielts/index.html",
+      "seo": "ielts"
+    },
+    {
+      "path": "/branches",
+      "target": "branches/index.html",
+      "seo": "branches"
+    },
+    {
+      "path": "/travel/europe-winter-2027",
+      "target": "travel/europe-winter-2027/index.html",
+      "seo": "travelPrague"
+    },
+    {
+      "path": "/travel/malaysia",
+      "target": "travel/malaysia/index.html",
+      "seo": "travelMalaysia"
+    },
+    {
+      "path": "/legal",
+      "target": "legal/index.html",
+      "seo": "legal"
+    },
+    {
+      "path": "/online",
+      "target": "online/index.html",
+      "seo": "online"
+    },
+    {
+      "path": "/offline",
+      "target": "offline/index.html",
+      "seo": "offline"
+    },
+    {
+      "path": "/programs/english-children",
+      "target": "programs/english-children/index.html",
+      "seo": "children"
+    },
+    {
+      "path": "/programs/english-teens",
+      "target": "programs/english-teens/index.html",
+      "seo": "teens"
+    },
+    {
+      "path": "/programs/english-adults",
+      "target": "programs/english-adults/index.html",
+      "seo": "adults"
+    },
+    {
+      "path": "/ielts-kostanay",
+      "target": "ielts-kostanay/index.html",
+      "seo": "ieltsKostanay"
+    },
+    {
+      "path": "/branches/kostanay",
+      "target": "branches/kostanay/index.html",
+      "seo": "city_kostanay"
+    },
+    {
+      "path": "/branches/rudny",
+      "target": "branches/rudny/index.html",
+      "seo": "city_rudny"
+    },
+    {
+      "path": "/branches/taraz",
+      "target": "branches/taraz/index.html",
+      "seo": "city_taraz"
+    },
+    {
+      "path": "/branches/astana",
+      "target": "branches/astana/index.html",
+      "seo": "city_astana"
+    },
+    {
+      "path": "/branches/almaty",
+      "target": "branches/almaty/index.html",
+      "seo": "city_almaty"
+    },
+    {
+      "path": "/privacy-policy",
+      "target": "privacy-policy/index.html",
+      "seo": "privacyPolicy"
+    },
+    {
+      "path": "/personal-data-consent",
+      "target": "personal-data-consent/index.html",
+      "seo": "personalDataConsent"
+    },
+    {
+      "path": "/404",
+      "target": "404/index.html",
+      "seo": "notFound"
+    }
+  ]
+}

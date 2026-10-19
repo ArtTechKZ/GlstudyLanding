@@ -1,67 +1,34 @@
-# GL Study Website
+# GL Study — RU DEMO
 
-Адаптивный сайт на React 19, TypeScript, React Router 7, SCSS и Vite 8. Для локального запуска нужны Node.js **22.12 или новее** и npm. Скрипты браузерных проверок и статического рендеринга используют установленный Microsoft Edge через Playwright.
+Public preview for review: https://arttechkz.github.io/GlstudyLanding/
 
-## Установка и запуск
+This is a Russian-only demonstration, not a commercial launch. Forms validate locally and clearly report that data was not sent. No lead API, Directus, SQLite, CRM or Connect is started on GitHub Pages. Phone and international WhatsApp links do not automatically transfer form fields.
+
+## Build the checked public profile
+
+Use Node.js 24.14.1 and the committed npm lockfile:
 
 ```sh
 npm ci
-npm run dev
-```
-
-Команды выполняются из корня репозитория. В Windows при необходимости используйте `npm.cmd`.
-
-## Проверки и сборка
-
-```sh
 npm run lint
 npm run typecheck
-npm run test:contrast
-npm run build:ssg
-npm run test:browser
-npm run check:contrast
-npm run preview
+npm run test:unit
+npm run build:public
+npm run test:public
 ```
 
-`build:ssg` создаёт семь основных HTML-страниц и `404.html` в `dist`. `test:browser` проверяет маршруты, ресурсы и ширины 1440, 390 и 320 px. `test:qa` сохраняет расширенную браузерную проверку и снимки в локальную папку `.qa`, исключённую из Git. `check:contrast` проверяет выбранные элементы; это не полный аудит WCAG. `test:contrast` использует изолированный пример для проверки неуспешного кода выхода при недостаточном контрасте.
+The public build reads the committed `src/data/content-snapshot.json` and projects RU. The checked projection is retained in `cms/snapshots/public-ru-study24.json`. No private `.qa` inputs, local CMS, admin token or real credentials are required. Checks create ignored local evidence. `dist` is the output, not source; `/GlstudyLanding/` is the public base. `npm run serve:ssg -- --gzip` serves the current static output with true 404 responses. `npm run dev` starts local development; `npm run build:ssg` includes the local RU/KK/EN preview and must not be substituted for the public release.
 
-Сборка и проверки запускают собственный локальный сервер на свободном порту и закрывают его после завершения. Публикация запускается вручную; CI/CD workflow отсутствует.
+## Content and publication
 
-## Структура
+RU publication approval remains true, KK/EN false. KK/EN source dictionaries remain in the repository, while public HTML, client catalogs, navigation and sitemap use RU only. Legal pages are clearly drafts and retain noindex. Confirmed company media, full image framing, licenses and provenance are preserved; see [ASSET_NOTICES.md](ASSET_NOTICES.md).
 
-- `src/components` — общие компоненты, секции и стили;
-- `src/pages` — страницы;
-- `src/styles` — токены и общие SCSS-правила;
-- `src/data`, `src/types`, `src/context`, `src/hooks` — данные и логика приложения;
-- `public` — используемые логотипы, паттерны и изображения;
-- `scripts` — статический рендеринг и локальные проверки;
-- `dist` — результат сборки, исключённый из Git.
+The accepted GL-STUDY-24 static candidate has 151 files / 22 HTML, aggregate manifest SHA-256 `4f268b2cc53e6d6e9f67a38edfcd3b1bdc8aec89bd57b71726dc341a5b4e17f0`, content revision `2a1af762fd6d9b44d7f5220f47b37d83bf225f67d96162b3da052f708d8f9810`. The full per-file manifest is [release-manifest.json](release-manifest.json). Its aggregate is the hash of artifact records; it is not the raw JSON-file hash. GL-STUDY-25 verifies the release tree against that candidate before ordinary atomic main/gh-pages push.
 
-Маршруты: `/`, `/learning`, `/ielts`, `/branches`, `/travel/europe-winter-2027`, `/travel/malaysia`, `/legal`. Остальные адреса показывают страницу 404. В статической сборке каждому основному маршруту соответствует каталог с `index.html`, а неизвестные адреса GitHub Pages обслуживает через `404.html` с HTTP 404.
+The existing `pages:*` helper predates the company-media allowlist; GL-STUDY-25 prepares separate fast-forward release worktrees and verifies every Git blob explicitly. Never publish the full local build or use force/orphan history.
 
-## GitHub Pages
+## Open launch gates
 
-Локальная разработка: `npm run dev` → `http://localhost:5173/`. Сборка и preview используют base `/GlstudyLanding/`: `npm run preview` → `http://localhost:4173/GlstudyLanding/`. React Router и обычные URL учитывают этот префикс. Стили и ресурсы остаются доступны и на технической странице 404.
+Company legal/CRM/provider configuration, Directus editor permissions, native Android acceptance and homepage LCP remain open. Local Lighthouse 13.5 mobile diagnostic: homepage gzip LCP about 2.86 s (above the 2.5 s target); raw delivery also exceeds target. Desktop/mobile-viewport checks are not physical Android proof. This repository does not claim real company delivery or full production readiness.
 
-Публикация в `https://github.com/ArtTechKZ/GlstudyLanding.git`:
-
-```sh
-npm run lint
-npm run typecheck
-npm run build:ssg
-npm run test:browser
-# После review изменений и коммита в main:
-npm run pages:prepare
-# После проверки gh-pages и разрешения владельца на push:
-npm run pages:deploy
-```
-
-`pages:prepare` использует закреплённый пакет `gh-pages` с сохранением истории и без push. Он создаёт локальную ветку `gh-pages` только из `dist`, включая `.nojekyll`. `pages:deploy` повторно проверяет remote, ветку, чистоту исходников, состав и байты сборки, затем отправляет `main` и `gh-pages` атомарным обычным push. Force push отсутствует; расхождение истории требует отдельного рассмотрения. Перед повторной подготовкой изменённого релиза обновите сборку и выполните проверки.
-
-Администратору репозитория: Settings → Pages → Build and deployment → Source: **Deploy from a branch**, Branch: **gh-pages**, Folder: **/(root)** → Save. Ожидаемый адрес: `https://arttechkz.github.io/GlstudyLanding/`. Появление ветки не подтверждает доступность сайта — публичный адрес нужно проверить отдельно. Требуется право записи в репозиторий; настройки Pages могут требовать прав администратора.
-
-## Статус интеграций
-
-Формы заявки демонстрационные: выполняют клиентскую валидацию, но не отправляют заявки. CMS, CRM и другие серверные интеграции не представлены как готовые. Серверная отправка в CRM относится к nnspecter. Деловой и юридический контент требует подтверждения перед публичным запуском.
-
-Inter и Bebas Neue загружаются с Google Fonts; для автономной работы необходимо отдельно разместить шрифты с их лицензиями. Сведения о происхождении материалов и лицензионных ограничениях сохранены в [ASSET_NOTICES.md](ASSET_NOTICES.md).
+Server/CMS directories contain source and non-working examples only. Runtime databases, credentials, receipts, backups, private evidence, original company archives and local correspondence are excluded. Real services require separate approved hosting, configuration and tests.

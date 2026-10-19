@@ -1,0 +1,4 @@
+export function createAntibotVerifier(config,{fetchImpl=fetch,now=Date.now}={}){
+ if(!config||config.provider!=='turnstile'||!config.secret||!config.hostname||!config.action)throw Error('Antibot configuration incomplete');
+ return async token=>{if(typeof token!=='string'||!token||token.length>2048)return false;try{const r=await fetchImpl('https://challenges.cloudflare.com/turnstile/v0/siteverify',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams({secret:config.secret,response:token}),signal:AbortSignal.timeout(5000),redirect:'error'});if(!r.ok)return false;const data=await r.json();return data.success===true&&data.hostname===config.hostname&&data.action===config.action&&Number.isFinite(Date.parse(data.challenge_ts))&&now()-Date.parse(data.challenge_ts)>=0&&now()-Date.parse(data.challenge_ts)<=300000}catch{return false}};
+}

@@ -1,11 +1,12 @@
+import site from './site-config.js';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
 import { chromium } from 'playwright';
 import { startLocalServer, projectRoot } from './local-server.js';
 
-const routes = ['/', '/learning', '/ielts', '/branches', '/travel/europe-winter-2027', '/travel/malaysia', '/legal', '/missing-page'];
-const htmlFiles = ['index.html', 'learning/index.html', 'ielts/index.html', 'branches/index.html', 'travel/europe-winter-2027/index.html', 'travel/malaysia/index.html', 'legal/index.html', '404.html'];
+const routes = [...site.routes.map(r=>r.path), '/missing-page'];
+const htmlFiles = [...site.routes.map(r=>r.target), '404.html'];
 const sourceMode = process.argv.includes('--source');
 for (const file of sourceMode ? [] : htmlFiles) {
   const html = fs.readFileSync(path.join(projectRoot, 'dist', file), 'utf8');
@@ -18,29 +19,38 @@ let browser;
 const problems = [];
 const anchorsByRoute = new Map();
 const linkTargets = new Set();
+let phase = 'setup';
 try {
   server = await startLocalServer(sourceMode ? 'dev' : 'static');
   browser = await chromium.launch({ channel: 'msedge' });
-  const page = await browser.newPage();
+  let page;
+  const watch = page => {
   page.on('pageerror', error => problems.push(`JavaScript: ${error.message}`));
   page.on('console', message => {
     const expected404 = message.location().url.includes('/missing-page') && /404/.test(message.text());
     if (message.type() === 'error' && !expected404) problems.push(`Console: ${message.text()}`);
   });
-  page.on('requestfailed', request => problems.push(`Resource: ${request.url()} (${request.failure()?.errorText})`));
+  page.on('requestfailed', request => { console.error('RESOURCE_CONTEXT',JSON.stringify({phase,url:request.url(),error:request.failure()?.errorText,page:page.url(),viewport:page.viewportSize()})); problems.push(`Resource: ${request.url()} (${request.failure()?.errorText})`); });
   page.on('response', response => {
     if (response.status() >= 400 && !(response.status() === 404 && response.request().isNavigationRequest() && response.url().endsWith('/missing-page'))) {
       problems.push(`HTTP ${response.status()}: ${response.url()}`);
     }
   });
+  };
   const appPath = pathname => {
     assert.ok(pathname.startsWith(server.base), `URL escaped the app base: ${pathname}`);
     return ('/' + pathname.slice(server.base.length)).replace(/\/$/, '') || '/';
   };
 
   for (const width of [1440, 390, 320]) {
-    await page.setViewportSize({ width, height: 900 });
+    // A page resized during navigation can start a responsive preload using the
+    // previous viewport and then cancel it. Fix the viewport before any document
+    // is loaded; keep all request failures and decoded-image assertions strict.
+    await page?.close();
+    page = await browser.newPage({ viewport: { width, height: 900 } });
+    watch(page);
     for (const route of routes) {
+      phase = `${width}px ${route}`;
       try {
         const response = await page.goto(server.baseURL + route, { waitUntil: 'networkidle' });
         if (!sourceMode) assert.equal(response.status(), route === '/missing-page' ? 404 : 200);
@@ -61,7 +71,12 @@ try {
           clientWidth: document.documentElement.clientWidth,
           overflow: [...document.querySelectorAll('main *, header *, footer *')].filter(el => {
             const style = getComputedStyle(el), rect = el.getBoundingClientRect();
-            return style.display !== 'none' && style.visibility !== 'hidden' && rect.width > 0 && rect.right > innerWidth + 1.5;
+            // Intentional finite track overflow is inside a native scroll viewport.
+            // check-study09.js separately reveals every CTA and checks card bounds.
+            const trackViewport = el.closest('.directions__viewport');
+            const insideTrack = trackViewport && el !== trackViewport && ['auto', 'scroll'].includes(getComputedStyle(trackViewport).overflowX)
+              && trackViewport.getBoundingClientRect().right <= innerWidth + 1.5;
+            return !insideTrack && style.display !== 'none' && style.visibility !== 'hidden' && rect.width > 0 && rect.right > innerWidth + 1.5;
           }).slice(0, 5).map(el => ({ tag: el.tagName, class: el.className })),
           brokenImages: [...document.images].filter(img => !img.complete || !img.naturalWidth).map(img => img.getAttribute('src')),
           fontsLoaded: document.fonts.check('500 16px Inter') && document.fonts.check('400 16px "Bebas Neue"'),
@@ -71,7 +86,7 @@ try {
         assert.deepEqual(layout.overflow, [], `Element overflow ${route} at ${width}`);
         assert.deepEqual(layout.brokenImages, [], `Images ${route}`);
         assert.ok(layout.fontsLoaded && layout.stylesLoaded, `Fonts/styles ${route}`);
-        const links = await page.locator('a[href]').evaluateAll(els => els.map(el => el.getAttribute('href')));
+        const links = await page.locator('a[href]:not([data-locale])').evaluateAll(els => els.map(el => el.getAttribute('href')));
         anchorsByRoute.set(route, await page.locator('[id]').evaluateAll(els => els.map(el => el.id)));
         for (const href of links) {
           if (!href.startsWith('/') && !href.startsWith('#')) continue;
@@ -91,14 +106,16 @@ try {
     }
   }
   // Real clicks verify raw menu URLs as well as React Router basename links.
+  phase = 'menu: return home at 320px';
   await page.goto(server.baseURL + '/', { waitUntil: 'networkidle' });
   await page.locator('.gl-header__burger').click();
+  phase = 'menu: navigate to learning';
   await page.locator('.gl-header__mobile-link').filter({ hasText: 'Обучение' }).click();
-  await page.waitForURL('**/learning/');
+  await page.waitForURL(url => appPath(url.pathname) === '/learning');
   assert.equal(appPath(new URL(page.url()).pathname), '/learning');
   await page.locator('.inner-page__breadcrumb-link').first().click();
   await page.waitForURL(server.baseURL + '/');
-  assert.ok(await page.locator('.hero').isVisible());
+  await page.locator('.hero').waitFor({ state: 'visible' });
   const staticContext = await browser.newContext({ javaScriptEnabled: false });
   const staticPage = await staticContext.newPage();
   for (const route of routes.slice(0, -1)) {

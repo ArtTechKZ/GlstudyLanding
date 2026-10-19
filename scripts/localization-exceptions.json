@@ -1,0 +1,46 @@
+{
+  "legalBodyKeys": [
+    "Content.774ab9770aed",
+    "Content.79ae42b5cea0",
+    "Content.c5debb6d0f62",
+    "Content.1ee6e6db9fac",
+    "Content.bd6f5380472e",
+    "Content.162b1d5f26c5",
+    "Content.1d141705f380",
+    "Content.75c263fac525",
+    "Content.f9d302a05202",
+    "Content.835f75cdc383",
+    "Content.3cd599eea9f7",
+    "Content.380e64257730",
+    "Content.8fd8a4e5fe5c",
+    "Content.7f75cb66f6aa",
+    "Content.b6b3fd2ba0a7",
+    "Content.05e3cf220352",
+    "Content.1f3e0c95ee6d",
+    "Content.ed390613b216",
+    "Content.f9bf9a54ba0f",
+    "Content.ff4e348e7990",
+    "Content.b64b0b95c857",
+    "Content.25a08674b917",
+    "Content.04030bda804d",
+    "Content.ecf005ae46ca",
+    "Content.13bd06a07804"
+  ],
+  "officialRussianSlogan": "«Учись здесь, Живи везде!»",
+  "brandedWristbandDescriptionContainsRussianSlogan": true,
+  "numericLexicalExceptions": {
+    "Content.8750a3358535": {
+      "kk": "Жеке",
+      "meaning": "1-to-1"
+    },
+    "Content.b601fd15fa31": {
+      "kk": "Үш елге",
+      "en": "three-country",
+      "meaning": "3 countries"
+    },
+    "Cms.ieltsDescription": {
+      "en": "Three"
+    }
+  },
+  "nativeAndClientApproval": false
+}

@@ -1,111 +1,17 @@
-import { Link } from 'react-router-dom';
+import { useCopy } from '../../i18n/copy';
+import {Link} from '../../i18n/Link';
 import { useCityContext } from '../../hooks/useCityContext';
 import BranchMap from '../ui/BranchMap';
+import BranchPicker from '../ui/BranchPicker';
+import { BranchList } from '../ui/BranchDetails';
 import './BranchesSection.scss';
-
 export default function BranchesSection() {
+  const copy = useCopy();
   const { cities, selectedCity, selectCity } = useCityContext();
-
-  return (
-    <section className="branches section" id="branches" aria-labelledby="branches-heading">
-      <div className="container">
-        <header className="branches__header">
-          <div>
-            <div className="branches__tag-badge">
-              <span className="branches__tag-dot" aria-hidden="true" />
-              Локации в Казахстане
-            </div>
-            <h2 className="branches__heading" id="branches-heading">
-              НАШИ
-              <br />
-              <span className="branches__heading-accent">ФИЛИАЛЫ</span>
-            </h2>
-            <p className="branches__sub">
-              GL Study работает в ключевых городах Казахстана с комфортными учебными центрами.
-            </p>
-          </div>
-
-          {/* City filter tabs */}
-          <div className="branches__city-tabs" role="tablist" aria-label="Выбор города">
-            {cities.map(city => (
-              <button
-                key={city.id}
-                role="tab"
-                aria-selected={city.id === selectedCity.id}
-                className={`branches__city-tab${city.id === selectedCity.id ? ' is-active' : ''}`}
-                onClick={() => selectCity(city.id)}
-              >
-                {city.name}
-              </button>
-            ))}
-          </div>
-        </header>
-
-        <div className="branches__layout">
-          {/* Branch cards */}
-          <div className="branches__cards">
-            {selectedCity.branches.map(branch => (
-              <div key={branch.id} className="branches__card">
-                <div className="branches__card-header">
-                  <div className="branches__card-city">г. {selectedCity.name}</div>
-                  {branch.hasIelts && (
-                    <div className="branches__card-badge">
-                      ✓ Центр IELTS
-                    </div>
-                  )}
-                </div>
-
-                <h3 className="branches__card-name">{branch.name}</h3>
-
-                {branch.address ? (
-                  <p className="branches__card-address">
-                    <span aria-label="Адрес">📍</span> {branch.address}
-                  </p>
-                ) : (
-                  <p className="branches__card-info-item">
-                    📍 Центральный район города · <span className="branches__card-info-sub">уточняйте адрес у координатора</span>
-                  </p>
-                )}
-
-                {branch.phone ? (
-                  <a href={`tel:${branch.phone}`} className="branches__card-phone">
-                    📞 {branch.phone}
-                  </a>
-                ) : (
-                  <p className="branches__card-info-item">
-                    📞 Единый контакт-центр GL Study
-                  </p>
-                )}
-
-                {branch.schedule ? (
-                  <p className="branches__card-schedule">
-                    🕐 {branch.schedule}
-                  </p>
-                ) : (
-                  <p className="branches__card-schedule">
-                    🕐 Пн–Сб: 09:00 – 20:00 (по расписанию групп)
-                  </p>
-                )}
-
-                {branch.note && (
-                  <p className="branches__card-note">{branch.note}</p>
-                )}
-              </div>
-            ))}
-          </div>
-
-          {/* Lazy loaded map & accessible fallback */}
-          <div className="branches__map-col">
-            <BranchMap city={selectedCity} branches={selectedCity.branches} />
-          </div>
-        </div>
-
-        <div className="branches__cta-row">
-          <Link to="/branches" className="btn btn-primary branches__all-btn">
-            Смотреть все филиалы →
-          </Link>
-        </div>
-      </div>
-    </section>
-  );
+  return <section className="branches section" id="branches" aria-labelledby="branches-heading"><div className="container">
+    <header className="branches__header"><div><h2 className="branches__heading" id="branches-heading">{copy("НАШИ ")}<span className="branches__heading-accent">{copy("ФИЛИ­АЛЫ")}</span></h2><p>{copy("Выберите город и филиал. Контакты и расписание уточняются.")}</p></div>
+      <div className="study-actions" aria-label={copy("Город")}>{cities.map(c => <button className="study-button" key={c.id} aria-pressed={c.id === selectedCity.id} onClick={() => selectCity(c.id)}>{copy(c.name)}</button>)}</div></header>
+    <BranchPicker /><div className="study-columns"><BranchList /><BranchMap city={selectedCity} branches={selectedCity.branches} /></div>
+    <Link className="study-button" to="/branches">{copy("Смотреть все филиалы →")}</Link>
+  </div></section>;
 }

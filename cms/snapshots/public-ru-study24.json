@@ -1,0 +1,458 @@
+{
+  "schemaVersion": 1,
+  "source": "approved-public-ru-projection",
+  "locales": [
+    "ru"
+  ],
+  "upstreamRevision": "1f1a42934b179318807cb00b297e68cb48e314b41087ae9448fdcfb712839620",
+  "revision": "2a1af762fd6d9b44d7f5220f47b37d83bf225f67d96162b3da052f708d8f9810",
+  "data": {
+    "cities": [
+      {
+        "id": "almaty",
+        "name": "Алматы",
+        "isDefault": true,
+        "branches": []
+      },
+      {
+        "id": "astana",
+        "name": "Астана",
+        "branches": []
+      },
+      {
+        "id": "kostanay",
+        "name": "Костанай",
+        "branches": []
+      },
+      {
+        "id": "rudny",
+        "name": "Рудный",
+        "branches": []
+      },
+      {
+        "id": "taraz",
+        "name": "Тараз",
+        "branches": []
+      }
+    ],
+    "programs": [
+      {
+        "id": "english-children",
+        "slug": "english-children",
+        "title": "Английский для детей",
+        "shortDesc": "Весёлые занятия, игровой формат, первые слова и фразы.",
+        "description": "General English: индивидуально и в группе, онлайн и офлайн. Один уровень — 4–6 месяцев; групповые занятия 2–3 раза в неделю.",
+        "format": "hybrid",
+        "ageGroup": "children",
+        "ageRange": "С 6 лет",
+        "published": true,
+        "order": 1
+      },
+      {
+        "id": "english-teens",
+        "slug": "english-teens",
+        "title": "Английский для подростков",
+        "shortDesc": "Современные темы, проекты, разговорная практика.",
+        "description": "General English: индивидуально и в группе, онлайн и офлайн. Один уровень — 4–6 месяцев; групповые занятия 2–3 раза в неделю.",
+        "format": "hybrid",
+        "ageGroup": "teens",
+        "ageRange": "",
+        "published": true,
+        "order": 2
+      },
+      {
+        "id": "english-adults",
+        "slug": "english-adults",
+        "title": "Английский для взрослых",
+        "shortDesc": "Деловой и разговорный английский для профессионального роста.",
+        "description": "General English: индивидуально и в группе, онлайн и офлайн. Один уровень — 4–6 месяцев; групповые занятия 2–3 раза в неделю.",
+        "format": "hybrid",
+        "ageGroup": "adults",
+        "ageRange": "Взрослым",
+        "published": true,
+        "order": 3
+      },
+      {
+        "id": "ielts-prep",
+        "slug": "ielts-prep",
+        "title": "Подготовка к IELTS",
+        "shortDesc": "Все четыре раздела: Reading, Writing, Listening, Speaking.",
+        "description": "Онлайн и офлайн, индивидуально или мини-группа 2–6 человек. 3 месяца, 36 часов. Intermediate и выше; диагностика до начала курса.",
+        "format": "hybrid",
+        "ageGroup": "all",
+        "ageRange": "",
+        "isIelts": true,
+        "published": true,
+        "order": 4
+      },
+      {
+        "id": "online",
+        "slug": "online",
+        "title": "Онлайн-обучение",
+        "shortDesc": "Учитесь из любой точки мира с живым преподавателем.",
+        "description": "General English с 6 лет, индивидуально или группа до 6 человек; 2–3 раза в неделю.",
+        "format": "online",
+        "ageGroup": "all",
+        "ageRange": "С 6 лет",
+        "published": true,
+        "order": 5
+      },
+      {
+        "id": "offline",
+        "slug": "offline",
+        "title": "Офлайн-обучение",
+        "shortDesc": "Классы в уютных и современно оснащённых филиалах.",
+        "description": "General English с 6 лет, индивидуально или группа до 10 человек; 2–3 раза в неделю.",
+        "format": "offline",
+        "ageGroup": "all",
+        "ageRange": "С 6 лет",
+        "published": true,
+        "order": 6
+      },
+      {
+        "id": "travel",
+        "slug": "travel",
+        "title": "Зарубежные каникулы",
+        "shortDesc": "Языковые лагеря и образовательные туры за рубежом.",
+        "description": "Прага, Малайзия и другие направления. Учёба + приключения + международная среда.",
+        "format": "offline",
+        "ageGroup": "all",
+        "ageRange": "С 10 лет",
+        "published": true,
+        "order": 7
+      }
+    ],
+    "trips": [
+      {
+        "id": "prague-2027",
+        "slug": "europe-winter-2027",
+        "title": "Европа начинается с Праги",
+        "destination": "Прага, Чехия",
+        "dateStart": "2027-01-02",
+        "dateEnd": "2027-01-12",
+        "dateLabel": "2–12 января 2027",
+        "duration": "11 дней / 10 ночей",
+        "ageMin": 10,
+        "included": [
+          "Английский или чешский язык",
+          "Проживание и питание",
+          "Прага и Дрезден",
+          "Университет и профориентация",
+          "Аквапарк и музей восковых фигур",
+          "Сопровождение кураторов 24/7"
+        ],
+        "notIncluded": [
+          "Виза",
+          "Авиаперелёт"
+        ],
+        "accommodation": "Проживание включено",
+        "meals": "Питание включено",
+        "additionalOption": {
+          "title": "Три страны — три столицы",
+          "includes": [
+            "Вена",
+            "Братислава",
+            "Будапешт"
+          ]
+        },
+        "itinerary": [],
+        "ctaLabel": "Узнать подробнее",
+        "published": true
+      },
+      {
+        "id": "malaysia",
+        "slug": "malaysia",
+        "title": "Языковой лагерь в Малайзии",
+        "destination": "Куала-Лумпур, Малайзия",
+        "dateStart": "2027-01-03",
+        "dateEnd": "2027-01-17",
+        "dateLabel": "3–17 января 2027",
+        "duration": "2 недели",
+        "ageMin": 10,
+        "accommodation": "Отель 4★",
+        "meals": "Трёхразовое питание",
+        "included": [
+          "45–50 часов английского",
+          "Более 9 экскурсий",
+          "Поездка на остров",
+          "Посещение Taylor’s и APU",
+          "Отель 4★ и трёхразовое питание",
+          "Международная олимпиада по английскому",
+          "Викторины и вечерние мероприятия",
+          "Сопровождение групп-лидеров"
+        ],
+        "notIncluded": [
+          "Авиаперелёт"
+        ],
+        "itinerary": [],
+        "ctaLabel": "Узнать подробнее",
+        "published": true
+      }
+    ],
+    "faq": [
+      {
+        "id": "faq-1",
+        "question": "Как проходит бесплатный пробный урок?",
+        "answer": "После заявки менеджер выбранного филиала связывается с вами. До урока проводится диагностика уровня, затем подбирается группа. Бесплатный пробный урок проходит в действующей группе и длится 60 или 90 минут в зависимости от группы. При индивидуальном обучении пробный урок также индивидуальный; продолжительность уточняется отдельно.",
+        "order": 1
+      },
+      {
+        "id": "faq-2",
+        "question": "Какие форматы обучения доступны?",
+        "answer": "General English с 6 лет: индивидуально и в группе, онлайн и офлайн. Один уровень — 4–6 месяцев; занятия — 2–3 раза в неделю.",
+        "order": 2
+      },
+      {
+        "id": "faq-3",
+        "question": "Сколько учеников в группе?",
+        "answer": "Онлайн — до 6 человек, офлайн — до 10. IELTS — индивидуально или мини-группа 2–6 человек.",
+        "order": 3
+      },
+      {
+        "id": "faq-4",
+        "question": "Как записаться на IELTS в Костанае?",
+        "answer": "IELTS Academic и General Training проводятся на компьютере по адресу: ул. Тәуелсіздік, 83, кабинет 305. Ссылка на регистрацию и ближайшие даты уточняются. Этот адрес относится к месту сдачи экзамена.",
+        "order": 4
+      },
+      {
+        "id": "faq-5",
+        "question": "Что входит в программу поездки в Прагу?",
+        "answer": "2–12 января 2027, с 10 лет, 11 дней / 10 ночей. Английский или чешский язык, Прага и Дрезден, университет и профориентация, аквапарк, музей восковых фигур, проживание, питание и кураторы 24/7. Виза и перелёт оплачиваются отдельно.",
+        "order": 5
+      },
+      {
+        "id": "faq-6",
+        "question": "Кому доступен Speaking Club?",
+        "answer": "Бесплатный Speaking Club доступен всем. Расписание уточняйте у менеджера.",
+        "order": 6
+      },
+      {
+        "id": "faq-7",
+        "question": "Как выбрать филиал?",
+        "answer": "Выберите город: Костанай, Рудный, Тараз, Астана или Алматы. Менеджер уточнит удобный район и поможет выбрать филиал. Адреса и контакты центров будут добавлены после подтверждения.",
+        "order": 7
+      }
+    ],
+    "reviews": [],
+    "trialProcess": "После заявки менеджер выбранного филиала связывается с вами. До урока проводится диагностика уровня, затем подбирается группа. Бесплатный пробный урок проходит в действующей группе и длится 60 или 90 минут в зависимости от группы. При индивидуальном обучении пробный урок также индивидуальный; продолжительность уточняется отдельно.",
+    "company": {
+      "phone": "+7 705 558 92 19",
+      "phoneHref": "tel:+77055589219",
+      "internationalPhone": "+7 707 310 68 22",
+      "internationalWhatsApp": "https://wa.me/77073106822",
+      "instagram": "https://www.instagram.com/glstudy.kz/",
+      "founded": 2000,
+      "students": "Более 10 000 учеников",
+      "internationalStudents": "Более 2 000 участников зарубежных программ"
+    },
+    "plannedLanguages": [
+      {
+        "id": "kazakh",
+        "title": "Казахский"
+      },
+      {
+        "id": "czech",
+        "title": "Чешский"
+      },
+      {
+        "id": "chinese",
+        "title": "Китайский"
+      },
+      {
+        "id": "korean",
+        "title": "Корейский"
+      }
+    ],
+    "summerDestinations": [
+      {
+        "id": "czech",
+        "title": "Чехия"
+      },
+      {
+        "id": "malaysia",
+        "title": "Малайзия"
+      },
+      {
+        "id": "uk",
+        "title": "Великобритания"
+      },
+      {
+        "id": "cyprus",
+        "title": "Кипр"
+      },
+      {
+        "id": "usa",
+        "title": "США"
+      }
+    ],
+    "media": [
+      {
+        "id": "classroom-young",
+        "type": "image",
+        "src": "/images/company/cms-a993d45a-6737-4203-9e78-56fc735d161c-39aed583b3-900.webp",
+        "thumbnail": "/images/company/cms-a993d45a-6737-4203-9e78-56fc735d161c-39aed583b3-480.webp",
+        "srcSet": "/images/company/cms-a993d45a-6737-4203-9e78-56fc735d161c-39aed583b3-480.webp 480w, /images/company/cms-a993d45a-6737-4203-9e78-56fc735d161c-39aed583b3-900.webp 900w",
+        "width": 900,
+        "height": 1600,
+        "alt": {
+          "ru": "Ученики выполняют письменное задание в аудитории GL Study"
+        },
+        "caption": {
+          "ru": "Учебные будни GL Study"
+        },
+        "section": "children learning gallery",
+        "order": 1,
+        "credit": "Ксения Гольдрат",
+        "source": "https://kseniya-goldrat.gallery.photo/gallery/teachers-stugents/",
+        "rightsSource": "Материалы переданы директором для сайта в GL-STUDY-24; отдельные согласия изображённых лиц не предоставлены."
+      },
+      {
+        "id": "classroom-guidance",
+        "type": "image",
+        "src": "/images/company/cms-9f65e993-ee33-4031-951d-f11d3f300eb5-e34f212223-900.webp",
+        "thumbnail": "/images/company/cms-9f65e993-ee33-4031-951d-f11d3f300eb5-e34f212223-480.webp",
+        "srcSet": "/images/company/cms-9f65e993-ee33-4031-951d-f11d3f300eb5-e34f212223-480.webp 480w, /images/company/cms-9f65e993-ee33-4031-951d-f11d3f300eb5-e34f212223-900.webp 900w",
+        "width": 900,
+        "height": 1600,
+        "alt": {
+          "ru": "Совместная работа над учебным заданием в GL Study"
+        },
+        "caption": {
+          "ru": "Совместная работа на занятии"
+        },
+        "section": "hero gallery learning",
+        "order": 2,
+        "credit": "Ксения Гольдрат",
+        "source": "https://kseniya-goldrat.gallery.photo/gallery/teachers-stugents/",
+        "rightsSource": "Материалы переданы директором для сайта в GL-STUDY-24; отдельные согласия изображённых лиц не предоставлены."
+      },
+      {
+        "id": "classroom-portrait",
+        "type": "image",
+        "src": "/images/company/cms-393c4e00-1da3-4f6e-ba5f-f266ec799955-26b63b2f56-900.webp",
+        "thumbnail": "/images/company/cms-393c4e00-1da3-4f6e-ba5f-f266ec799955-26b63b2f56-480.webp",
+        "srcSet": "/images/company/cms-393c4e00-1da3-4f6e-ba5f-f266ec799955-26b63b2f56-480.webp 480w, /images/company/cms-393c4e00-1da3-4f6e-ba5f-f266ec799955-26b63b2f56-900.webp 900w",
+        "width": 900,
+        "height": 600,
+        "alt": {
+          "ru": "Участник фотосъёмки GL Study с учебником в аудитории"
+        },
+        "caption": {
+          "ru": "В аудитории GL Study"
+        },
+        "section": "company gallery",
+        "order": 3,
+        "credit": "Ксения Гольдрат",
+        "source": "https://kseniya-goldrat.gallery.photo/gallery/grandluxe-teachers-students/",
+        "rightsSource": "Материалы переданы директором для сайта в GL-STUDY-24; отдельные согласия изображённых лиц не предоставлены."
+      },
+      {
+        "id": "classroom-student",
+        "type": "image",
+        "src": "/images/company/cms-c1828eb1-57bc-4bb1-a5a7-2c65eafc931f-bd600704b3-900.webp",
+        "thumbnail": "/images/company/cms-c1828eb1-57bc-4bb1-a5a7-2c65eafc931f-bd600704b3-480.webp",
+        "srcSet": "/images/company/cms-c1828eb1-57bc-4bb1-a5a7-2c65eafc931f-bd600704b3-480.webp 480w, /images/company/cms-c1828eb1-57bc-4bb1-a5a7-2c65eafc931f-bd600704b3-900.webp 900w",
+        "width": 900,
+        "height": 1350,
+        "alt": {
+          "ru": "Участница фотосъёмки за учебным столом в аудитории GL Study"
+        },
+        "caption": {
+          "ru": "Учебная атмосфера"
+        },
+        "section": "gallery learning",
+        "order": 4,
+        "credit": "Ксения Гольдрат",
+        "source": "https://kseniya-goldrat.gallery.photo/gallery/grandluxe-teachers-students/",
+        "rightsSource": "Материалы переданы директором для сайта в GL-STUDY-24; отдельные согласия изображённых лиц не предоставлены."
+      },
+      {
+        "id": "classroom-discussion",
+        "type": "image",
+        "src": "/images/company/cms-f2e81092-5ac2-47b3-a5e7-928380b957cc-cd3a60827a-900.webp",
+        "thumbnail": "/images/company/cms-f2e81092-5ac2-47b3-a5e7-928380b957cc-cd3a60827a-480.webp",
+        "srcSet": "/images/company/cms-f2e81092-5ac2-47b3-a5e7-928380b957cc-cd3a60827a-480.webp 480w, /images/company/cms-f2e81092-5ac2-47b3-a5e7-928380b957cc-cd3a60827a-900.webp 900w",
+        "width": 900,
+        "height": 600,
+        "alt": {
+          "ru": "Групповая работа за столом в аудитории GL Study"
+        },
+        "caption": {
+          "ru": "Групповая работа в аудитории"
+        },
+        "section": "offline gallery learning",
+        "order": 5,
+        "credit": "Ксения Гольдрат",
+        "source": "https://kseniya-goldrat.gallery.photo/gallery/grandluxe-teachers-students/",
+        "rightsSource": "Материалы переданы директором для сайта в GL-STUDY-24; отдельные согласия изображённых лиц не предоставлены."
+      },
+      {
+        "id": "potential-camp-group",
+        "type": "image",
+        "src": "/images/company/cms-f2caf872-7a9d-41f9-b123-66941cc96e93-23841f771c-900.webp",
+        "thumbnail": "/images/company/cms-f2caf872-7a9d-41f9-b123-66941cc96e93-23841f771c-480.webp",
+        "srcSet": "/images/company/cms-f2caf872-7a9d-41f9-b123-66941cc96e93-23841f771c-480.webp 480w, /images/company/cms-f2caf872-7a9d-41f9-b123-66941cc96e93-23841f771c-900.webp 900w",
+        "width": 900,
+        "height": 600,
+        "alt": {
+          "ru": "Участники лагеря «Потенциал» во время группового занятия"
+        },
+        "caption": {
+          "ru": "Лагерь «Потенциал»: открытие смены"
+        },
+        "section": "company gallery camp",
+        "order": 6,
+        "credit": "Ксения Гольдрат",
+        "source": "https://kseniya-goldrat.gallery.photo/gallery/lager-potencial-otkrytie-smeny/",
+        "rightsSource": "Материалы переданы директором для сайта в GL-STUDY-24; отдельные согласия изображённых лиц не предоставлены."
+      },
+      {
+        "id": "lesson-archive-frame",
+        "type": "image",
+        "src": "/images/company/cms-5d703e70-2b3b-4da0-bf31-61cf8571538d-d3413c8ee0-900.webp",
+        "width": 900,
+        "height": 1600,
+        "alt": {
+          "ru": "Участник занятия работает с учебными материалами за столом"
+        },
+        "caption": {
+          "ru": "Кадр из архива занятий GL Study"
+        },
+        "section": "learning gallery",
+        "order": 7,
+        "source": "https://disk.yandex.ru/d/6rrMn6UjbhyMbg",
+        "rightsSource": "Материалы переданы директором для сайта в GL-STUDY-24; отдельные согласия изображённых лиц не предоставлены.",
+        "thumbnail": "/images/company/cms-5d703e70-2b3b-4da0-bf31-61cf8571538d-d3413c8ee0-480.webp",
+        "srcSet": "/images/company/cms-5d703e70-2b3b-4da0-bf31-61cf8571538d-d3413c8ee0-480.webp 480w, /images/company/cms-5d703e70-2b3b-4da0-bf31-61cf8571538d-d3413c8ee0-900.webp 900w"
+      },
+      {
+        "id": "group-activity",
+        "type": "video",
+        "src": "/images/company/cms-21519892-8957-4c11-82ca-6a41e4bd8ed3-86448bfd93.mp4",
+        "poster": "/images/company/group-activity-poster.webp",
+        "width": 352,
+        "height": 640,
+        "alt": {
+          "ru": "Фрагмент группового занятия из архива GL Study"
+        },
+        "caption": {
+          "ru": "Архив GL Study: фрагмент занятия"
+        },
+        "section": "gallery learning",
+        "order": 8,
+        "source": "https://disk.yandex.kz/d/jcqHJ6OpIZQ8nA",
+        "rightsSource": "Материалы переданы директором для сайта в GL-STUDY-24; отдельные согласия изображённых лиц не предоставлены.",
+        "muted": true
+      }
+    ],
+    "ui": {
+      "ru": {},
+      "kk": {},
+      "en": {}
+    },
+    "seo": [],
+    "redirects": [],
+    "hiddenRoutes": [],
+    "legal": []
+  }
+}

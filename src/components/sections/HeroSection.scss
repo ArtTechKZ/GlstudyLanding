@@ -22,19 +22,15 @@
 }
 
 .hero__inner {
+  --gutter: clamp(16px, 2.5vw, 32px);
   display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 28rem), 1fr));
   gap: var(--sp-6);
   align-items: center;
   position: relative;
   z-index: var(--z-card);
 
-  @media (max-width: 1023px) {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    gap: var(--sp-4);
-  }
-
-  @media (max-width: 767px) {
+  @media (max-width: 991px) {
     grid-template-columns: minmax(0, 1fr);
     gap: var(--sp-6);
   }
@@ -83,8 +79,8 @@
   gap: 0.15em;
   font-family: var(--font-display);
   font-weight: var(--fw-extrabold); // Inter 800
-  font-size: clamp(1.85rem, 5.2vw, 4.2rem);
-  line-height: 0.98;
+  font-size: clamp(1.625rem, 4.3vw, 3.2rem);
+  line-height: 1.1;
   letter-spacing: -0.02em;
   text-transform: uppercase;
   color: var(--gl-white); // 5.28:1 contrast on #8D3BED
@@ -93,12 +89,7 @@
 
 .hero__headline-line {
   display: block;
-
-  &--nowrap {
-    @media (min-width: 480px) {
-      white-space: nowrap;
-    }
-  }
+  hyphens: manual;
 
   &--brand {
     color: var(--gl-white);
@@ -122,6 +113,12 @@
   flex-wrap: wrap;
   gap: var(--sp-2);
   align-items: center;
+
+  > a {
+    max-width: 100%;
+    padding-inline: min(1.75rem, 20px);
+    hyphens: manual;
+  }
 }
 
 .hero__cta-main {
@@ -222,6 +219,7 @@
 }
 
 .hero__student-img {
+  border-radius: var(--radius-lg);
   position: absolute;
   bottom: 0;
   max-width: 90%;

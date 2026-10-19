@@ -1,100 +1,86 @@
-import { sitePath } from '../../utils/sitePath';
-import { Link } from 'react-router-dom';
+import {ContentPicture} from '../ui/ContentPicture';
+import {Link} from '../../i18n/Link';
+import { useCopy } from '../../i18n/copy';
+import CityPicker from '../ui/CityPicker';
+import Icon from '../ui/Icon';
+
+
 import './OnlineOfflineSection.scss';
 
 export default function OnlineOfflineSection() {
+  const copy = useCopy();
   return (
     <section className="oo-section section" id="formats" aria-labelledby="oo-heading">
       <div className="container">
         <header className="oo-header">
           <div className="oo-tag-badge">
             <span className="oo-tag-dot" aria-hidden="true" />
-            Форматы обучения
-          </div>
+            {copy("Форматы обучения")}</div>
           <h2 className="oo-heading" id="oo-heading">
-            ВЫБЕРИ СВОЙ
-            <br />
-            <span className="oo-heading-accent">ФОРМАТ ОБУЧЕНИЯ</span>
+            {copy("ВЫБЕРИ СВОЙ")}<br />
+            <span className="oo-heading-accent">{copy("ФОРМАТ ОБУЧЕНИЯ")}</span>
           </h2>
           <p className="oo-sub">
-            Занимайтесь в современных оборудованных аудиториях в филиалах GL Study или подключайтесь онлайн из любой точки Казахстана и мира.
-          </p>
+            {copy("Занимайтесь в современных оборудованных аудиториях в филиалах GL Study или подключайтесь онлайн из любой точки Казахстана и мира.")}</p>
         </header>
 
         <div className="oo-grid">
           {/* Offline poster panel — with genuine brandbook workshop photo */}
-          <article className="oo-card oo-card--offline gl-bg-pattern-gl-white">
+          <article data-program="offline" className="oo-card oo-card--offline gl-bg-pattern-gl-white">
             <div className="oo-card__content">
-              <div className="oo-card__tag">🏫 Офлайн в филиалах</div>
-              <h3 className="oo-card__title">В уютном<br />классе рядом</h3>
-              <ul className="oo-card__list" aria-label="Особенности офлайн-обучения">
+              <div className="oo-card__tag"><Icon name="school" size={18} /> {copy(" Офлайн в филиалах")}</div>
+              <h3 className="oo-card__title">{copy("В уютном")}<br />{copy("классе рядом")}</h3>
+              <ul className="oo-card__list" aria-label={copy("Особенности офлайн-обучения")}>
                 <li>
-                  <strong>Филиалы в городах:</strong> Алматы, Астана, Костанай
-                </li>
+                  <strong>{copy("Филиалы в городах:")}</strong> {copy(" Костанай, Рудный, Тараз, Астана, Алматы")}</li>
                 <li>
-                  <strong>Живой контакт:</strong> командные проекты, дебаты и разговорные игры
-                </li>
+                  <strong>{copy("Формат:")}</strong> {copy(" индивидуально или группа до 10 человек")}</li>
                 <li>
-                  <strong>Оснащение:</strong> современные интерактивные аудитории
-                </li>
+                  <strong>{copy("Занятия:")}</strong> {copy(" 2–3 раза в неделю")}</li>
                 <li>
-                  <strong>Атмосфера:</strong> клуб единомышленников и языковая среда
-                </li>
+                  <strong>{copy("Старт:")}</strong> {copy(" General English с 6 лет, бесплатный пробный урок")}</li>
               </ul>
 
+              <CityPicker />
+              <a href="#lead-form" className="study-button" data-format="offline" data-cta="offline-trial">{copy("Записаться на бесплатный урок")}</a>
               <div className="oo-card__actions">
                 <Link to="/branches" className="btn btn-primary oo-card__btn">
-                  Выбрать филиал
-                </Link>
-                <Link to="/learning#offline" className="oo-card__link">
-                  Об офлайн-обучении →
-                </Link>
+                  {copy("Выбрать филиал")}</Link>
+                <Link to="/offline" className="oo-card__link">
+                  {copy("Об офлайн-обучении →")}</Link>
               </div>
             </div>
 
-            {/* Photo from Brandbook p. 23 */}
+            {/* Company classroom photograph from the supplied gallery */}
             <div className="oo-card__media">
-              <img
-                src={sitePath('/images/home/offline-class.webp')}
-                alt="Занятия в офлайн-классе GL Study"
-                className="oo-card__img"
-                width={800}
-                height={1200}
-                loading="lazy"
-              />
+              <ContentPicture section="offline" className="oo-card__img" loading="lazy" sizes="(max-width: 767px) 90vw, 640px"/>
               <div className="oo-card__badge-float">
-                <span>Интерактивные аудитории</span>
+                <span>{copy("Интерактивные аудитории")}</span>
               </div>
             </div>
           </article>
 
-          {/* Online poster panel — with high-tech grid, Zoom live badges */}
-          <article className="oo-card oo-card--online gl-bg-pattern-grid-violet">
+          {/* Online poster panel — with brand grid and live lesson badge */}
+          <article data-program="online" className="oo-card oo-card--online gl-bg-pattern-grid-violet">
             <div className="oo-card__content">
-              <div className="oo-card__tag">💻 Онлайн из дома</div>
-              <h3 className="oo-card__title">Из любой<br />точки мира</h3>
-              <ul className="oo-card__list" aria-label="Особенности онлайн-обучения">
+              <div className="oo-card__tag"><Icon name="online" size={18} /> {copy(" Онлайн из дома")}</div>
+              <h3 className="oo-card__title">{copy("Из любой")}<br />{copy("точки мира")}</h3>
+              <ul className="oo-card__list" aria-label={copy("Особенности онлайн-обучения")}>
                 <li>
-                  <strong>Платформа:</strong> живые интерактивные уроки с преподавателем в Zoom
-                </li>
+                  <strong>{copy("Занятия:")}</strong> {copy(" онлайн с преподавателем, 2–3 раза в неделю")}</li>
                 <li>
-                  <strong>Гибкость:</strong> удобное вечернее и дневное расписание
-                </li>
+                  <strong>{copy("Формат:")}</strong> {copy(" индивидуально или группа до 6 человек")}</li>
                 <li>
-                  <strong>Цифровые материалы:</strong> доступ к материалам курса 24/7
-                </li>
+                  <strong>{copy("Расписание:")}</strong> {copy(" подбирается менеджером")}</li>
                 <li>
-                  <strong>Экономия времени:</strong> учитесь дома без поездок по городу
-                </li>
+                  <strong>{copy("Старт:")}</strong> {copy(" General English с 6 лет, бесплатный пробный урок")}</li>
               </ul>
 
               <div className="oo-card__actions">
                 <a href="#lead-form" className="btn btn-primary oo-card__btn">
-                  Попробовать онлайн
-                </a>
-                <Link to="/learning#online" className="oo-card__link">
-                  Об онлайн-обучении →
-                </Link>
+                  {copy("Попробовать онлайн")}</a>
+                <Link to="/online" className="oo-card__link">
+                  {copy("Об онлайн-обучении →")}</Link>
               </div>
             </div>
 
@@ -102,22 +88,24 @@ export default function OnlineOfflineSection() {
             <div className="oo-card__media oo-card__media--online">
               <div className="oo-online-preview">
                 <div className="oo-online-preview__header">
-                  <span className="oo-online-preview__status-dot" aria-hidden="true" />
-                  <span>Zoom Live Class</span>
-                  <span className="oo-online-preview__pill">HD Video</span>
+                  <span className="oo-online-preview__session">
+                    <span className="oo-online-preview__status-dot" aria-hidden="true" />
+                    <span>{copy("Онлайн-занятия")}</span>
+                  </span>
+                  <span className="oo-online-preview__pill">{copy('HD Video')}</span>
                 </div>
                 <div className="oo-online-preview__body">
                   <div className="oo-online-stat">
-                    <strong>100%</strong>
-                    <span>живая речь</span>
+                    <strong>100%</strong>{copy(' ')}
+                    <span>{copy("живая речь")}</span>
                   </div>
                   <div className="oo-online-stat">
-                    <strong>1-на-1</strong>
-                    <span>или мини-группы</span>
+                    <strong>{copy("1-на-1")}</strong>{copy(' ')}
+                    <span>{copy("или мини-группы")}</span>
                   </div>
                 </div>
                 <div className="oo-online-preview__footer">
-                  <span>Доступ из любого города Казахстана</span>
+                  <span>{copy("Доступ из любого города Казахстана")}</span>
                 </div>
               </div>
             </div>

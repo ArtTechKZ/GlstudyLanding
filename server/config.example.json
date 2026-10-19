@@ -1,0 +1,38 @@
+{
+  "mode": "production",
+  "externalWriteApproved": false,
+  "database": "PRIVATE_SERVER_PATH/leads.sqlite",
+  "origins": [
+    "https://arttechkz.github.io"
+  ],
+  "maxAttempts": 3,
+  "maxPerMinute": 20,
+  "consent": {
+    "version": "REPLACE_APPROVED_VERSION",
+    "documentId": "REPLACE_APPROVED_DOCUMENT_ID",
+    "text": "",
+    "approved": false,
+    "localTest": false
+  },
+  "routes": {},
+  "channels": {
+    "primary": {
+      "url": "https://crm.example.invalid/leads",
+      "statusUrl": "https://crm.example.invalid/status",
+      "idempotencySupported": true,
+      "timeoutMs": 5000
+    },
+    "reserve": {
+      "url": "https://reserve.example.invalid/leads",
+      "statusUrl": "https://reserve.example.invalid/status",
+      "idempotencySupported": true,
+      "timeoutMs": 5000
+    }
+  },
+  "antibot": {
+    "provider": "turnstile",
+    "secret": "",
+    "hostname": "arttechkz.github.io",
+    "action": "lead"
+  }
+}

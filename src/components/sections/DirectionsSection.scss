@@ -3,6 +3,7 @@
 // ─── Directions — Brandbook GL STUDY 2026 ────────────────────────────────────
 .directions {
   background-color: var(--gl-white);
+  --gutter: clamp(16px, 2.5vw, 32px);
 }
 
 .directions__header {
@@ -65,11 +66,11 @@
 // ─── Card grid ───────────────────────────────────────────────────────────────
 .directions__grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
   gap: var(--sp-4);
 
   @media (max-width: 1023px) {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
   }
 
   @media (max-width: 639px) {
@@ -100,12 +101,12 @@
     background-color: var(--gl-violet);
     color: var(--gl-white);
 
-    .directions__card-age   { background: rgba(0, 0, 0, 0.25); color: var(--gl-white); border: 1px solid rgba(255, 255, 255, 0.3); }
+    .directions__card-age   { background: var(--gl-violet); color: var(--gl-white); border: 1px solid rgba(255, 255, 255, 0.3); }
     .directions__card-format{ color: var(--gl-white); }
     .directions__card-title { color: var(--gl-white); }
     .directions__card-desc  { color: var(--gl-white); }
     .directions__card-bullet{ color: var(--gl-white); }
-    .directions__card-link  { color: var(--gl-white); }
+    .directions__card-link  { color: var(--gl-white); background: var(--gl-violet); }
     .directions__card-cta   {
       background: var(--gl-orange);
       color: var(--gl-white);
@@ -156,10 +157,31 @@
       width: fit-content;
     }
     .directions__card-link  {
-      color: var(--gl-black); // 5.81:1 contrast on orange (WCAG AA pass!)
-      font-weight: var(--fw-extrabold);
-      text-decoration: underline;
-      text-underline-offset: 3px;
+      color: var(--gl-white);
+      background: transparent;
+      padding: 7px 0;
+      min-height: 44px;
+      align-self: flex-start;
+      border: 0;
+      border-radius: 0;
+      font-family: var(--font-body);
+      font-weight: var(--fw-bold);
+      text-decoration: none;
+
+      &:hover, &:focus-visible, &:active {
+        color: var(--gl-white);
+        background: transparent;
+      }
+
+      &:hover {
+        text-decoration: underline;
+      }
+
+      &:focus-visible {
+        outline: 3px solid var(--gl-black);
+        outline-offset: 3px;
+        box-shadow: none;
+      }
     }
     .directions__card-cta   {
       background: var(--gl-black);
@@ -186,7 +208,7 @@
     .directions__card-title { color: var(--gl-violet); }
     .directions__card-desc  { color: var(--gl-black); }
     .directions__card-bullet{ color: var(--gl-black); }
-    .directions__card-link  { color: var(--gl-violet); font-weight: var(--fw-bold); }
+    .directions__card-link  { color: var(--gl-violet); background: var(--gl-violet-light); font-weight: var(--fw-bold); }
     .directions__card-cta   {
       background: var(--gl-violet);
       color: var(--gl-white);
@@ -213,7 +235,7 @@
     .directions__card-title { color: var(--gl-black); }
     .directions__card-desc  { color: var(--gl-black); }
     .directions__card-bullet{ color: var(--gl-black); }
-    .directions__card-link  { color: var(--gl-violet); font-weight: var(--fw-bold); }
+    .directions__card-link  { color: var(--gl-violet); background: var(--gl-orange-light); font-weight: var(--fw-bold); }
     .directions__card-cta   {
       background: var(--gl-orange);
       color: var(--gl-white);
@@ -231,7 +253,7 @@
 }
 
 .directions__card-inner {
-  padding: var(--sp-5) var(--sp-4);
+  padding: var(--sp-5) min(var(--sp-4), 24px);
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -242,7 +264,7 @@
 
   @media (max-width: 479px) {
     min-height: 320px;
-    padding: var(--sp-4) var(--sp-3);
+    padding: var(--sp-4) 16px;
   }
 }
 
@@ -257,10 +279,12 @@
 .directions__card-age {
   display: inline-flex;
   align-items: center;
-  padding: 0.3rem 0.8rem;
+  padding: 0.4em 0.85em;
   border-radius: var(--radius-pill);
   font-size: var(--fs-xs);
   font-weight: var(--fw-bold);
+  line-height: 1.5;
+  min-height: 2.3em;
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
@@ -271,6 +295,7 @@
 }
 
 .directions__card-title {
+  hyphens: auto;
   font-family: var(--font-display);
   font-weight: var(--fw-extrabold); // Inter 800
   font-size: clamp(1.25rem, 2vw, 1.55rem);
@@ -281,6 +306,7 @@
 }
 
 .directions__card-desc {
+  hyphens: auto;
   font-size: var(--fs-sm);
   line-height: var(--lh-normal);
 }
@@ -337,6 +363,7 @@
 
 .directions__card-actions {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: var(--sp-2);
@@ -369,13 +396,21 @@
 }
 
 .directions__card-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4em;
+  flex: 0 0 auto;
+  white-space: nowrap;
   font-size: var(--fs-sm);
   font-weight: var(--fw-semibold);
   text-decoration: underline;
   text-underline-offset: 3px;
-  transition: opacity var(--transition-fast);
+  line-height: 1.5;
+  padding: 0.25em 0.15em;
+  border-radius: 4px;
 
-  &:hover { opacity: 0.8; }
+  &:hover { text-decoration-thickness: 2px; }
 }
 
 .directions__card-cta {
@@ -385,3 +420,84 @@
   min-width: auto;
   border-radius: var(--radius-pill);
 }
+
+// 09: one finite, progressively enhanced track. NoJS remains the grid above.
+.directions {
+  padding-block: 32px;
+  --direction-card-width: 420px;
+  --direction-card-gap: 24px;
+  .directions__header { margin-bottom: 24px; grid-template-columns: 1.2fr 1fr; }
+  .directions__heading { font-size: clamp(1.7rem, 2.6vw, 2.3rem); line-height: 1.06; max-width: 24ch; br { display: none; } }
+  .directions__heading-accent { margin-inline: .15em; }
+  .directions__grid { position: relative; gap: var(--direction-card-gap); grid-template-columns: repeat(auto-fill, minmax(min(100%, 400px), 1fr)); }
+  .directions__card { min-width: 0; &:hover { transform: none; } }
+  .directions__card-inner { padding: 28px; gap: 8px; display: grid; grid-template-columns: minmax(0,1fr); grid-template-rows: minmax(42px,auto) minmax(3.45rem,auto) minmax(4.5rem,auto) minmax(40px,auto) 200px minmax(52px,auto); height: 100%; min-height: 0; min-width: 0; > * { min-width: 0; } }
+  .directions__card-top { align-content: start; align-items: center; gap: 8px; }
+  .directions__card-age { padding: .3em .65em; letter-spacing: 0; }
+  .directions__card-title { margin: 0; font-size: 1.75rem; line-height: 1.2; align-self: start; overflow-wrap: anywhere; }
+  .directions__card-desc { align-self: start; }
+  .directions__card-bullet { align-self: start; margin: 0; line-height: 1.4; }
+  .directions__card-media { height: 200px; margin: 0; justify-content: center; }
+  .directions__card-img { height: 200px; width: auto; max-width: 100%; max-height: 100%; object-position: center; filter: none; }
+  .directions__card:hover .directions__card-img { transform: none; }
+  .directions__card-actions { margin: 0; gap: 8px; padding-top: 8px; align-self: end; flex-direction: row; align-items: center; }
+  .directions__card-cta { padding-inline: 12px; min-height: 44px; width: auto; max-width: 100%; white-space: normal; overflow-wrap: anywhere; }
+  .directions__card-link { min-height: 44px; }
+  .directions__viewport { position: relative; padding: 5px; margin: -5px; }
+  .directions__navigation { display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; align-items: center; margin-top: 16px; &[hidden] { display: none; } }
+  .directions__arrows { display: flex; align-items: center; gap: 12px; }
+  .directions__navigation button { color: var(--gl-black); background: var(--gl-white); border: 1px solid var(--gl-violet); border-radius: 16px; min-width: 44px; min-height: 44px; padding: 8px 12px; font: inherit; font-weight: 700; cursor: pointer; &:hover { background: var(--gl-violet-light); } &:focus-visible { outline: 3px solid var(--gl-violet); outline-offset: 3px; } }
+  .directions__navigation button[aria-disabled=true] { border-style: dashed; }
+  .directions__progress { font-variant-numeric: tabular-nums; min-width: 4ch; color: var(--gl-black); }
+  .directions__media-note { font-size: var(--fs-xs); line-height: 1.5; color: var(--gl-black); margin-top: 12px; }
+  &[data-mode=swipe], &[data-mode=sticky] {
+    .directions__viewport { overflow-x: auto; overscroll-behavior-x: contain; scrollbar-width: thin; scrollbar-color: var(--gl-violet) var(--gl-violet-light); }
+    .directions__grid { display: flex; align-items: stretch; }
+    .directions__card { flex: 0 0 var(--direction-card-width); }
+  }
+  &[data-mode=sticky] {
+    .directions__panel { position: sticky; top: var(--directions-top); }
+    .directions__viewport { scrollbar-width: none; }
+  }
+  &[data-mode=swipe] .directions__viewport { scroll-snap-type: x proximity; }
+  &[data-mode=swipe] .directions__card { scroll-snap-align: start; }
+  @media (max-width: 767px) {
+    .directions__header { grid-template-columns: 1fr; gap: 16px; }
+    .directions__sub { font-size: var(--fs-sm); }
+    &[data-mode=swipe] .directions__card { flex-basis: min(var(--direction-card-width), calc(100vw - 64px)); }
+    .directions__card-inner { padding: 20px; }
+    .directions__card-title { font-size: 1.5rem; }
+    .directions__card-actions { flex-wrap: wrap; }
+  }
+  @media (max-width: 359px) {
+    .directions__card-inner { padding: 16px; }
+    .directions__card-actions { flex-direction: column; align-items: stretch; }
+    .directions__card-link { align-self: flex-start; }
+  }
+}
+
+.directions .directions__header > * { min-width: 0; }
+.directions a { scroll-margin-block: calc(var(--directions-top, 120px) + 12px) 112px; }
+.directions[data-mode=swipe] .directions__viewport { scroll-padding-inline: 5px; }
+// A touch snap still settling must not pull a newly focused link off screen.
+// Keyboard focus uses the hook's exact reveal; touch scrolling remains native.
+.directions[data-mode=swipe] .directions__viewport:focus-within { scroll-snap-type: none; }
+
+// 17: one fixed-width row at every width, with a viewport-wide scrollport.
+.directions {
+ .directions__viewport { width:100%; max-width:100%; margin:0; padding:5px var(--gutter); overflow-x:auto; overscroll-behavior-x:contain; scroll-snap-type:x proximity; scroll-padding-inline:var(--gutter); scrollbar-width:thin; scrollbar-color:var(--gl-violet) var(--gl-violet-light); }
+ .directions__grid { display:flex; width:max-content; min-width:100%; align-items:stretch; }
+ .directions__card { flex:0 0 var(--direction-card-width); scroll-snap-align:start; transition:box-shadow var(--transition-base); }
+ &[data-mode=grid] .directions__grid { justify-content:center; }
+ &[data-mode=grid] .directions__viewport { overflow-x:clip; }
+ // Before enhancement, grid is only a React state; the CSS row still scrolls.
+ &:not([data-track-ready]) .directions__viewport { overflow-x:auto; }
+ &[data-mode=sticky] .directions__viewport { scroll-snap-type:none; scrollbar-width:thin; }
+ .directions__navigation { margin-top:16px; }
+ .directions__media-note { margin-top:12px; }
+ @media(max-width:767px) { .directions__card { flex-basis:min(var(--direction-card-width),calc(100vw - 64px)); } }
+}
+
+.directions[data-mode=swipe] .directions__viewport { scroll-padding-inline:var(--gutter); }
+
+.directions .directions__card-desc, .directions .directions__card-bullet span { overflow-wrap:anywhere; }

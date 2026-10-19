@@ -1,0 +1,15 @@
+.study-gallery {
+  color: var(--gl-black);
+  h2 { font: 800 var(--fs-h2)/1.2 var(--font-body); margin-bottom: 24px; }
+  p, figcaption { line-height: 1.55; overflow-wrap: anywhere; }
+  &__thumbnails { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fit,minmax(min(100%,220px),1fr)); gap: 24px; }
+  &__thumbnails button { display: block; width: 100%; background: var(--gl-violet-light); border: 0; border-radius: 20px; padding: 8px; cursor: zoom-in; }
+  &__thumbnails img { width: 100%; height: 180px; object-fit: contain; }
+  &__thumbnails p { margin-top: 8px; }
+  &__viewer figure { margin: 0; }
+  &__viewer img { width: 100%; height: auto; max-height: 55dvh; object-fit: contain; }
+  &__viewer figcaption { margin: 16px 0; }
+  &__controls { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
+  &__error { display: grid; place-content: center; min-height: 160px; padding: 16px; background: var(--gl-violet-light); color: var(--gl-black); overflow-wrap: anywhere; }
+  button:focus-visible { outline: 3px solid var(--gl-violet); outline-offset: 3px; }
+}

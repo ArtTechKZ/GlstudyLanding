@@ -1,0 +1,18 @@
+{
+  "name": "directus-extension-gl-local-build",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "directus:extension": {
+    "type": "operation",
+    "path": {
+      "app": "app.js",
+      "api": "api.js"
+    },
+    "host": "^12.5.0",
+    "source": {
+      "app": "app.js",
+      "api": "api.js"
+    }
+  }
+}

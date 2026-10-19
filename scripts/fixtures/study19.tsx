@@ -1,0 +1,8 @@
+import {createRoot} from 'react-dom/client';import {BrowserRouter} from 'react-router-dom';
+import {UiProvider} from '../../src/i18n';import {CityProvider} from '../../src/hooks/useCityContext';import {PrivacyProvider,type OptionalAdapter} from '../../src/features/privacy';import {LeadProvider,useLeads} from '../../src/features/leads';import {useCityContext} from '../../src/hooks/useCityContext';import ClientEvents from '../../src/features/ClientEvents';import LeadActions from '../../src/features/LeadActions';import App from '../../src/App';import {DEMO_CITIES} from '../../src/data/demo';import '../../src/styles/global.scss';import '../../src/styles/study.scss';
+const cities=DEMO_CITIES.map(city=>({...city,branches:city.id==='astana'?[{id:'qa-astana',cityId:'astana',name:'Fixture Astana',programs:['ielts-prep'],status:'active' as const}]:city.branches}));
+const events:unknown[]=[],pages:string[]=[];Object.assign(window,{fixtureEvents:events,fixturePages:pages});
+const adapters:OptionalAdapter[]=[{category:'analytics',start:()=>()=>{},page:path=>{pages.push(path)},event:event=>{events.push(event)}}];
+export function State(){const{draft,request}=useLeads(),{selectedCity,activeBranch}=useCityContext();return <output id="qa-state" hidden>{JSON.stringify({draft,request,city:selectedCity.id,branch:activeBranch?.id})}</output>}
+history.replaceState(null,'','/learning?city=astana&branch=qa-astana&utm_source=qa19#online');
+createRoot(document.getElementById('root')!).render(<BrowserRouter><UiProvider><CityProvider cities={cities}><PrivacyProvider adapters={adapters}><LeadProvider><ClientEvents/><LeadActions><App/><State/></LeadActions></LeadProvider></PrivacyProvider></CityProvider></UiProvider></BrowserRouter>);

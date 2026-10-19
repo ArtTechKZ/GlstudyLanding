@@ -1,0 +1,10 @@
+.brief-block { margin-block: var(--sp-8); color:var(--gl-black); }
+.brief-block > p, .brief-block li { line-height:1.6; }
+.brief-block > h2 { margin-bottom:var(--sp-4); }
+.brief-block__grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr)); gap:var(--sp-3); margin-top:var(--sp-4); }
+.brief-block__grid .study-panel { display:flex; flex-direction:column; gap:var(--sp-3); }
+.brief-block__grid .study-button { align-self:flex-start; margin-top:auto; }
+.brief-block__steps { padding-left:1.5rem; }
+.brief-block--admissions { margin:0; background:var(--gl-violet-light); border-radius:var(--radius-2xl); padding:clamp(1.5rem,4vw,3rem); }
+.brief-block--admissions ul { padding-left:1.5rem; margin-block:var(--sp-4); }
+.brief-block__lead { font-weight:800; font-size:var(--fs-h3); }

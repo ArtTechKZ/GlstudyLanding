@@ -108,6 +108,9 @@
 }
 
 .inner-page__tag {
+  max-width: 100%;
+  white-space: normal;
+  overflow-wrap: anywhere;
   font-size: var(--fs-xs);
   text-transform: uppercase;
   letter-spacing: 0.05em;

@@ -1,0 +1,193 @@
+// GL-STUDY-21. Shared visual contract, also loaded by the SSG entry.
+// Scoped above route styles so lazy route loading cannot restore old surfaces.
+:root {
+  --section-pad: clamp(3.5rem, 7vw, 6.5rem);
+  --radius-xl: 24px;
+  --radius-2xl: 28px;
+  --color-on-accent: var(--gl-black);
+  --border-subtle: rgba(0, 0, 0, .14);
+}
+
+#root {
+  h1, h2 { font-family: var(--font-display); font-weight: 800; text-wrap: balance; line-height: 1.12; letter-spacing: -.035em; }
+  h3 { font-weight: 700; line-height: 1.25; }
+  .section-heading, .display-heading { text-transform: none; }
+  .btn { text-transform: none; letter-spacing: 0; font-size: .875rem; border-radius: 12px; min-height: 48px; }
+  .btn-primary, .btn-violet, .directions__card-cta, .oo-card__btn,
+  .travel__card-btn, .ielts__cta, .footer__cta, .footer__mobile-cta,
+  .gl-header__mobile-cta, .lead-form__submit {
+    background: var(--gl-violet); color: var(--gl-white); border-color: var(--gl-violet);
+    font-size: .875rem;
+    &:hover { background: var(--gl-black); color: var(--gl-white); border-color: var(--gl-black); }
+  }
+  .btn-outline-white, .btn-outline-orange, .btn-outline-lime, .btn-secondary {
+    color: var(--gl-black); background: var(--gl-white); border-color: var(--border-subtle);
+    &:hover { color: var(--gl-violet); background: var(--gl-white); border-color: var(--gl-violet); }
+  }
+  .study-button { border-radius: 12px; }
+  .study-panel { border-color: var(--border-subtle); border-radius: 20px; padding: clamp(20px, 3vw, 32px); }
+  .surface-violet, .surface-orange, .surface-lime, .surface-black, .surface-ink {
+    background: var(--gl-white); color: var(--gl-black); border: 1px solid var(--border-subtle);
+    h2, h3, p, .card-title, .card-desc { color: var(--gl-black); background: transparent; }
+  }
+  .surface-violet-light, .surface-orange-light, .surface-pink, .surface-cyan, .surface-lavender {
+    background: var(--gl-white); color: var(--gl-black); border-color: var(--border-subtle);
+  }
+  .surface-orange p, .surface-lime p { padding: 0; }
+  .gl-header__inner { min-height: 88px; height: auto; padding-block: 10px; position: relative; }
+  .gl-header__logo { padding: 0; margin: 12px 16px 24px; }
+  .gl-header__phone { position: absolute; left: calc(var(--gutter) + 16px); bottom: 0; color: var(--gl-black); font-size: .75rem; font-weight: 600; white-space: nowrap; min-height: 24px; }
+  .gl-header[data-compact=true] .gl-header__phone { display: none; }
+  .gl-header__bar { border-color: var(--border-subtle); }
+  .gl-header__city-select { background-color: var(--gl-white); border-color: var(--border-subtle); }
+  .gl-header__cta.btn { min-height: 44px; }
+  .gl-header__mobile { background: var(--gl-white); color: var(--gl-black); border-left: 1px solid var(--border-subtle); }
+  .gl-header__mobile-link, .gl-header__mobile-city-label,
+  .gl-header__mobile .study-phone-number { color: var(--gl-black); }
+  .gl-header__mobile-link { text-transform: none; border-color: var(--border-subtle); &:hover { color: var(--gl-violet); background: var(--gl-violet-light); } }
+  .gl-header__mobile-close { color: var(--gl-black); border-color: var(--border-subtle); }
+  .gl-header__mobile .gl-header__lang-btn { color: var(--gl-black); border-color: var(--border-subtle); }
+  .gl-header__mobile .gl-header__lang-btn--active { color: var(--gl-white); background: var(--gl-violet); }
+  .gl-header__mobile a:focus-visible { outline-color: var(--gl-black); }
+  .hero__stage { background: var(--gl-white); background-image: none; border-radius: 0; padding-block: clamp(40px, 6vw, 88px); }
+  .hero__inner { grid-template-columns: minmax(0, 1.18fr) minmax(0, 1fr); gap: 48px; }
+  .hero__content { gap: 24px; padding-top: 0; }
+  .hero__slogan-badge { background: var(--gl-orange-light); color: var(--gl-black); border: 0; backdrop-filter: none; text-transform: none; letter-spacing: 0; padding: 8px 12px; }
+  .hero__headline { color: var(--gl-black); text-transform: none; font-size: clamp(2rem, 4.2vw, 3.75rem); gap: 0; }
+  .hero__headline-line--brand { color: var(--gl-black); letter-spacing: inherit; }
+  .hero__sub { color: var(--gl-black); max-width: 34rem; font-size: 1rem; line-height: 1.7; }
+  .hero__trust-item { color: var(--gl-black); }
+  .hero__trust-row { padding-top: 8px; gap: 20px; }
+  .hero__trust-pin { width: 8px; height: 8px; flex: none; }
+  .hero__visual { min-height: 480px; }
+  .hero__visual-card { max-width: 430px; height: 460px; border: 0; border-radius: 40% 40% 24px 24px; background-color: var(--gl-violet-light); background-image: none; box-shadow: none; }
+  .hero__visual-card::before { content: ''; position: absolute; width: 64px; height: 64px; border: 12px solid var(--gl-orange); border-radius: 50%; top: 8px; right: -8px; }
+  .hero__student-img { filter: none; max-height: 105%; max-width: 88%; }
+  .hero__float-badge { animation: none; backdrop-filter: none; border-radius: 16px; box-shadow: 0 8px 24px rgba(0,0,0,.06); }
+  .hero__float-badge--top { top: 36px; left: -12px; border: 1px solid var(--border-subtle); }
+  .hero__float-badge--bottom { background: var(--gl-white); color: var(--gl-black); border: 1px solid var(--border-subtle); border-left: 4px solid var(--gl-orange); bottom: 28px; }
+  .hero__float-tag { color: var(--gl-violet); }
+  .hero__float-desc strong, .hero__float-desc small { color: var(--gl-black); }
+  .hero__float-badge--pill { background: var(--gl-white); color: var(--gl-black); top: 125px; right: -8px; text-transform: none; letter-spacing: 0; }
+  .hero__ambient { display: none; }
+  .directions { padding-block: var(--section-pad); box-shadow: inset 0 1px 0 var(--border-subtle); }
+  .directions__header { margin-bottom: 32px; }
+  .directions__heading, .oo-heading, .ielts__heading, .travel__heading,
+  .branches__heading, .reviews__heading, .faq__heading, .lead-form__heading {
+    font-size: clamp(1.75rem, 3.3vw, 2.75rem); text-transform: none; line-height: 1.12;
+    color: var(--gl-black);
+  }
+  .directions__heading-accent, .oo-heading-accent, .ielts__heading-brand,
+  .travel__heading-accent, .branches__heading-accent, .reviews__heading-accent,
+  .faq__heading-accent, .lead-form__heading-brand { color: var(--gl-black); }
+  .directions__tag-badge, .oo-tag-badge, .travel__tag-badge, .branches__tag-badge,
+  .reviews__tag-badge, .ielts__tag, .lead-form__tag {
+    background: var(--gl-white); color: var(--gl-black); border: 0;
+    padding: 0; text-transform: none; letter-spacing: 0; font-size: .8125rem;
+  }
+  .directions__card { background: var(--gl-white); background-image: none; color: var(--gl-black); border: 1px solid var(--border-subtle); border-radius: 20px; }
+  .directions__card-inner { padding: 24px; }
+  .directions__card-title { color: var(--gl-black); text-transform: none; font-size: 1.5rem; letter-spacing: -.02em; }
+  .directions__card-desc, .directions__card-bullet, .directions__card-format { background: transparent; color: var(--gl-black); padding: 0; }
+  .directions__card-age { background: var(--gl-violet-light); color: var(--gl-black); border: 0; }
+  .directions__card:nth-child(even) .directions__card-age { background: var(--gl-orange-light); }
+  .directions__card-media { background: var(--gl-violet-light); border-radius: 12px; overflow: hidden; }
+  .directions__card:nth-child(even) .directions__card-media { background: var(--gl-orange-light); }
+  .directions__card-actions { border-color: var(--border-subtle); }
+  .directions__card-link { background: var(--gl-white); color: var(--gl-violet); &:hover, &:focus-visible, &:active { background: var(--gl-white); color: var(--gl-violet); } }
+  .oo-card { background: var(--gl-white); color: var(--gl-black); border: 1px solid var(--border-subtle); border-radius: 24px; }
+  .oo-card__tag { background: var(--gl-orange-light); color: var(--gl-black); border: 0; }
+  .oo-card__title, .oo-card__list, .oo-card .study-field label { color: var(--gl-black); }
+  .oo-card__link { color: var(--gl-violet); }
+  .oo-online-preview { border: 1px solid var(--border-subtle); box-shadow: none; }
+  .ielts { background: var(--gl-white); background-image: none; color: var(--gl-black); border-block: 1px solid var(--border-subtle); border-radius: 0; }
+  .ielts__sub, .ielts__poster-text strong, .ielts__poster-text span,
+  .ielts__idp-note, .ielts__feature-title, .ielts__feature-desc,
+  .ielts__kostanay-content strong, .ielts__kostanay-content p, .ielts__kostanay-content span,
+  .ielts__kostanay-link { color: var(--gl-black); }
+  .ielts__poster-badge { background: var(--gl-violet-light); border: 0; border-radius: 20px; }
+  .ielts__idp-note { background: var(--gl-white); border: 1px solid var(--border-subtle); }
+  .ielts__feature-card { background: var(--gl-white); border: 1px solid var(--border-subtle); border-radius: 20px; &:hover { background: var(--gl-white); transform: none; } }
+  .ielts__feature-icon { color: var(--gl-orange); }
+  .ielts__kostanay { background: var(--gl-orange-light); border: 0; }
+  .ielts__kostanay-icon { color: var(--gl-black); }
+  .ielts__kostanay-dates { color: var(--gl-black) !important; }
+  .ielts__kostanay-dates span, .ielts__kostanay-dates em { color: var(--gl-black); }
+  .travel__card { background: var(--gl-white); color: var(--gl-black); border: 1px solid var(--border-subtle); border-radius: 24px; }
+  .travel-page__cover { width: 100%; height: clamp(220px, 35vw, 420px); object-fit: cover; border-radius: 24px; }
+  .travel__card-title, .travel__card-destination, .travel__card-includes li,
+  .travel__addon-text strong, .travel__addon-text span, .travel__group-note { color: var(--gl-black); }
+  .travel__card-includes .study-icon { color: var(--gl-orange); }
+  .travel__addon { background: var(--gl-orange-light); border: 0; }
+  .travel__card-fact-badge { color: var(--gl-black); background: var(--gl-orange-light); }
+  .travel__card-body { padding: clamp(20px, 3vw, 32px); }
+  .brief-block--admissions { background: var(--gl-white); border: 1px solid var(--border-subtle); border-left: 4px solid var(--gl-orange); border-radius: 24px; }
+  .brief-block--admissions li { padding-block: 4px; }
+  .branches__card { border-color: var(--border-subtle); border-radius: 20px; }
+  .reviews__card { background: var(--gl-white); color: var(--gl-black); border: 1px solid var(--border-subtle); }
+  .reviews__card-tag { background: var(--gl-orange-light); color: var(--gl-black); }
+  .reviews__card-title, .reviews__card-text, .reviews__val-item { color: var(--gl-black); }
+  .reviews__feedback-cta-box { background: var(--gl-violet-light); }
+  .lead-form { background: var(--gl-white); background-image: none; border-radius: 0; margin-inline: 0; border-block: 1px solid var(--border-subtle); }
+  .lead-form .container { padding-inline: var(--gutter); }
+  .lead-form__poster, .lead-form__poster-desc, .lead-form__benefit-item { color: var(--gl-black); }
+  .lead-form__poster-city, .lead-form__demo-note { color: var(--gl-black); background: var(--gl-orange-light); border: 0; }
+  .lead-form__form-col { border: 1px solid var(--border-subtle); border-radius: 24px; }
+  .lead-form--compact { border: 0; padding: 0; }
+  .lead-form--compact .lead-form__form-col { border: 0; padding: 0; }
+  .lead-form__required { color: var(--gl-black); }
+  .faq__item { border-color: var(--border-subtle); border-radius: 16px; }
+  .footer { background: var(--gl-white); color: var(--gl-black); border-top: 1px solid var(--border-subtle); }
+  .footer__slogan, .footer__tagline, .footer__nav-heading, .footer__contacts-heading,
+  .footer__phone, .footer__address, .footer__contact-placeholder, .footer__copy,
+  .footer__legal-note, .footer__nav-col a, .footer__legal-links a { color: var(--gl-black); }
+  .footer__nav-col a:hover, .footer__legal-links a:hover, .footer__phone:hover { color: var(--gl-violet); }
+  .footer__slogan { text-transform: none; font-size: 1.25rem; }
+  .footer__legal-note { background: var(--gl-orange-light); }
+  .footer__bottom { border-color: var(--border-subtle); }
+  .footer__mobile-sticky { background: var(--gl-white); border-color: var(--border-subtle); }
+  .footer__whatsapp { color: var(--gl-black); border-color: var(--border-subtle); }
+  .inner-page__hero { background: var(--gl-white); color: var(--gl-black); border-radius: 0; border-bottom: 1px solid var(--border-subtle); padding-block: clamp(36px, 6vw, 80px); }
+  .inner-page__hero-inner { gap: 20px; }
+  .inner-page__title { color: var(--gl-black); text-transform: none; max-width: 24ch; }
+  .inner-page__accent { color: var(--gl-black); }
+  .inner-page__subtitle { color: var(--gl-black); opacity: 1; }
+  .inner-page__tag { background: var(--gl-orange-light); color: var(--gl-black); border: 0; text-transform: none; letter-spacing: 0; }
+  .inner-page__breadcrumb-link { opacity: 1; }
+  .ielts-module__badge { background: var(--gl-violet-light); color: var(--gl-black); border-color: transparent; }
+  .gl-badge--orange { color: var(--gl-black); background: var(--gl-orange-light); }
+  .study-cookie { background: var(--gl-white); border-color: var(--border-subtle); }
+  @media(max-width: 991px) {
+    .gl-header__phone { display: none; }
+    .hero__inner { grid-template-columns: minmax(0,1fr); gap: 32px; }
+    .hero__headline { font-size: clamp(2rem, 6vw, 3.5rem); }
+    .hero__content { max-width: 640px; }
+    .hero__visual { min-height: 400px; }
+    .hero__visual-card { height: 390px; max-width: 360px; }
+  }
+  @media(max-width: 767px) {
+    .gl-header__inner { min-height: 68px; padding-block: 0; }
+    .gl-header__logo { padding: 12px 8px; margin: 0; }
+    .hero__content { gap: 20px; }
+    .hero__headline { font-size: clamp(1.85rem, 7.5vw, 3rem); }
+    .hero__visual { min-height: 350px; }
+    .hero__visual-card { height: 340px; max-width: 280px; }
+    .hero__float-badge--top { left: 0; top: auto; bottom: 120px; }
+    .hero__float-badge--pill { display: none; }
+    .hero__float-badge--bottom { left: 0; bottom: 16px; }
+    .hero__visual-card::before { right: 0; width: 48px; height: 48px; border-width: 9px; }
+    .hero__ctas { align-items: stretch; gap: 12px; }
+    .hero__ctas .btn { flex: 1 1 180px; }
+    .hero__trust-row { gap: 12px; }
+    .directions__card-inner { padding: 20px; }
+    .lead-form__form-col { padding: 20px; }
+  }
+}
+
+/* Shared navigation on original and new inner pages. */
+#root .full-links {display:flex;flex-wrap:wrap;gap:.75rem 1.25rem;margin:1rem 0;}
+#root .full-links a {display:inline-flex;align-items:center;min-height:44px;text-underline-offset:4px;color:var(--gl-violet);}
+#root .full-links a[aria-current=page] {font-weight:800;color:var(--gl-black);}
+
+/* Document/error pages keep footer controls unobscured, including without JS. */
+#root:has([data-legal-notice], [data-not-found]) .footer__mobile-sticky { display:none; }

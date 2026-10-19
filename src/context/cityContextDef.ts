@@ -6,6 +6,8 @@ export interface CityContextValue {
   selectedCity: City;
   selectCity: (cityId: string) => void;
   activeBranch: Branch | undefined;
+  selectBranch: (branchId: string) => void;
+  availablePrograms: string[] | undefined;
 }
 
 export const CityContext = createContext<CityContextValue | null>(null);

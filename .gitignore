@@ -10,3 +10,19 @@ dist-ssr/
 .DS_Store
 .idea/
 .vscode/
+
+# Private local CMS data and uploads
+cms/runtime/data/
+cms/runtime/uploads/
+cms/runtime/extensions/
+cms/runtime/sandbox-access.json
+cms/backups/
+
+# Service runtime and private records are never release source
+*.sqlite
+*.sqlite-*
+*.db
+*.db-*
+cms/runtime/
+cms/backups/
+coverage/

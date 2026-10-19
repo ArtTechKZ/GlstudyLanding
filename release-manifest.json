@@ -1,0 +1,768 @@
+{
+  "aggregateSha256": "4f268b2cc53e6d6e9f67a38edfcd3b1bdc8aec89bd57b71726dc341a5b4e17f0",
+  "files": 151,
+  "html": 22,
+  "contentRevision": "2a1af762fd6d9b44d7f5220f47b37d83bf225f67d96162b3da052f708d8f9810",
+  "records": [
+    {
+      "path": ".nojekyll",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "404.html",
+      "bytes": 163160,
+      "sha256": "7a35f8b72f2e93738254945ac91e4c9a470897a7c0f895865f4bc2f505fa205c"
+    },
+    {
+      "path": "404/index.html",
+      "bytes": 163160,
+      "sha256": "7a35f8b72f2e93738254945ac91e4c9a470897a7c0f895865f4bc2f505fa205c"
+    },
+    {
+      "path": "assets/Application-DDbHBwxG.js",
+      "bytes": 64627,
+      "sha256": "c468d390681bd1ce0e49216bea24f2fbee5a24e01f63ab83e42763a0bd6e9d63"
+    },
+    {
+      "path": "assets/Application-Juwi6a87.css",
+      "bytes": 63820,
+      "sha256": "901e70a3c49acd256297c1fbd24ca3f849d1cbf3decbe5790e5bc2a25e70cbc4"
+    },
+    {
+      "path": "assets/BranchesPage-CnwNZFdo.js",
+      "bytes": 1159,
+      "sha256": "03881a7b5e63d3597a122bde8e7f0b589ea27f2bbcc737cbe836380673e3973f"
+    },
+    {
+      "path": "assets/BranchMap-CVjrH6Ra.js",
+      "bytes": 4880,
+      "sha256": "8862f17a91e48114a96a42074fd2257f5cea388c36cadee75e556db5bcbc42cb"
+    },
+    {
+      "path": "assets/BriefSections-DG4vI4LB.css",
+      "bytes": 744,
+      "sha256": "54d52baf02047db13170aaccebce4d923ca55903e8955d133607890479c50401"
+    },
+    {
+      "path": "assets/BriefSections-DM1NewtD.js",
+      "bytes": 4780,
+      "sha256": "38ace658f89ad2e4d3645b290bce4f2bc566d84324e2136ea1cecedd7ee67e90"
+    },
+    {
+      "path": "assets/CityPage-B2zDLxKy.js",
+      "bytes": 1806,
+      "sha256": "e5c7de407929c0470d27bec6bcfefe9848da0850475b2874c24d99bf239114f3"
+    },
+    {
+      "path": "assets/CityPicker-CEhvUBrc.js",
+      "bytes": 1889,
+      "sha256": "be15ef7c70250724e9edc3c3a9ad6f650b9a244bba6ebf0f76e39743e2cf72ca"
+    },
+    {
+      "path": "assets/CityPicker-CyvvK8bI.css",
+      "bytes": 288,
+      "sha256": "2c2acd3bf7fae2b147d3d0f63874114dd68f3501880d1bb144e8f7ed03472d63"
+    },
+    {
+      "path": "assets/ContentPicture-BCwpCI0c.js",
+      "bytes": 601,
+      "sha256": "8bcf8e0e60e8ec008f72ea6500fe61ed2d8a5527ab284d5d16fe51a9fb3925e1"
+    },
+    {
+      "path": "assets/ExamPage-DFK0UNpK.js",
+      "bytes": 1588,
+      "sha256": "1d1e0f3895440fef8c65850372b151488e8c6fcfa7ea689456b5cf7b62490ac3"
+    },
+    {
+      "path": "assets/FaqAccordion-BrCEBNRR.js",
+      "bytes": 620,
+      "sha256": "9018e3d73d1fe1cb22f0b4bf927d99072eca2dc44479ef7109fcc136075232d3"
+    },
+    {
+      "path": "assets/FaqAccordion-F5ze9m_a.css",
+      "bytes": 4303,
+      "sha256": "40f6e10b68626a23c584a9393f639340fd6e89364b3e7cc226cbbf6caee651b7"
+    },
+    {
+      "path": "assets/format-B31z3Fr-.js",
+      "bytes": 916,
+      "sha256": "ce6ee39f4772fececc1cb262bb83560bdc15d2ff82fbbaccd99be8871b9ce1bb"
+    },
+    {
+      "path": "assets/FullPages-BtxXgEXY.css",
+      "bytes": 1017,
+      "sha256": "be4a65108fa62357c2af0ccbb5941852b2c19478734863bde3a84979340af5b2"
+    },
+    {
+      "path": "assets/i18n-BKBMaTbz.js",
+      "bytes": 156480,
+      "sha256": "f572255e56dd81c46af4402af9b7914d9e248d79ed050eb7dcc93936d70b82a1"
+    },
+    {
+      "path": "assets/Icon-BE47bRUS.css",
+      "bytes": 312,
+      "sha256": "02033b752ccbb1e30222ac269d2d931938ffa9807c3f8da52be77a20f9e1a65b"
+    },
+    {
+      "path": "assets/Icon-C21ld7uM.js",
+      "bytes": 12241,
+      "sha256": "e3da21a54e5fc835d7cd49fdb10d415a1a6dce154a17f95819693fd2a1d9d50a"
+    },
+    {
+      "path": "assets/IeltsPage-DcZlS_rX.css",
+      "bytes": 208,
+      "sha256": "53e2389c3369b332654f2a083014a3c8890b9b2ac0732ca5a21368ff83c2f032"
+    },
+    {
+      "path": "assets/IeltsPage-DFvhyXVT.js",
+      "bytes": 13834,
+      "sha256": "0938e539d56feacc05703f8f6d9aa84a4a52f5247448e9a1b29a8f0456d5907e"
+    },
+    {
+      "path": "assets/index-B8KMPlh_.js",
+      "bytes": 2152,
+      "sha256": "a3a8c37c8ced7fab588c159b2ea1d949f2ad109117db5b6f6016bbff186ace26"
+    },
+    {
+      "path": "assets/InnerPageLayout-Bbf0mgYg.js",
+      "bytes": 1639,
+      "sha256": "685a7759e81182e0bd1cf91eed103f65566a2f868d9e3f2a7cc520e12a4a14f8"
+    },
+    {
+      "path": "assets/InnerPageLayout-DZx8CSn9.css",
+      "bytes": 5019,
+      "sha256": "14ef637c25122c6d7c568cf3b5a1c29211f0184795070bfa6c430f4d9c4afbe0"
+    },
+    {
+      "path": "assets/LeadFormSection-B3M68UOz.js",
+      "bytes": 22798,
+      "sha256": "6abbfdcc3a5ae3ca85be422082c5d36b93799c7f1a4fd8f848d626428fd16a82"
+    },
+    {
+      "path": "assets/LeadFormSection-CRfJ-9Uq.css",
+      "bytes": 7639,
+      "sha256": "de32fa403336db13c9c98e503b23f668e5cbfb9f23d0fb1982ec85bd6498cae7"
+    },
+    {
+      "path": "assets/LearningPage-B2XmVgEr.css",
+      "bytes": 817,
+      "sha256": "5ba37c6c2119208d75c68ad7eb9022d8ff7619c8bb5e4f2112b348506e5c49da"
+    },
+    {
+      "path": "assets/LearningPage-C7jDC2AZ.js",
+      "bytes": 20260,
+      "sha256": "3bbc6b0853de145e2139c1eb779330c4c79d235070c57ed6fcb9d609b08e3573"
+    },
+    {
+      "path": "assets/LegalDocumentPage-Bgm1-wl8.js",
+      "bytes": 857,
+      "sha256": "12d5c56a78cda2e89cccc9f30ce939f6ac55c7c6ff9f08357260ae9b44ec1ac7"
+    },
+    {
+      "path": "assets/LegalPage-DO_SOtVQ.js",
+      "bytes": 12421,
+      "sha256": "014a9db80fd1cd226aba0ed8461ab22367bfbaa1371369d6c4507e497e49f880"
+    },
+    {
+      "path": "assets/LiveBranchMap-BikjgGPL.js",
+      "bytes": 150403,
+      "sha256": "57edcb93471413300aa12caf7b3a955521a9c7aadd5c632c66e1f7fac2f1ce8b"
+    },
+    {
+      "path": "assets/LiveBranchMap-vh-t_kPv.css",
+      "bytes": 15095,
+      "sha256": "86d3d093fad979e1d185c8a93258f5f124d863fd13ca894c0b9f50bb68b66997"
+    },
+    {
+      "path": "assets/main-EWr8Elrg.css",
+      "bytes": 30841,
+      "sha256": "c2aac96bc4ee32bed46c37c6fcba4c9478b3f0c1defc5f982c26660796e39b4b"
+    },
+    {
+      "path": "assets/main-zQy-UH-d.js",
+      "bytes": 209193,
+      "sha256": "8762ab742ead2ec249c1c04d639b3b62edea3e12fd752f97ac09c855948644ad"
+    },
+    {
+      "path": "assets/NotFoundPage-hp9pPLTo.js",
+      "bytes": 1330,
+      "sha256": "b58ad0dd8fbad38352be7384f66d6fcd446a6db6b4830f56911e9dba802b5135"
+    },
+    {
+      "path": "assets/preload-helper-CIoUowC9.js",
+      "bytes": 1534,
+      "sha256": "24478b1e1273e8ec7eeb309d312b3675dce1fc009a6d3a48bb5d005b7cf5312d"
+    },
+    {
+      "path": "assets/ProgrammeLinks-Eq1AidW3.js",
+      "bytes": 578,
+      "sha256": "ad5c883d0ec26317846bc5f537e4fe4672a5934f915f26ebf5fb4aa359ff6403"
+    },
+    {
+      "path": "assets/ProgrammePage-WSzLfP0u.js",
+      "bytes": 2840,
+      "sha256": "71f26a4a9890f1b1fb5e7b33f21b4d5e8542623c97298861e29e9fb1f81e58b1"
+    },
+    {
+      "path": "assets/ssg-Cm_6zn1a.js",
+      "bytes": 202238,
+      "sha256": "01981053eb08f4d6b972a3d537ef54db8e7b8d78f3a9664e4d86f732392b2c64"
+    },
+    {
+      "path": "assets/StudyDialog-DjF3WJVC.js",
+      "bytes": 2062,
+      "sha256": "3f9042649b18821894d5769ebde1cf53f6503af38fcb6f75c0c4de47b3c37cb3"
+    },
+    {
+      "path": "assets/StudyGallery-BVM02PFt.css",
+      "bytes": 1148,
+      "sha256": "2dbc18256265b0a571a022f6e7eb58f034a08a10e0ee44c91860ff9a5816ddaf"
+    },
+    {
+      "path": "assets/StudyGallery-Cbt8jnza.js",
+      "bytes": 2393,
+      "sha256": "fd28f138b876de0581ef6883cf7acc3910c377d8fde463835c24c73d3e380bba"
+    },
+    {
+      "path": "assets/TravelPage-hVfYJkOW.js",
+      "bytes": 5801,
+      "sha256": "a68b3393f28b7fc049f86863a2dc2f704073fc1f86530aab762ca0f0defcdde5"
+    },
+    {
+      "path": "assets/usePageSeo-B-rJnW9o.js",
+      "bytes": 11140,
+      "sha256": "6b37fc7db8e3dafb6360d0fa63afb42e4f531f13be1501e4e4b517c98dc14752"
+    },
+    {
+      "path": "branches/almaty/index.html",
+      "bytes": 177741,
+      "sha256": "0c6f417db5dc852249ad187c78d7f1e3738ee5744b5f9be00bf5b2e60c0b349a"
+    },
+    {
+      "path": "branches/astana/index.html",
+      "bytes": 177741,
+      "sha256": "ac88ac32bd038e9f562b2e150d66a2d97036d1bf4eae2800feba7aa25e78102e"
+    },
+    {
+      "path": "branches/index.html",
+      "bytes": 174756,
+      "sha256": "e5dc61b18eab261b0f441ce6b1f7c7be67969d56baad241536d49bb978c8c4cf"
+    },
+    {
+      "path": "branches/kostanay/index.html",
+      "bytes": 177821,
+      "sha256": "02bdf9bf23ebf840f8124f871ec0b69b9c90adef5226f30e52eea8040a605f33"
+    },
+    {
+      "path": "branches/rudny/index.html",
+      "bytes": 177731,
+      "sha256": "484b7e4961cc450ea52db6d854f2334de4170aaa5668e147f13faaebeeb7455e"
+    },
+    {
+      "path": "branches/taraz/index.html",
+      "bytes": 177701,
+      "sha256": "b557656d79a1fbf77cadae6c955edbd9edbfbfa9b9268663435441d1338c90c1"
+    },
+    {
+      "path": "brand/logo-color.svg",
+      "bytes": 3301,
+      "sha256": "daf6a2226874c533ec90756ae2b81d49a5e5982aaa8374c4f48ecb44c2796037"
+    },
+    {
+      "path": "brand/logo-white.svg",
+      "bytes": 3301,
+      "sha256": "7cf4da735841d57ac77259dc6d67b5b852481f354ccc9f5e7cd607b59f26126e"
+    },
+    {
+      "path": "brand/pattern-gl-violet.svg",
+      "bytes": 632,
+      "sha256": "4a40130c9683aed79401eeedcf22a9d16ac0435c487205cac89e816b0b762f66"
+    },
+    {
+      "path": "brand/pattern-gl-white.svg",
+      "bytes": 632,
+      "sha256": "608cf10f4e082beac50f20c229c74fdc9f1e7cd28ce8e5fc5df0669d368afd1b"
+    },
+    {
+      "path": "brand/pattern-grid-violet.svg",
+      "bytes": 191,
+      "sha256": "ed390c9f299005be5a114513fec06b87ec3ba0460d2d939fbe3dcf2c7db8b4d1"
+    },
+    {
+      "path": "brand/pattern-grid-white.svg",
+      "bytes": 191,
+      "sha256": "0e62c2e5648ac2a8537304ae77eac7e09f123ef56fad8044199214324ab727f2"
+    },
+    {
+      "path": "content-revision.json",
+      "bytes": 273,
+      "sha256": "1fc48562c1415462268ce07abc0506d9d0a8b67cb005912ac67ec2b80cafe421"
+    },
+    {
+      "path": "favicon.svg",
+      "bytes": 399,
+      "sha256": "bdddb5169f108e777a2c114df2f444c07ba466b4918ceae9cb21f276d7823ff6"
+    },
+    {
+      "path": "fonts/bebas-neue-latin-ext.woff2",
+      "bytes": 8928,
+      "sha256": "16c95ce45a2922f52551d38d565d14c92cf257b8f219c89613407d81fdd21a39"
+    },
+    {
+      "path": "fonts/bebas-neue-latin.woff2",
+      "bytes": 13768,
+      "sha256": "a7c90c89240c134f7fdd33d40c000ec90b79d675ea53e8cc5a6d423c073de412"
+    },
+    {
+      "path": "fonts/inter-cyrillic-ext.woff2",
+      "bytes": 25960,
+      "sha256": "ca157063339ac4ad418f214f3abfed119b0798ab4d377386ce5c9e5a7a435ebd"
+    },
+    {
+      "path": "fonts/inter-cyrillic.woff2",
+      "bytes": 18748,
+      "sha256": "71d5ee93cc1e9f1d520a3a8b66456de18c7879d8df09d57fcd2eaff75fef0075"
+    },
+    {
+      "path": "fonts/inter-greek-ext.woff2",
+      "bytes": 11232,
+      "sha256": "6e9e020a25f9b56d418f2c085b1d3c09725a4da23fe693a5b463064606732190"
+    },
+    {
+      "path": "fonts/inter-greek.woff2",
+      "bytes": 18996,
+      "sha256": "1be3448e292fbf05ffe176fe1e43f135013d50b1e7d324ad1a558f623d3bb6f6"
+    },
+    {
+      "path": "fonts/inter-latin-ext.woff2",
+      "bytes": 85068,
+      "sha256": "34b9c504cab7a73e37b746343a449132e56cf7b5481af2cb81dc74dcff25c956"
+    },
+    {
+      "path": "fonts/inter-latin.woff2",
+      "bytes": 48256,
+      "sha256": "3100e775e8616cd2611beecfa23a4263d7037586789b43f035236a2e6fbd4c62"
+    },
+    {
+      "path": "fonts/inter-vietnamese.woff2",
+      "bytes": 10252,
+      "sha256": "5c66f9e07e90c6d4ac4922cc68d60de26c17b1858e677fb5e603fce3952b3ff2"
+    },
+    {
+      "path": "ielts-kostanay/index.html",
+      "bytes": 180007,
+      "sha256": "f48bf1233417aa4edcca07cd3401a3a05bf02b2b41bf4871bcadcb58abc0a426"
+    },
+    {
+      "path": "ielts/index.html",
+      "bytes": 194769,
+      "sha256": "3ded2ba7fe6175f30eac05960766cfb508a9005bd2f9277a8e871484170da90b"
+    },
+    {
+      "path": "images/company/classroom-discussion-1440.webp",
+      "bytes": 88686,
+      "sha256": "f6a720cf4512ab99d94b18b97819baa5d42246074c4544a87ed33a0e7f9bcbd1"
+    },
+    {
+      "path": "images/company/classroom-discussion-480.webp",
+      "bytes": 21096,
+      "sha256": "fc3e9b9dd042d7edc9e185d7766fd0557ae507e56cdbffc9e4703816268e7438"
+    },
+    {
+      "path": "images/company/classroom-discussion-900.webp",
+      "bytes": 47866,
+      "sha256": "cd3a60827a68211efc08442e17314c70679bdb3203dec9bdca506c9bdd95c328"
+    },
+    {
+      "path": "images/company/classroom-guidance-1440.webp",
+      "bytes": 271542,
+      "sha256": "87a36e259c39ac3378bde93d3737d6c9f898aa79c99952f2b5f90db840d3f7ff"
+    },
+    {
+      "path": "images/company/classroom-guidance-480.webp",
+      "bytes": 40852,
+      "sha256": "bac4b27256c523d7a7fccf95e1a43a5cdcfe4db769cbc557c2c7f1e8e6b6c95a"
+    },
+    {
+      "path": "images/company/classroom-guidance-900.webp",
+      "bytes": 106704,
+      "sha256": "e34f21222380c93ed0f4423ea6a8370a5ceb5000a2d3ca0e0c5ede896aed9db6"
+    },
+    {
+      "path": "images/company/classroom-portrait-1440.webp",
+      "bytes": 69348,
+      "sha256": "5638bbcef4337b521ff3b1bb72b171534e207b18d48c975ec5b56aedeeb693ac"
+    },
+    {
+      "path": "images/company/classroom-portrait-480.webp",
+      "bytes": 17950,
+      "sha256": "d415563f1ab410096f3ba6655a5e28c50ab2c57c6c7ab3f9ec0e4530e35452cb"
+    },
+    {
+      "path": "images/company/classroom-portrait-900.webp",
+      "bytes": 39082,
+      "sha256": "26b63b2f56ee7b5d98fe78e87bed62df7e5c40900d631adeb3180c19a2bb7d9a"
+    },
+    {
+      "path": "images/company/classroom-student-1440.webp",
+      "bytes": 189746,
+      "sha256": "b89bf853b7df90b2249fb9aba66c8128b0feb08337ab8ddb6358fca10bd1723e"
+    },
+    {
+      "path": "images/company/classroom-student-480.webp",
+      "bytes": 26654,
+      "sha256": "d2214269f67daa698456ee15df9dce63c3c4730106d8d99e45572cec3709cd9f"
+    },
+    {
+      "path": "images/company/classroom-student-900.webp",
+      "bytes": 72330,
+      "sha256": "bd600704b37d62c3c538621e6e4a1b9800a9daeaa67455ce02a953eae4e35d18"
+    },
+    {
+      "path": "images/company/classroom-young-1440.webp",
+      "bytes": 226844,
+      "sha256": "16221ba1818c8eac240d93ca992e6addc396a3b49b3d29ac5758264681f5df61"
+    },
+    {
+      "path": "images/company/classroom-young-480.webp",
+      "bytes": 43144,
+      "sha256": "de954046298fb77e51769c64000d4cc6b436595f61e718c8367ddbd6b56221f4"
+    },
+    {
+      "path": "images/company/classroom-young-900.webp",
+      "bytes": 99316,
+      "sha256": "39aed583b364b52ede81ce2e7c6cf7e39c692a24e32f8a2a385b79490fa4e256"
+    },
+    {
+      "path": "images/company/cms-21519892-8957-4c11-82ca-6a41e4bd8ed3-86448bfd93.mp4",
+      "bytes": 2313266,
+      "sha256": "86448bfd932d54dd1666b14fbdb14904f93efd162362467e5a66a4b700faf5ea"
+    },
+    {
+      "path": "images/company/cms-393c4e00-1da3-4f6e-ba5f-f266ec799955-26b63b2f56-480.webp",
+      "bytes": 17070,
+      "sha256": "b8c009f1405209ab8808053e2731b3865a2eabb2fc801bbbb80b4683456d6bc8"
+    },
+    {
+      "path": "images/company/cms-393c4e00-1da3-4f6e-ba5f-f266ec799955-26b63b2f56-900.webp",
+      "bytes": 36768,
+      "sha256": "0feb95b7a7da8dbded19823a04b7e102d66c8ccd2e68ef169b1cd658e3214d7a"
+    },
+    {
+      "path": "images/company/cms-5d703e70-2b3b-4da0-bf31-61cf8571538d-d3413c8ee0-480.webp",
+      "bytes": 15548,
+      "sha256": "90a603e78ea5f9bfcaaee426e204150c3666d6d681499bb3aa43a4b676340ab1"
+    },
+    {
+      "path": "images/company/cms-5d703e70-2b3b-4da0-bf31-61cf8571538d-d3413c8ee0-900.webp",
+      "bytes": 32054,
+      "sha256": "fe8b67fac358ce44e7cdcd087c6f75c468726a0cc85ae08116b0a382c0c1769d"
+    },
+    {
+      "path": "images/company/cms-9f65e993-ee33-4031-951d-f11d3f300eb5-e34f212223-480.webp",
+      "bytes": 38548,
+      "sha256": "9b52b3634a3e360883cbaec82de7e5aac187e1eda58c8284484caec66da5f9bc"
+    },
+    {
+      "path": "images/company/cms-9f65e993-ee33-4031-951d-f11d3f300eb5-e34f212223-900.webp",
+      "bytes": 98828,
+      "sha256": "39306c4198b6ff008499bf261c62a1b52c18235f952d9fe8bb0b9e342a30268c"
+    },
+    {
+      "path": "images/company/cms-a993d45a-6737-4203-9e78-56fc735d161c-39aed583b3-480.webp",
+      "bytes": 41150,
+      "sha256": "2e4ae28d4de2652a4220dd61a0419a89c479dccdbf770e765e2b98349c3df9db"
+    },
+    {
+      "path": "images/company/cms-a993d45a-6737-4203-9e78-56fc735d161c-39aed583b3-900.webp",
+      "bytes": 91102,
+      "sha256": "d6036d81d5589be25072df757355cdf99ee0973d1b2199bf2d8d54966b7c8076"
+    },
+    {
+      "path": "images/company/cms-c1828eb1-57bc-4bb1-a5a7-2c65eafc931f-bd600704b3-480.webp",
+      "bytes": 25980,
+      "sha256": "783e5e5a403398d306ebe2a5d98434cb6bc3c079093ae0437e27f36a7609ee04"
+    },
+    {
+      "path": "images/company/cms-c1828eb1-57bc-4bb1-a5a7-2c65eafc931f-bd600704b3-900.webp",
+      "bytes": 65494,
+      "sha256": "75613f80441f2c6796a937c814ac2eb76543350349e67e905f97d6dc141d395a"
+    },
+    {
+      "path": "images/company/cms-f2caf872-7a9d-41f9-b123-66941cc96e93-23841f771c-480.webp",
+      "bytes": 26012,
+      "sha256": "d79904e8e85b3520379e295c43475a44856a971d87c18e1a287372350efead5e"
+    },
+    {
+      "path": "images/company/cms-f2caf872-7a9d-41f9-b123-66941cc96e93-23841f771c-900.webp",
+      "bytes": 62410,
+      "sha256": "06bb1edb66a52684e589a22125379bea7f95e1492e65fcfa2b2cc846725f1b3c"
+    },
+    {
+      "path": "images/company/cms-f2e81092-5ac2-47b3-a5e7-928380b957cc-cd3a60827a-480.webp",
+      "bytes": 20560,
+      "sha256": "40782db5b7a78758711bddbf69096edd5a4dd8502e1b921208ecf9c20c7fa555"
+    },
+    {
+      "path": "images/company/cms-f2e81092-5ac2-47b3-a5e7-928380b957cc-cd3a60827a-900.webp",
+      "bytes": 45578,
+      "sha256": "0ba9da9bef47f91ce59794b4d3d4b1a49bb8630e99f173c3d149230105f60246"
+    },
+    {
+      "path": "images/company/group-activity-poster.webp",
+      "bytes": 13376,
+      "sha256": "16b283d5e81ba64a5c7d5fa7ac406819a7b57dca38eea090f8f5878b8f1d9a9e"
+    },
+    {
+      "path": "images/company/group-activity.mp4",
+      "bytes": 2313266,
+      "sha256": "86448bfd932d54dd1666b14fbdb14904f93efd162362467e5a66a4b700faf5ea"
+    },
+    {
+      "path": "images/company/lesson-archive-frame.webp",
+      "bytes": 34230,
+      "sha256": "d3413c8ee0d8f1329fefb4c62f41b172f973ec1560e927e9b4ed7dfe9434155d"
+    },
+    {
+      "path": "images/company/potential-camp-group-1440.webp",
+      "bytes": 122080,
+      "sha256": "d904d2ce64f4b92dcca081a4cae9c2860e2fa3671d6deb36490953551b8df496"
+    },
+    {
+      "path": "images/company/potential-camp-group-480.webp",
+      "bytes": 27362,
+      "sha256": "3be85b108cc878af1dcc544b0ad5e7d25b7a26e7b7b020389e1bdff359967273"
+    },
+    {
+      "path": "images/company/potential-camp-group-900.webp",
+      "bytes": 65878,
+      "sha256": "23841f771ce03ce26d64d7b175e03b462eb2a96b10f4cb75eaf6abf5d991be39"
+    },
+    {
+      "path": "images/home/brand-pin.webp",
+      "bytes": 7492,
+      "sha256": "d51c2c92c0452504823324f2da2a2695ed171d90e26d5a165a4e4a8509b1df72"
+    },
+    {
+      "path": "images/home/brand-wristbands.webp",
+      "bytes": 26688,
+      "sha256": "0fdb5afebdab6dc249b6aaa4db7cd07d6bd14bb7432ae387da2807d58f6131d9"
+    },
+    {
+      "path": "images/home/camp-students.webp",
+      "bytes": 151204,
+      "sha256": "74092c92ff06a87b58c613f3dfbdda44a61024dc5dde1aeea07626aa5f0de642"
+    },
+    {
+      "path": "images/home/direction-adults-240.webp",
+      "bytes": 10124,
+      "sha256": "9d65fe15afceb0efd5321da91b26105f377ffc1b65ae4843234328b793ae7bab"
+    },
+    {
+      "path": "images/home/direction-adults-480.webp",
+      "bytes": 26600,
+      "sha256": "3f0a6bc895b9ff15756b2b4861fe695481ef354038a3725ccf43bb51e2b959bc"
+    },
+    {
+      "path": "images/home/direction-adults.webp",
+      "bytes": 48118,
+      "sha256": "b7730fb3d00872f65cbc6bd35034f8ca1cb68c1f92671dd8e6d4786dbd508003"
+    },
+    {
+      "path": "images/home/direction-kids-240.webp",
+      "bytes": 12338,
+      "sha256": "e85c0a4436ffb0cef093c81f4f16c51d099f854d0d98c42248b282bac46cbc1d"
+    },
+    {
+      "path": "images/home/direction-kids-480.webp",
+      "bytes": 34530,
+      "sha256": "fb1ab029c125776c50e16040d27dca3e66f56021655ed21a82624d1e34fca47d"
+    },
+    {
+      "path": "images/home/direction-kids.webp",
+      "bytes": 63942,
+      "sha256": "96301241eee08febbbb640c9ac31a433426055b043f9c378abb5e5555af99af7"
+    },
+    {
+      "path": "images/home/direction-teens-240.webp",
+      "bytes": 10878,
+      "sha256": "0ebe327654f018aa9a6d0ec0142477c55070e01c3b5223d55f26003531e05dd8"
+    },
+    {
+      "path": "images/home/direction-teens-480.webp",
+      "bytes": 30340,
+      "sha256": "e797062eb3939ba8a267603ebfb1104e92886ea102e85f6229430d23b52f6d9c"
+    },
+    {
+      "path": "images/home/direction-teens.webp",
+      "bytes": 61168,
+      "sha256": "493a1f12f386b8961731730834d096fa51984d62a5950634ff696ee4ae9fb837"
+    },
+    {
+      "path": "images/home/graduate-cap.webp",
+      "bytes": 57956,
+      "sha256": "9d332777350e4169211342495481d834f50d13f909c6b2458d6505360581586e"
+    },
+    {
+      "path": "images/home/hero-student-400.webp",
+      "bytes": 38510,
+      "sha256": "38fce69c99d1de544df99d3b94afde2ce1c36555ea2a555f083ed09bbf636ea3"
+    },
+    {
+      "path": "images/home/hero-student-640.webp",
+      "bytes": 103270,
+      "sha256": "622028f75f340a2a839ae6ca6320de9bcadc111a5587cf74bb6b93fa394f3f08"
+    },
+    {
+      "path": "images/home/hero-student.webp",
+      "bytes": 171520,
+      "sha256": "b78bae77fdd82b16fc8c659ac96fb2a6116e285d88ca1992c2b02645f699ad95"
+    },
+    {
+      "path": "images/home/ielts-target-240.webp",
+      "bytes": 7470,
+      "sha256": "e7b7bc15f3c79694ece1a3b50738eb5a8eba0f91a4540df2cbd2d55b59464eb4"
+    },
+    {
+      "path": "images/home/ielts-target-480.webp",
+      "bytes": 18686,
+      "sha256": "7cfa970e7bfae0bf324fd8d28586bdeb8a2ce3ecc53bab19e60be9d66c2da802"
+    },
+    {
+      "path": "images/home/ielts-target.webp",
+      "bytes": 30492,
+      "sha256": "df206da08fb4b98869f35099aabbf8a98ea8c6cf9fc87ef0d9363b4fed018580"
+    },
+    {
+      "path": "images/home/offline-class-240.webp",
+      "bytes": 10008,
+      "sha256": "178177c125ed94f7207b3cbe01ba36cc036635b21d1b8cdc198390e61fdbe462"
+    },
+    {
+      "path": "images/home/offline-class-480.webp",
+      "bytes": 23748,
+      "sha256": "282e6fba902913d79584108829b2b3dca9cf32b1141e84118b7784984ae83cb0"
+    },
+    {
+      "path": "images/home/offline-class.webp",
+      "bytes": 60444,
+      "sha256": "7a12294e250aa4288cda3dd993240d5c19837f6c8bbe55e4c4949e69f2437265"
+    },
+    {
+      "path": "images/home/travel-malaysia.webp",
+      "bytes": 146164,
+      "sha256": "b29e71e1ac7329b5162fdc41993d8156faa4027091719942bdb4ff7ab85609fe"
+    },
+    {
+      "path": "images/home/travel-prague-240.webp",
+      "bytes": 11990,
+      "sha256": "9d96f02ca33eab719323024485f04b7b3fb67901017860ca8300ba3cdce42105"
+    },
+    {
+      "path": "images/home/travel-prague-480.webp",
+      "bytes": 36630,
+      "sha256": "d4974f10f795830fbe3dbea62de97d0759d22fcd0b33a50d30bb8a557e3de15c"
+    },
+    {
+      "path": "images/home/travel-prague.webp",
+      "bytes": 125016,
+      "sha256": "80b49c1f8e13c271e69b1cef287f907af7f2c061ee5ad24bdb333149c401fc96"
+    },
+    {
+      "path": "index.html",
+      "bytes": 233837,
+      "sha256": "28c9d50155a42d9e024048a798893468071a205c699ed835e90f044eceb48889"
+    },
+    {
+      "path": "learning/index.html",
+      "bytes": 221874,
+      "sha256": "6b5124c84274b73bf5e559508107fdf13483f3f782167789e33c5c4669bdb774"
+    },
+    {
+      "path": "legal/index.html",
+      "bytes": 174513,
+      "sha256": "78358baf5d42b92bd711b4444e1631cd0a03627eafddb0e605062eb865e74909"
+    },
+    {
+      "path": "licenses/bebasneue-ofl.txt",
+      "bytes": 4337,
+      "sha256": "72082f6cb4d04be2ecf7cc7d9e1e7d73787f0af8a5a278a47cade70c16b78341"
+    },
+    {
+      "path": "licenses/inter-ofl.txt",
+      "bytes": 4377,
+      "sha256": "5b9321a4298cfeb6b34354164a1c3afc3db114569984c502b9b35d988fd58c57"
+    },
+    {
+      "path": "licenses/leaflet.txt",
+      "bytes": 1369,
+      "sha256": "bbc959aaef7488b38942e7f05cfd1244351f8bce54261951ea17dd7cf60f894b"
+    },
+    {
+      "path": "licenses/lucide.txt",
+      "bytes": 3208,
+      "sha256": "b495047bd93a9b06913511076f504daba17d5bbeb3e0650f3bb53a4220329c57"
+    },
+    {
+      "path": "offline/index.html",
+      "bytes": 179576,
+      "sha256": "8793058be2b0db92920218ec6bd613e6cb1d512ba4d23fe3e4f097ea051b3b47"
+    },
+    {
+      "path": "online/index.html",
+      "bytes": 179008,
+      "sha256": "ffc0894304568339d4cb8d7e3120ad1cf71c497b61290eb32d2a0ce77d3bd80a"
+    },
+    {
+      "path": "personal-data-consent/index.html",
+      "bytes": 165709,
+      "sha256": "e69554f8e647904e7bc4c6d0a00444669a40643799a9c1f5800dbc0fd1e82418"
+    },
+    {
+      "path": "privacy-policy/index.html",
+      "bytes": 165531,
+      "sha256": "f4e6c9e76811b5da8c6ce59399c92c4ee18f33bc18b29d02551c02c7e089ce43"
+    },
+    {
+      "path": "programs/english-adults/index.html",
+      "bytes": 180342,
+      "sha256": "9866f8569c60130ab6df1ec7ba47d7409afa62b2a44b1d0e2b54450a590d3c96"
+    },
+    {
+      "path": "programs/english-children/index.html",
+      "bytes": 180809,
+      "sha256": "2a6ce74007c165471223b373b749daac1b07197aec0a0f17b33295e398395526"
+    },
+    {
+      "path": "programs/english-teens/index.html",
+      "bytes": 180421,
+      "sha256": "7f529660cef477c226fef289d11d912df8e851d1127b1decbfb523bc888cdf4e"
+    },
+    {
+      "path": "robots.txt",
+      "bytes": 87,
+      "sha256": "62ed4305e1371acba9ff512799a5a43505ab559a84a71754c584a49d10e77965"
+    },
+    {
+      "path": "sitemap.xml",
+      "bytes": 5317,
+      "sha256": "82c0198b333a26f5a107c500122d674b0111a9f0df864714eb95210b16be3d30"
+    },
+    {
+      "path": "travel/europe-winter-2027/index.html",
+      "bytes": 183575,
+      "sha256": "fd57e086ccc3f995a0aa2688e5e794bfc9221b36104f725243bf94db17f61363"
+    },
+    {
+      "path": "travel/malaysia/index.html",
+      "bytes": 182607,
+      "sha256": "a5283a85660cf43e200430cf4ca7c32db9e8eb91048b4f1d4f596c4518b7230a"
+    }
+  ],
+  "profile": "public-ru",
+  "delivery": "demo",
+  "site": "https://arttechkz.github.io/GlstudyLanding/",
+  "upstreamRevision": "1f1a42934b179318807cb00b297e68cb48e314b41087ae9448fdcfb712839620",
+  "hashDefinition": "SHA-256 of UTF-8 JSON.stringify(records), in the recorded sorted path order; each record SHA verifies file bytes"
+}

@@ -1,0 +1,11 @@
+import fs from 'node:fs';
+export const scriptContent=JSON.parse(fs.readFileSync(process.env.GL_CONTENT_SNAPSHOT??new URL('../src/data/content-snapshot.json',import.meta.url),'utf8'));
+const content=scriptContent;
+import assert from 'node:assert/strict';
+import site from '../src/config/site.json' with { type: 'json' };
+assert.equal(new URL(site.origin).origin, site.origin, 'Origin must have no path, credentials or query');
+assert.match(site.origin, /^https:\/\//);assert.match(site.base, /^\/[A-Za-z0-9_-]+\/$/);
+assert.equal(new Set(site.routes.map(r=>r.path)).size, site.routes.length);
+for(const required of ['/', '/learning', '/online', '/offline', '/programs/english-children', '/programs/english-teens', '/programs/english-adults', '/ielts', '/ielts-kostanay', '/branches', '/branches/kostanay', '/branches/rudny', '/branches/taraz', '/branches/astana', '/branches/almaty', '/travel/europe-winter-2027', '/travel/malaysia', '/legal', '/privacy-policy', '/personal-data-consent', '/404'])assert.ok(site.routes.some(route=>route.path===required), 'Missing mandatory route '+required);
+assert.equal(new Set(site.routes.map(r=>r.target)).size,site.routes.length);
+export default {...site,routes:site.routes.filter(r=>!content.data.hiddenRoutes.includes(r.path))};

@@ -1,0 +1,28 @@
+import {evidencePath} from './evidence-path.js';
+import assert from'node:assert/strict';import fs from'node:fs';import{chromium}from'playwright';import{startLocalServer}from'./local-server.js';import site from'./site-config.js';
+const source=process.argv.includes('--source'),s=await startLocalServer(source?'dev':'static'),b=await chromium.launch({channel:'msedge'});const errors=[],results=[];let p;
+const clean=s=>s.replace(/\u00ad/g,'').replace(/\s+/g,' ').trim();
+try{
+ p=await b.newPage({viewport:{width:1440,height:1000}});p.on('pageerror',e=>errors.push(e.message));p.on('console',m=>{if(m.type()==='error'&&!m.text().includes('404'))errors.push(m.text())});
+ for(const route of site.routes){await p.goto(s.baseURL+route.path,{waitUntil:'networkidle'});await p.evaluate(()=>document.fonts.ready);assert.equal(await p.locator('h1').count(),1);
+  const emoji=await p.locator('body').innerText();assert.ok(!/\p{Extended_Pictographic}/u.test(emoji.replaceAll('©','')),'UI emoji '+route.path);
+  assert.ok(await p.locator('svg.study-icon').count()>0);const icons=await p.locator('svg.study-icon').evaluateAll(es=>es.map(e=>({hidden:e.getAttribute('aria-hidden'),focusable:e.getAttribute('focusable'),stroke:e.getAttribute('stroke'),width:Number(e.getAttribute('width')),sw:e.getAttribute('stroke-width')})));for(const icon of icons){assert.equal(icon.hidden,'true');assert.equal(icon.focusable,'false');assert.equal(icon.stroke,'currentColor');assert.equal(icon.sw,'2');assert.ok(icon.width>=14&&icon.width<=24)}
+  const unnamed=await p.locator('button:has(svg.study-icon)').evaluateAll(es=>es.filter(e=>!e.textContent.trim()&&!e.getAttribute('aria-label')&&!e.getAttribute('aria-labelledby')).length);assert.equal(unnamed,0);
+  assert.equal(await p.locator('#gl-study-jsonld').count(),1);const schema=JSON.parse(await p.locator('#gl-study-jsonld').textContent()),graph=schema['@graph'];assert.equal(graph.filter(n=>n['@type']==='Organization').length,1);assert.ok(!JSON.stringify(schema).match(/LocalBusiness|aggregateRating|ratingValue|taxID|postalAddress/));
+  for(const node of graph){if(node.url)assert.ok(node.url.startsWith(site.origin+site.base));if(node['@type']==='Course'){assert.ok(clean(await p.locator('main').innerText()).includes(node.name));assert.ok(node.description.length>10)}if(node['@type']==='FAQPage'){for(const item of node.mainEntity){assert.ok(clean(await p.locator('main').textContent()).includes(item.name));assert.ok(clean(await p.locator('main').textContent()).includes(item.acceptedAnswer.text))}}}
+  if(!source){const file='dist/'+route.target,html=fs.readFileSync(file,'utf8');assert.ok(html.includes('id="gl-study-jsonld"'),'Missing SSG JSON-LD');assert.ok(!/http:\/\/127\.0\.0\.1/.test(html),'Build origin leaked');assert.ok(!html.includes('<!--$?-->'),'Unresolved SSG stream');assert.equal((html.match(/<h1[ >]/g)??[]).length,1)}
+  if(!source && route.path==='/') {
+   const styles=await p.locator('style[data-ssg-stylesheet]').evaluateAll(es=>es.map(e=>({href:e.dataset.ssgStylesheet,css:e.textContent})));
+   assert.ok(styles.length>0,'Missing complete inline route CSS');
+   for(const style of styles){assert.ok(style.href.startsWith(site.base+'assets/'));assert.equal(style.css,fs.readFileSync('dist/'+style.href.slice(site.base.length),'utf8'),'Inline CSS differs from built stylesheet');}
+   const links=await p.locator('link[rel=stylesheet]').evaluateAll(es=>es.map(e=>({disabled:e.disabled,inlined:e.dataset.ssgInlined,href:e.getAttribute('href')})));
+   assert.equal(links.length,styles.length);for(const link of links){assert.equal(link.disabled,true);assert.equal(link.inlined,'true');assert.ok(styles.some(style=>style.href===link.href));}
+  }
+  results.push({route:route.path,icons:icons.length,schemaTypes:graph.map(n=>n['@type'])});
+ }
+ await p.goto(s.baseURL+'/',{waitUntil:'networkidle'});await p.locator('.hero__cta-secondary').click();await p.locator('[data-program=ielts-prep] .directions__card-link').focus();await p.keyboard.press('Enter');await p.waitForURL(/\/ielts\/?$/);await p.waitForFunction(()=>{const node=document.getElementById('gl-study-jsonld');return node&&JSON.parse(node.textContent)['@graph'].filter(n=>n['@type']==='Course').length===1});assert.equal(await p.locator('#gl-study-jsonld').count(),1);assert.equal(JSON.parse(await p.locator('#gl-study-jsonld').textContent())['@graph'].filter(n=>n['@type']==='Course').length,1);
+ await p.goto(s.baseURL+'/does-not-exist',{waitUntil:'networkidle'});assert.equal(await p.locator('#gl-study-jsonld').count(),0);
+ // Escape uses the same serialization as the SSG head, not innerHTML insertion.
+ const dev=source?s:await startLocalServer('dev');try{await p.goto(dev.origin+'/',{waitUntil:'networkidle'});const escaped=await p.evaluate(async()=>{const{safeSchemaJson}=await import('/src/utils/structuredData.ts');const input={name:'</script><img src=x onerror=alert(1)>\u2028'};const encoded=safeSchemaJson(input);return{encoded,roundtrip:JSON.parse(encoded).name===input.name}});assert.ok(!escaped.encoded.includes('<'));assert.ok(escaped.roundtrip)}finally{if(dev!==s)await dev.close()}
+ assert.deepEqual(errors,[]);fs.writeFileSync(evidencePath('.qa/study11/icons-schema.json'),JSON.stringify({source,results,errors,knownExceptions:['© copyright','4★ hotel class','18+ age','percentages/MY/text values','original GL STUDY and partner logos, permitted bitmap illustrations']},null,2));console.log('PASS icons and schema: 7 routes, SVG semantics/labels, no UI emoji, actual visible Course/FAQ/Breadcrumbs/Organization, no fake LocalBusiness, SPA cleanup, safe serialization and SSG');
+}finally{await b.close();await s.close()}

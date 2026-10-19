@@ -1,5 +1,8 @@
+import {Link} from '../../i18n/Link';
+import { useCopy } from '../../i18n/copy';
+import { useUi } from "../../i18n/index";
 import { type ReactNode } from 'react';
-import { Link } from 'react-router-dom';
+
 import { usePageSeo } from '../../hooks/usePageSeo';
 import type { SeoMeta } from '../../types';
 import './InnerPage.scss';
@@ -30,6 +33,8 @@ export default function InnerPageLayout({
   heroColor = 'violet',
   seo
 }: InnerPageProps) {
+  const copy = useCopy();
+  const t = useUi();
   usePageSeo(seo);
 
   return (
@@ -37,18 +42,18 @@ export default function InnerPageLayout({
       <div className={`inner-page__hero inner-page__hero--${heroColor}`}>
         <div className="container inner-page__hero-inner">
           {breadcrumbs && breadcrumbs.length > 0 && (
-            <nav className="inner-page__breadcrumbs" aria-label="Хлебные крошки">
+            <nav className="inner-page__breadcrumbs" aria-label={t("InnerPageLayout.khlebnye.kroshki")}>
               <ol className="inner-page__breadcrumbs-list">
                 <li>
-                  <Link to="/" className="inner-page__breadcrumb-link">Главная</Link>
+                  <Link to="/" className="inner-page__breadcrumb-link">{t("InnerPageLayout.glavnaya")}</Link>
                 </li>
                 {breadcrumbs.map((b, i) => (
                   <li key={i} className="inner-page__breadcrumb-item">
                     <span className="inner-page__breadcrumb-sep" aria-hidden="true">/</span>
                     {b.href ? (
-                      <Link to={b.href} className="inner-page__breadcrumb-link">{b.label}</Link>
+                      <Link to={b.href} className="inner-page__breadcrumb-link">{copy(b.label)}</Link>
                     ) : (
-                      <span className="inner-page__breadcrumb-current" aria-current="page">{b.label}</span>
+                      <span className="inner-page__breadcrumb-current" aria-current="page">{copy(b.label)}</span>
                     )}
                   </li>
                 ))}
@@ -66,7 +71,7 @@ export default function InnerPageLayout({
             {accentWord
               ? title.split(accentWord).flatMap((part, i) =>
                   i < title.split(accentWord).length - 1
-                    ? [part, <span key={i} className="inner-page__accent">{accentWord}</span>]
+                    ? [part, <span key={i} className="inner-page__accent">{copy(accentWord)}</span>]
                     : [part]
                 )
               : title}

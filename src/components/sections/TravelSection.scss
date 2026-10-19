@@ -188,8 +188,21 @@
 }
 
 .travel__card-flag {
-  font-size: 1.6rem;
-  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  padding: 0.45em 0.7em;
+  min-width: 2.75em;
+  min-height: 2.4em;
+  background: var(--gl-violet);
+  color: var(--gl-white);
+  border: 1px solid var(--gl-white);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-body);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-sm);
+  line-height: 1.4;
 }
 
 .travel__tag {
@@ -328,3 +341,6 @@
   text-align: center;
   justify-content: center;
 }
+
+// 19: localized words wrap within the existing type scale and layout.
+.travel__heading { overflow-wrap:anywhere;hyphens:auto; }

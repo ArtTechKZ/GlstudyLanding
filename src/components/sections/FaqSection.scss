@@ -126,3 +126,10 @@
     display: none;
   }
 }
+
+// Shared native accordion: open state remains available without JavaScript.
+.faq__item[open] { border-color: var(--gl-violet); }
+summary.faq__question { list-style: none; &::-webkit-details-marker { display: none; } }
+.faq__icon .study-icon { transition: transform var(--transition-fast); }
+.faq__item[open] > summary .faq__icon .study-icon { transform: rotate(45deg); }
+summary.faq__question:focus-visible { outline: 3px solid var(--gl-violet); outline-offset: -4px; box-shadow: none; }

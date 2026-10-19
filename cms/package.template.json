@@ -1,0 +1,15 @@
+{
+  "name": "gl-study-cms-sandbox",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "directus": "12.5.0",
+    "better-sqlite3": "13.0.3"
+  },
+  "overrides": {
+    "tar": "7.5.22",
+    "js-yaml@>=4 <5": "4.3.2",
+    "@ai-sdk/provider-utils@>=4 <5": "4.0.33",
+    "@opentelemetry/core@>=2 <3": "2.12.0"
+  }
+}

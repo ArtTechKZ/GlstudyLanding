@@ -1,0 +1,6 @@
+import {DirectusDataAdapter} from './directus-adapter.mjs';import {recordFingerprint} from './export-content.mjs';
+export async function publishLocalRecord({url,token,collection,id,locale='ru'}){
+ if(!['127.0.0.1','localhost'].includes(new URL(url).hostname))throw Error('Explicit local publisher only');if(!['cities','branches','programs','schedules','texts','images','trips','faq','teachers','reviews','seo','cta','documents','redirects'].includes(collection)||!/^[-a-f\d]{36}$/i.test(id)||locale!=='ru')throw Error('Publication target not approved');
+ const adapter=new DirectusDataAdapter({url,token}),record=(await adapter.request('items/gl_'+collection+'/'+id)).data;if(!record)throw Error('Record missing');if(collection==='documents'&&!record.operator_approved)throw Error('Legal document requires official operator approval');
+ const response=await fetch(new URL('/items/gl_'+collection+'/'+id,url),{method:'PATCH',headers:{Authorization:'Bearer '+token,'Content-Type':'application/json'},body:JSON.stringify({status:'published',approved_ru:true,approved_kk:false,approved_en:false,approval_hash:recordFingerprint(record)})});if(!response.ok)throw Error('Publication '+response.status);return (await response.json()).data;
+}

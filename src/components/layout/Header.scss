@@ -280,7 +280,7 @@
   position: fixed;
   top: 0;
   right: 0;
-  width: min(320px, 100vw);
+  width: min(20rem, 100vw);
   height: 100dvh;
   background-color: var(--gl-violet);
   z-index: calc(var(--z-sticky) + 1);
@@ -413,3 +413,29 @@
   z-index: var(--z-sticky);
   backdrop-filter: blur(2px);
 }
+
+.gl-header[data-compact=true] {
+ .gl-header__nav, .gl-header__cta.btn { display: none; }
+ .gl-header__burger { display: flex; }
+}
+.gl-header__burger { width:44px; height:44px; }
+.gl-header__mobile-top { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+.gl-header__mobile-inner { padding:clamp(16px,4vw,32px); }
+.gl-header__mobile-close { display:inline-flex; align-items:center; justify-content:center; width:44px; height:44px; flex:none; background:transparent; color:var(--gl-white); border:1px solid var(--gl-white); border-radius:12px; cursor:pointer; }
+.gl-header__mobile-close:focus-visible { outline:3px solid var(--gl-white); outline-offset:3px; }
+.gl-header__mobile-link { overflow-wrap:anywhere; }
+.gl-header__mobile-city { min-width:0; }
+.gl-header__mobile .gl-header__city-select { width:100%; max-width:100%; min-width:0; padding:12px 36px 12px 12px; }
+.gl-header__mobile-cta.btn { white-space:normal; min-width:0; padding:12px 16px; overflow-wrap:anywhere; }
+
+.gl-header__mobile .gl-header__lang { display:flex; gap:8px; }
+
+// Language URLs remain usable without JS; preserve the existing compact control.
+.gl-header__lang-btn { text-decoration:none;display:inline-flex;align-items:center;justify-content:center; }
+.study-dialog .gl-header__lang { display:flex; }
+
+// 19: enabled language controls and confirmed contacts remain legible on violet.
+.gl-header__mobile .study-phone-number { color:var(--gl-white); }
+.gl-header__mobile .gl-header__lang-btn { color:var(--gl-white);border-color:var(--gl-white); }
+.gl-header__mobile .gl-header__lang-btn--active { background:var(--gl-white);color:var(--gl-violet); }
+.gl-header__mobile a:focus-visible { outline:3px solid var(--gl-white);outline-offset:3px; }
