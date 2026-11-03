@@ -2,6 +2,7 @@ import {Link} from '../../i18n/Link';
 import { useCopy } from '../../i18n/copy';
 import Icon from '../ui/Icon';
 import { COMPANY } from '../../data/company';
+import { COMPANY_REQUISITES } from '../../data/requisites';
 import { useUi } from "../../i18n/index";
 import { sitePath } from '../../utils/sitePath';
 
@@ -109,6 +110,7 @@ export default function Footer() {
         <div className="container footer__bottom-inner">
           <p className="footer__copy">
             © {copy(year)}{t("Footer.gl.study.vse.prava.zashchishcheny")}</p>
+          <p className="footer__copy footer__requisites" data-footer-requisites><span lang="ru">{COMPANY_REQUISITES.shortName}</span> · {t("Footer.bin")} <span className="study-phone-number">{COMPANY_REQUISITES.bin}</span> · <Link to="/branches#requisites">{t("Footer.rekvizity")}</Link></p>
           <p className="footer__legal-note">{t("Footer.demonstratsionnyy.rezhim.sayt.v.razrabotke")}</p>
           <div className="footer__legal-links">
             <button type="button" data-consent-settings onClick={settings} style={{ color: 'var(--gl-black)', textDecoration: 'underline', minHeight: 44 }}>{t("Footer.nastroyki.cookie")}</button>
