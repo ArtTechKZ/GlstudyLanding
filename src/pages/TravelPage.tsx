@@ -6,9 +6,10 @@ import {useParams} from 'react-router-dom';
 import InnerPageLayout from '../components/layout/InnerPageLayout';
 import FaqAccordion from '../components/ui/FaqAccordion';
 import TripItinerary from '../components/ui/TripItinerary';
-import LeadFormSection from '../components/sections/LeadFormSection';
+import ContactSection from '../components/sections/ContactSection';
+import WhatsAppLink from '../components/ui/WhatsAppLink';
 import {TRAVEL_PROGRAMS} from '../data/demo';
-import {COMPANY} from '../data/company';
+import {CONTACTS} from '../data/contacts';
 import {SEO_METADATA} from '../data/seo';
 import {sitePath} from '../utils/sitePath';
 export default function TravelPage({slug}:{slug?:string}={}) {
@@ -25,9 +26,9 @@ export default function TravelPage({slug}:{slug?:string}={}) {
  ...(program.additionalOption?[{id:'tour',question:'Куда проходит дополнительный тур?',answer:formatList(program.additionalOption.includes.map(item=>copy(item)),t.locale??'ru')}]:[])
  ];
  return <InnerPageLayout title={copy(program.title).toLocaleUpperCase(t.locale)} subtitle={copy(program.destination)} accentWord={copy(isPrague?'ПРАГИ':'МАЛАЙЗИИ')} tag={copy("Зарубежные каникулы")} heroColor={isPrague?'violet':'orange'} seo={isPrague?SEO_METADATA.travelPrague:SEO_METADATA.travelMalaysia} breadcrumbs={[{label:'Зарубежные каникулы',href:'/#travel'},{label:program.title}]}>
- <div className="container" style={{display:'grid',gap:'var(--sp-6)',paddingBottom:'var(--sp-8)'}}>
+ <div className="container" style={{display:'grid',gridTemplateColumns:'minmax(0,1fr)',gap:'var(--sp-6)',paddingBottom:'var(--sp-8)'}}>
  <img className="travel-page__cover" src={sitePath(isPrague?'/images/home/travel-prague.webp':'/images/home/travel-malaysia.webp')} alt={copy(program.destination)} width={800} height={635}/>
- <div className="study-actions"><a href="#lead-form" className="study-button" data-cta="travel-consultation">{copy("Обсудить поездку")}</a><a className="study-button" href={COMPANY.internationalWhatsApp} target="_blank" rel="noreferrer">{copy("WhatsApp зарубежных программ")}</a></div>
+ <div className="study-actions"><WhatsAppLink kind="program" title={program.title} cta="travel-consultation">{copy("Написать в WhatsApp")}</WhatsAppLink><a className="study-button" href={CONTACTS.internationalPhoneHref}>{copy("Международный отдел: ")}<span className="study-phone-number">{copy(CONTACTS.internationalPhone)}</span></a></div>
  <div className="brief-block__grid">
  <div className="study-panel surface-orange-light"><h2>{copy("Даты программы")}</h2><strong>{dates}</strong><p>{formatTripDuration(program,t)}</p></div>
  <div className="study-panel"><h2>{copy("Возраст участников")}</h2><strong>{t("Common.ageFrom",{age})}</strong></div>
@@ -38,6 +39,6 @@ export default function TravelPage({slug}:{slug?:string}={}) {
  {program.additionalOption&&<section className="study-panel surface-orange-light"><h2>{copy("Дополнительный тур: ")}{copy(program.additionalOption.title)}</h2><p>{copy(formatList(program.additionalOption.includes.map(item=>copy(item)),t.locale??'ru'))}</p><p>{copy("Условия проведения дополнительного тура уточняются.")}</p></section>}
  {!!program.itinerary?.length && <TripItinerary program={program}/>}<section className="study-panel"><h2>{t("Full.safety")}</h2><p>{copy(isPrague?"Сопровождение кураторов 24/7":"Сопровождение групп-лидеров")}</p><p>{t("Full.safetyPending")}</p></section><section className="study-panel surface-violet-light"><h2>{copy("Подробности поездки")}</h2><p>{copy("Программа по дням, город вылета, сроки подачи заявки, наличие мест и дополнительные условия уточняются у менеджера.")}</p></section>
  <section aria-labelledby="travel-faq-heading"><h2 className="section-heading" id="travel-faq-heading">{copy("Вопросы о программе")}</h2><FaqAccordion items={faq}/></section>
- </div><LeadFormSection/>
+ </div><ContactSection kind="program" title={program.title}/>
  </InnerPageLayout>;
 }

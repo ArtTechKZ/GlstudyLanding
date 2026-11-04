@@ -1,5 +1,6 @@
 import {evidencePath} from './evidence-path.js';
-import fs from 'node:fs';import assert from 'node:assert/strict';import {chromium} from 'playwright';import {startLocalServer} from './local-server.js';import {localizedRoutes,approvedLocales} from '../src/config/locale-routes.js';import {checkCatalogs} from './localization-catalog-check.js';
+import fs from 'node:fs';import assert from 'node:assert/strict';import {chromium} from 'playwright';import {startLocalServer} from './local-server.js';import {localizedRoutes,approvedLocales} from '../src/config/locale-routes.js';import {checkCatalogs} from './localization-catalog-check.js';import {requireLocalizedBuild} from './profile-guard.js';import {scriptContent} from './site-config.js';import {readWhatsAppLink,whatsappProblems} from './whatsapp-check.js';
+requireLocalizedBuild('test:full-tz');
 const folder=evidencePath('.qa/study22');fs.mkdirSync(folder,{recursive:true});checkCatalogs();
 const s=await startLocalServer('static'),b=await chromium.launch({channel:'msedge',args:['--disable-gpu']});const results=[],errors=[];
 try{
@@ -10,7 +11,8 @@ try{
  for(const route of localizedRoutes.filter(r=>!['home','learning','ielts','branches','travelPrague','travelMalaysia','legal','notFound'].includes(r.seo))){
   await p.goto(s.baseURL+route.path,{waitUntil:'networkidle'});await p.waitForFunction(()=>performance.getEntriesByName('gl:hydration:commit').length>0);
   if(route.semanticPath.startsWith('/branches/'))assert.equal(await p.locator('#city-select').inputValue(),route.semanticPath.split('/').at(-1));
-  if(route.semanticPath.startsWith('/programs/')){await p.locator('a[data-cta^=enrol]').click();assert.equal(await p.getByRole('dialog').locator('[name=program]').inputValue(),route.semanticPath.split('/').at(-1));await p.keyboard.press('Escape');}
+  // GL-STUDY-31: the programme CTA is a WhatsApp link (not a form dialog). Read it as data: recipient, prescribed text and the Russian programme name, in every locale.
+  if(route.semanticPath.startsWith('/programs/')){const slug=route.semanticPath.split('/').at(-1),title=scriptContent.data.programs.find(x=>x.slug===slug).title,wa=await readWhatsAppLink(p.locator('a[data-cta^=enrol]'));assert.deepEqual(whatsappProblems([wa]),[],route.path);assert.equal(wa.text,'Здравствуйте, пишу с сайта, хотел подробнее узнать про программу "'+title+'"',route.path);assert.equal(await p.getByRole('dialog').count(),0,route.path);}
   if(['privacyPolicy','personalDataConsent'].includes(route.seo))assert.equal(await p.locator('main form').count(),0);
   const images=await p.locator('main img').evaluateAll(async es=>{await Promise.all(es.map(e=>e.decode().catch(()=>{})));return es.filter(e=>!e.complete||!e.naturalWidth).map(e=>e.src)});assert.deepEqual(images,[],route.path);
   for(const width of [320,390,768,1280,1440]){await p.setViewportSize({width,height:900});await p.evaluate(()=>document.fonts.ready);assert.ok(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),route.path+' '+width);const clipped=await p.locator('h1').evaluate(e=>{const box=e.getBoundingClientRect(),range=document.createRange();range.selectNodeContents(e);return [...range.getClientRects()].some(r=>r.width&&(r.left<box.left-1.5||r.right>box.right+1.5))});assert.equal(clipped,false,'H1 text containment '+route.path+' '+width);}

@@ -4,7 +4,8 @@ import { useCopy } from '../i18n/copy';
 import Icon from '../components/ui/Icon';
 import { useState } from 'react';
 import InnerPageLayout from '../components/layout/InnerPageLayout';
-import LeadFormSection from '../components/sections/LeadFormSection';
+import ContactSection from '../components/sections/ContactSection';
+import WhatsAppLink from '../components/ui/WhatsAppLink';
 import { SEO_METADATA } from '../data/seo';
 import './IeltsPage.scss';
 
@@ -124,7 +125,7 @@ export default function IeltsPage() {
           </div>
         </section>
 
-        <section className="study-panel" style={{marginBottom:'var(--sp-6)'}}><h2 className="section-heading">{copy("УСЛОВИЯ ПОДГОТОВКИ")}</h2><p>{copy("Онлайн и офлайн, индивидуально или мини-группа 2–6 человек.")}</p><p>{copy("Курс — 3 месяца, 36 часов. Рекомендуемый входной уровень — Intermediate+.")}</p><p>{copy("Диагностика перед обучением и полные пробные экзамены Reading, Writing, Listening, Speaking.")}</p><a href="#lead-form" className="study-button" data-cta="ielts-course">{copy("Получить консультацию")}</a></section>
+        <section className="study-panel" style={{marginBottom:'var(--sp-6)'}}><h2 className="section-heading">{copy("УСЛОВИЯ ПОДГОТОВКИ")}</h2><p>{copy("Онлайн и офлайн, индивидуально или мини-группа 2–6 человек.")}</p><p>{copy("Курс — 3 месяца, 36 часов. Рекомендуемый входной уровень — Intermediate+.")}</p><p>{copy("Диагностика перед обучением и полные пробные экзамены Reading, Writing, Listening, Speaking.")}</p><WhatsAppLink kind="program" title="Подготовка к IELTS" cta="ielts-course">{copy("Написать в WhatsApp")}</WhatsAppLink></section>
 
         <section
           id="kostanay"
@@ -204,8 +205,8 @@ export default function IeltsPage() {
           </div>
 
           <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
-            <a href="#lead-form" data-city="kostanay" className="btn btn-primary" style={{ padding: '0.75rem 2rem' }}>
-              {copy("Записаться на подготовку в Костанае")}</a>
+            <WhatsAppLink kind="program" title="Подготовка к IELTS" className="btn btn-primary" cta="ielts-kostanay">
+              {copy("Написать в WhatsApp")}</WhatsAppLink>
           </div>
         </section>
 
@@ -272,8 +273,7 @@ export default function IeltsPage() {
         </section>
       </div>
 
-      {/* Block 6: Lead form */}
-      <LeadFormSection />
+      <ContactSection kind="program" title="Подготовка к IELTS" />
     </InnerPageLayout>
   );
 }

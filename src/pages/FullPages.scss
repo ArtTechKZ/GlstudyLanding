@@ -5,6 +5,12 @@
 #root .full-page h3 {font-weight:700;margin-bottom:.75rem;}
 #root .full-page p {line-height:1.65;margin-bottom:1rem;}
 #root .full-page ul {padding-left:1.4rem;line-height:1.8;margin-bottom:1.5rem;}
+#root .legal-document h2 {font-size:clamp(1.25rem,2.6vw,1.75rem);text-transform:none;}
+#root .legal-document h3 {margin-top:1.25rem;}
+#root .legal-document h4 {font-weight:700;margin:1rem 0 .5rem;}
+#root .legal-document ul {list-style:disc;padding-left:1.5rem;margin-bottom:1rem;}
+#root .legal-document li {margin-bottom:.35rem;}
+#root .legal-document {overflow-wrap:anywhere;}
 #root .full-intro {display:grid;grid-template-columns:1.3fr 1fr;gap:2rem;align-items:center;}
 #root .full-intro img {width:100%;height:auto;max-height:360px;object-fit:contain;border-radius:24px;}
 #root .full-grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:1rem;}

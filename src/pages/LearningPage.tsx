@@ -6,7 +6,8 @@ import { sitePath } from '../utils/sitePath';
 import { useState } from 'react';
 
 import InnerPageLayout from '../components/layout/InnerPageLayout';
-import LeadFormSection from '../components/sections/LeadFormSection';
+import ContactSection from '../components/sections/ContactSection';
+import WhatsAppLink from '../components/ui/WhatsAppLink';
 import CourseFacts from '../components/ui/CourseFacts';
 import './LearningPage.scss';
 import { TRIAL_PROCESS } from '../data/demo';
@@ -121,8 +122,8 @@ export default function LearningPage() {
               <h2 className="section-heading" style={{ color: 'var(--gl-black)', margin: 0 }}>
                 {copy("АНГЛИЙСКИЙ ДЛЯ ДЕТЕЙ")}</h2>
             </div>
-            <a href="#lead-form" className="btn btn-primary" style={{ padding: '0.6rem 1.5rem' }}>
-              {copy("Записать ребёнка")}</a>
+            <WhatsAppLink kind="program" title="Английский для детей" className="btn btn-primary" cta="learning-children">
+              {copy("Написать в WhatsApp")}</WhatsAppLink>
           </div>
 
           <p style={{ fontSize: 'var(--fs-body)', color: 'rgba(0,0,0,0.75)', maxWidth: '42rem', marginBottom: 'var(--sp-5)', lineHeight: 1.6 }}>
@@ -170,8 +171,8 @@ export default function LearningPage() {
               <h2 className="section-heading" style={{ color: 'var(--gl-black)', margin: 0 }}>
                 {copy("АНГЛИЙСКИЙ ДЛЯ ПОДРОСТКОВ")}</h2>
             </div>
-            <a href="#lead-form" className="btn btn-primary" style={{ padding: '0.6rem 1.5rem' }}>
-              {copy("Записать подростка")}</a>
+            <WhatsAppLink kind="program" title="Английский для подростков" className="btn btn-primary" cta="learning-teens">
+              {copy("Написать в WhatsApp")}</WhatsAppLink>
           </div>
 
           <p style={{ fontSize: 'var(--fs-body)', color: 'rgba(0,0,0,0.75)', maxWidth: '42rem', marginBottom: 'var(--sp-5)', lineHeight: 1.6 }}>
@@ -219,8 +220,8 @@ export default function LearningPage() {
               <h2 className="section-heading" style={{ color: 'var(--gl-black)', margin: 0 }}>
                 {copy("АНГЛИЙСКИЙ ДЛЯ ВЗРОСЛЫХ")}</h2>
             </div>
-            <a href="#lead-form" className="btn btn-primary" style={{ padding: '0.6rem 1.5rem' }}>
-              {copy("Записаться на курс")}</a>
+            <WhatsAppLink kind="program" title="Английский для взрослых" className="btn btn-primary" cta="learning-adults">
+              {copy("Написать в WhatsApp")}</WhatsAppLink>
           </div>
 
           <p style={{ fontSize: 'var(--fs-body)', color: 'rgba(0,0,0,0.75)', maxWidth: '42rem', marginBottom: 'var(--sp-5)', lineHeight: 1.6 }}>
@@ -301,8 +302,8 @@ export default function LearningPage() {
                 <span style={{ fontSize: 'var(--fs-sm)', color: 'rgba(0,0,0,0.7)' }}>
                   {copy("Ноутбук, планшет или ПК с камерой и микрофоном, стабильный доступ в интернет.")}</span>
               </div>
-              <a href="#lead-form" className="btn btn-primary" style={{ padding: '0.6rem 1.5rem' }}>
-                {copy("Попробовать онлайн")}</a>
+              <WhatsAppLink kind="program" title="Онлайн-обучение" className="btn btn-primary" cta="learning-online">
+                {copy("Написать в WhatsApp")}</WhatsAppLink>
             </div>
           </div>
         </section>
@@ -325,7 +326,7 @@ export default function LearningPage() {
               {copy("Живое погружение в языковую среду в современных учебных центрах GL Study в Костанае, Рудном, Таразе, Астане и Алматы.")}</p>
 
             <CityPicker />
-            <a href="#lead-form" className="study-button" data-program="offline" data-format="offline" data-cta="offline-free-trial">{copy("Записаться на бесплатный урок")}</a>
+            <WhatsAppLink kind="program" title="Офлайн-обучение" cta="offline-free-trial">{copy("Написать в WhatsApp")}</WhatsAppLink>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 'var(--sp-3)' }}>
               {OFFLINE_FEATURES.map((f, i) => (
                 <div
@@ -410,8 +411,7 @@ export default function LearningPage() {
 
       </div>
 
-      {/* Trial lesson form */}
-      <LeadFormSection />
+      <ContactSection kind="trial" />
     </InnerPageLayout>
   );
 }

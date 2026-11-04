@@ -359,19 +359,6 @@ h1, h2, h3, h4, h5, h6 {
   text-transform: uppercase;
 }
 
-// ─── Demo mode banner ─────────────────────────────────────────────────────────
-.demo-banner {
-  background-color: var(--gl-orange-light);
-  border-bottom: 1px solid rgba(242, 76, 10, 0.25);
-  color: var(--gl-black);
-  text-align: center;
-  padding: 0.5rem var(--gutter);
-  font-size: var(--fs-sm);
-  font-weight: var(--fw-semibold);
-  position: relative;
-  z-index: var(--z-sticky);
-}
-
 // ─── Animations ───────────────────────────────────────────────────────────────
 @keyframes fade-up {
   from {

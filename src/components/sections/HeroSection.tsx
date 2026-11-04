@@ -1,5 +1,6 @@
 import { useCopy } from '../../i18n/copy';
 import { sitePath } from '../../utils/sitePath';
+import WhatsAppLink from '../ui/WhatsAppLink';
 import './HeroSection.scss';
 
 export default function HeroSection() {
@@ -31,8 +32,8 @@ export default function HeroSection() {
 
             {/* CTA row */}
             <div className="hero__ctas">
-              <a href="#lead-form" className="btn btn-primary hero__cta-main">
-                {copy("Бесплат­ный урок")}</a>
+              <WhatsAppLink kind="trial" className="btn btn-primary hero__cta-main" cta="hero-trial">
+                {copy("Бесплат­ный урок")}</WhatsAppLink>
               <a href="#directions" className="btn btn-outline-white hero__cta-secondary">
                 {copy("Выбрать программу")}</a>
             </div>

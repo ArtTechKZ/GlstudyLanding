@@ -1,10 +1,7 @@
 import {parseLocalePath,localizedPath} from '../config/locale-routes.js';
-import { useUi } from "../i18n/index";
 import { startTransition, useEffect, useLayoutEffect, type ReactNode, type MouseEvent } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useLeads } from './leads';
-import StudyDialog from '../components/ui/StudyDialog';
-import LeadFormSection from '../components/sections/LeadFormSection';
 import { useCityContext } from '../hooks/useCityContext';
 import { getEarlyRuntime, type EarlyLead } from './early-runtime';
 import { leadIntent } from './lead-intent';
@@ -12,8 +9,7 @@ import { EMPTY_DRAFT, type LeadDraft } from './lead-model';
 import { useRef } from 'react';
 import { useClientReady } from '../context/clientReady';
 export default function LeadActions({ children }: { children: ReactNode }) {
-  const t = useUi();
-  const { open, setOpen, begin, setDraft } = useLeads();
+  const { begin, setDraft } = useLeads();
   const location = useLocation();
   const navigate = useNavigate();
   const ready=useClientReady();
@@ -73,5 +69,7 @@ export default function LeadActions({ children }: { children: ReactNode }) {
     if (a.dataset.branch) selectBranch(a.dataset.branch);
     begin(leadIntent(a,location.pathname).request);
   }
-  return <div onClickCapture={capture}>{children}{open && <StudyDialog title={t("LeadActions.demoforma.zayavki")} onClose={() => setOpen(false)}><LeadFormSection compact /></StudyDialog>}</div>;
+  // GL-STUDY-30: the demo lead dialog is no longer rendered — no public link targets #lead-form any more.
+  // Contact now goes through WhatsApp (src/features/whatsapp.ts). Restore the dialog only with an approved lead endpoint.
+  return <div onClickCapture={capture}>{children}</div>;
 }

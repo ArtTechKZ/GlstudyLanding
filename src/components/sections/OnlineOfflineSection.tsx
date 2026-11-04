@@ -2,6 +2,7 @@ import {Link} from '../../i18n/Link';
 import { useCopy } from '../../i18n/copy';
 import CityPicker from '../ui/CityPicker';
 import Icon from '../ui/Icon';
+import WhatsAppLink from '../ui/WhatsAppLink';
 import { sitePath } from '../../utils/sitePath';
 
 import './OnlineOfflineSection.scss';
@@ -41,7 +42,7 @@ export default function OnlineOfflineSection() {
               </ul>
 
               <CityPicker />
-              <a href="#lead-form" className="study-button" data-format="offline" data-cta="offline-trial">{copy("Записаться на бесплатный урок")}</a>
+              <WhatsAppLink kind="program" title="Офлайн-обучение" cta="offline-trial">{copy("Написать в WhatsApp")}</WhatsAppLink>
               <div className="oo-card__actions">
                 <Link to="/branches" className="btn btn-primary oo-card__btn">
                   {copy("Выбрать филиал")}</Link>
@@ -85,8 +86,8 @@ export default function OnlineOfflineSection() {
               </ul>
 
               <div className="oo-card__actions">
-                <a href="#lead-form" className="btn btn-primary oo-card__btn">
-                  {copy("Попробовать онлайн")}</a>
+                <WhatsAppLink kind="program" title="Онлайн-обучение" className="btn btn-primary oo-card__btn" cta="online-trial">
+                  {copy("Написать в WhatsApp")}</WhatsAppLink>
                 <Link to="/online" className="oo-card__link">
                   {copy("Об онлайн-обучении →")}</Link>
               </div>

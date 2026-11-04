@@ -117,7 +117,9 @@
 
 .footer__phone {
   display: block;
-  font-size: 1.25rem;
+  // GL-STUDY-31: every branch now has a phone, so this line is always rendered. At 1.25rem it grew to 40px in 200% text and left the
+  // 320px viewport; phone numbers keep the base size like every other .study-phone-number (test:study17 asserts 16px x factor).
+  font-size: 1rem;
   font-weight: var(--fw-bold);
   color: var(--gl-white);
   text-decoration: none;
@@ -180,14 +182,6 @@
 .footer__copy {
   font-size: var(--fs-xs);
   color: rgba(255, 255, 255, 0.75); // 9.4:1 contrast on black (WCAG AA pass!)
-}
-
-.footer__legal-note {
-  font-size: var(--fs-xs);
-  color: var(--gl-white);
-  background: rgba(255, 255, 255, 0.15);
-  padding: 3px 10px;
-  border-radius: 4px;
 }
 
 .footer__legal-links {
@@ -261,8 +255,14 @@
 .footer__inner > *, .footer__nav-col { min-width:0; }
 .footer__nav { grid-template-columns:repeat(3,minmax(0,1fr)); }
 .footer__nav, .footer__contacts { overflow-wrap:anywhere; }
+.footer__contacts > p { margin:0 0 .5rem; }
+.footer__contacts > .footer__contacts-heading { margin-top:1rem; }
 @media(max-width:1023px){ .footer__inner { grid-template-columns:repeat(2,minmax(0,1fr)); } }
 @media(max-width:767px){ .footer__inner { grid-template-columns:minmax(0,1fr); } }
 @media(max-width:579px){ .footer__nav { grid-template-columns:repeat(2,minmax(0,1fr)); } }
 
 .footer__mobile-cta, .footer__cta { min-width:0; max-width:100%; overflow-wrap:anywhere; padding-inline:12px; }
+
+// GL-STUDY-31: on phones the fixed WhatsApp bar sits over the bottom of the page. Without this reserve it covered the last
+// footer links (cookie settings, privacy policy, personal-data consent) at maximum scroll, so they could not be seen or tapped.
+@media(max-width:767px){ .footer { padding-bottom: calc(6rem + env(safe-area-inset-bottom)); } }

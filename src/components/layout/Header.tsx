@@ -4,6 +4,7 @@ import LanguagePicker from '../ui/LanguagePicker';
 import { useCopy } from '../../i18n/copy';
 import { useUi, type Translator } from "../../i18n/index";
 import Icon from '../ui/Icon';
+import WhatsAppLink from '../ui/WhatsAppLink';
 import { sitePath } from '../../utils/sitePath';
 import { useState, useEffect, useCallback } from 'react';
 import {useLocation} from 'react-router-dom';
@@ -56,7 +57,7 @@ export default function Header() {
     const header = document.querySelector<HTMLElement>('.gl-header')!, inner = header.querySelector<HTMLElement>('.gl-header__inner')!;
     const nav = header.querySelector<HTMLElement>('.gl-header__nav-list')!, controls = header.querySelector<HTMLElement>('.gl-header__controls')!, logo = header.querySelector<HTMLElement>('.gl-header__logo')!;
     let frame = 0;
-    const fit = () => { frame = 0; header.dataset.compact = 'false'; const row = nav.getBoundingClientRect(), brand = logo.getBoundingClientRect(), actions = controls.getBoundingClientRect(); const overlaps = nav.offsetWidth > 0 && (row.left < brand.right - 1 || row.right > actions.left + 1); header.dataset.compact = String(innerWidth >= 768 && (actions.right > innerWidth - 12 || overlaps)); };
+    const fit = () => { frame = 0; header.dataset.compact = 'false'; const row = nav.getBoundingClientRect(), brand = logo.getBoundingClientRect(), actions = controls.getBoundingClientRect(); const edge = inner.getBoundingClientRect().right - parseFloat(getComputedStyle(inner).paddingRight); const overlaps = nav.offsetWidth > 0 && (row.left < brand.right - 1 || row.right > actions.left + 1); header.dataset.compact = String(innerWidth >= 768 && (actions.right > edge + 1 || overlaps)); };
     const schedule = () => { if (!frame) frame = requestAnimationFrame(fit); };
     const observer = new ResizeObserver(schedule); [inner,nav,controls].forEach(node => observer.observe(node));
     document.fonts.addEventListener('loadingdone',schedule); addEventListener('resize',schedule); schedule();
@@ -87,9 +88,6 @@ export default function Header() {
       className={`gl-header${scrolled ? ' gl-header--scrolled' : ''}`}
       onKeyDown={handleKeyDown}
     >
-      <div className="demo-banner" role="alert">
-        <Icon name="tools" size={18} />{t("Header.demonstratsionnyy.rezhim.dannye.zaglushki.priyom")}</div>
-
       <div className="gl-header__bar">
         <div className="container gl-header__inner">
           {/* Logo with safe zone */}
@@ -142,7 +140,7 @@ export default function Header() {
             {/* Phone — only shown when real data available */}
 
             {/* CTA */}
-            <a href={sitePath('/#lead-form')} className="btn btn-violet gl-header__cta">{t("Header.besplatnyy.urok")}</a>
+            <WhatsAppLink kind="trial" className="btn btn-violet gl-header__cta" cta="header-trial">{t("Header.besplatnyy.urok")}</WhatsAppLink>
 
             {/* Mobile hamburger */}
             <button
@@ -218,11 +216,12 @@ export default function Header() {
             </ul>
           </nav>
 
-          <a
-            href={sitePath('/#lead-form')}
+          <WhatsAppLink
+            kind="trial"
             className="btn btn-primary gl-header__mobile-cta"
             onClick={() => setMenuOpen(false)}
-          >{t("Header.poluchit.besplatnyy.urok")}</a>
+            cta="header-mobile-trial"
+          >{t("Header.poluchit.besplatnyy.urok")}</WhatsAppLink>
         </div>
       </div>
 

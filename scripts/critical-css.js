@@ -5,7 +5,7 @@ export function firstScreenCss(css) {
  const root=postcss.parse(css);
  root.walkRules(rule=>{
   if(rule.parent.type==='atrule'&&/keyframes$/.test(rule.parent.name))return;
-  const keep=rule.selectors.some(selector=>/^(?:[a-z][\w-]*(?:$|[:[ >+~])|\*|:root|\[hidden\]|\.container\b|\.btn(?:[-:\s.]|$)|\.section\b|\.sr-only\b|\.skip-link\b|\.gl-header|\.demo-banner|\.hero|\.directions|\.study-|\.footer|\.gl-bg-pattern)/i.test(selector.trim()));
+  const keep=rule.selectors.some(selector=>/^(?:[a-z][\w-]*(?:$|[:[ >+~])|\*|:root|\[hidden\]|\.container\b|\.btn(?:[-:\s.]|$)|\.section\b|\.sr-only\b|\.skip-link\b|\.gl-header|\.hero|\.directions|\.study-|\.footer|\.gl-bg-pattern)/i.test(selector.trim()));
   if(!keep)rule.remove();
  });
  root.walkAtRules(rule=>{if(rule.nodes?.length===0)rule.remove()});

@@ -67,7 +67,8 @@ try{
     assert.ok(await p.locator('.directions__card').evaluateAll(es=>es.some(e=>e.contains(document.activeElement))));
     await p.locator('footer').scrollIntoViewIfNeeded();
     const phones=await p.locator('footer .study-phone-number').evaluateAll(es=>es.map(e=>{const r=document.createRange();r.selectNodeContents(e);return [...r.getClientRects()].filter(r=>r.width).length}));assert.ok(phones.length>=2&&phones.every(n=>n===1));
-    assert.equal(await p.locator('footer a[href="tel:+77055589219"]').count(),1);assert.equal(await p.locator('footer a[href="https://wa.me/77073106822"]').count(),1);
+    // GL-STUDY-30: footer phone is the international department; WhatsApp goes to the main number through the shared helper.
+    assert.ok(await p.locator('footer a[href="tel:+77073106822"]').count()>=1);assert.equal(await p.locator('footer a[href^="https://wa.me/77055589219?text="]').first().isVisible(),true);assert.equal(await p.locator('a[href="https://wa.me/77073106822"]').count(),0);assert.equal(await p.locator('a[href="#lead-form"]').count(),0);
     await p.locator('.footer__contacts').screenshot({path:dir+'/contacts-'+width+'.png'});
     const burger=p.locator('.gl-header__burger');if(await burger.isVisible()){await burger.click();await p.locator('#mobile-menu').waitFor({state:'visible'});await p.keyboard.press('Escape');await p.locator('#mobile-menu').waitFor({state:'hidden'});}
     await p.goto(base+'/ielts/',{waitUntil:'networkidle'});assert.match(await p.locator('h1').innerText(),/IELTS/);
