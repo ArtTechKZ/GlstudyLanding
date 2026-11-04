@@ -1,0 +1,1 @@
+import{G as e,J as t,q as n}from"./usePageSeo-B5aOdRZ8.js";function r(r){return r.startsWith(`/`)&&!r.startsWith(`//`)?`/GlstudyLanding/`+(t(r)?e(r,n(location.pathname).locale):r).slice(1):r}export{r as t};
