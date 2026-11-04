@@ -26,7 +26,7 @@ export default function TravelPage({slug}:{slug?:string}={}) {
  ...(program.additionalOption?[{id:'tour',question:'Куда проходит дополнительный тур?',answer:formatList(program.additionalOption.includes.map(item=>copy(item)),t.locale??'ru')}]:[])
  ];
  return <InnerPageLayout title={copy(program.title).toLocaleUpperCase(t.locale)} subtitle={copy(program.destination)} accentWord={copy(isPrague?'ПРАГИ':'МАЛАЙЗИИ')} tag={copy("Зарубежные каникулы")} heroColor={isPrague?'violet':'orange'} seo={isPrague?SEO_METADATA.travelPrague:SEO_METADATA.travelMalaysia} breadcrumbs={[{label:'Зарубежные каникулы',href:'/#travel'},{label:program.title}]}>
- <div className="container" style={{display:'grid',gap:'var(--sp-6)',paddingBottom:'var(--sp-8)'}}>
+ <div className="container" style={{display:'grid',gridTemplateColumns:'minmax(0,1fr)',gap:'var(--sp-6)',paddingBottom:'var(--sp-8)'}}>
  <img className="travel-page__cover" src={sitePath(isPrague?'/images/home/travel-prague.webp':'/images/home/travel-malaysia.webp')} alt={copy(program.destination)} width={800} height={635}/>
  <div className="study-actions"><WhatsAppLink kind="program" title={program.title} cta="travel-consultation">{copy("Написать в WhatsApp")}</WhatsAppLink><a className="study-button" href={CONTACTS.internationalPhoneHref}>{copy("Международный отдел: ")}<span className="study-phone-number">{copy(CONTACTS.internationalPhone)}</span></a></div>
  <div className="brief-block__grid">

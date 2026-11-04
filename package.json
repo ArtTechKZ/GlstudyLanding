@@ -58,6 +58,7 @@
     "test:delivery": "node scripts/check-delivery.mjs",
     "content:export": "node cms/export-content.mjs",
     "content:rehash": "node scripts/rehash-snapshot.mjs",
+    "content:check-sheet": "node scripts/check-sheet.mjs",
     "build:cms": "node scripts/build-cms.mjs",
     "test:delivery-browser": "node scripts/check-delivery-browser.mjs",
     "test:build-trigger": "node scripts/check-build-trigger.mjs",

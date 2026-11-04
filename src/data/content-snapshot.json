@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "source": "directus-approved-snapshot",
-  "revision": "8dc2a1e245a7fe4c045fc4ea1aeb183d81f447434624343cb898c1acf67f3a46",
+  "revision": "3f43a49400dbeea46db61fb575398df2935c6638c46ce558fb0daa60ae3ba5ab",
   "data": {
     "cities": [
       {
@@ -161,6 +161,7 @@
             "cityId": "kostanay",
             "name": "Костанай — ПЛАЗА",
             "address": "Назарбаева 193 (ТРЦ Костанай Плаза)",
+            "phone": "+7 707 824 00 00",
             "instagram": "gl_study_plaza",
             "offerings": [
               "Курсы английского языка",
@@ -206,6 +207,7 @@
             "cityId": "taraz",
             "name": "Тараз — Конаева",
             "address": "Конаева 16 (ЖК)",
+            "phone": "+7 775 839 11 50",
             "instagram": "glstudy_taraz",
             "offerings": [
               "Курсы английского языка",
@@ -227,6 +229,7 @@
             "id": "ekibastuz",
             "cityId": "ekibastuz",
             "name": "Экибастуз",
+            "phone": "+7 700 132 30 48",
             "status": "repair"
           }
         ]

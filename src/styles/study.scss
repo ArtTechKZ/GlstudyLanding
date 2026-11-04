@@ -6,6 +6,8 @@
 .study-branch-list { display: grid; gap: 16px; min-width: 0; }
 .study-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-block: 16px; }
 .study-button { display: inline-flex; justify-content: center; align-items: center; gap: 8px; min-height: 44px; padding: 10px 16px; border-radius: 16px; background: var(--gl-violet); color: var(--gl-white); border: 2px solid var(--gl-violet); font: 700 .875rem/1.5 var(--font-body); text-align: center; overflow-wrap: anywhere; text-decoration: none; max-width: 100%; }
+// GL-STUDY-31: "label: +7 …" buttons (international department) wrap the atomic number onto its own line instead of leaving the viewport at 200% text.
+.study-button { flex-wrap: wrap; }
 .study-button:hover { background: var(--gl-white); color: var(--gl-violet); }
 .study-button:focus-visible { outline: 3px solid var(--gl-black); outline-offset: 3px; }
 .study-button[aria-pressed=true] { background: var(--gl-black); color: var(--gl-white); border-color: var(--gl-black); }

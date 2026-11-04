@@ -35,6 +35,8 @@ export function findContentLoss(current, candidate) {
       const found = nextBranches.get(branch.id);
       if (!found) { lost.push(`branch:${branch.id}`); continue; }
       for (const field of ['instagram', 'offerings']) if (filled(branch[field]) && !filled(found[field])) { lost.push(`branch-${field}:${branch.id}`); legacyFormat = true; }
+      // A branch phone that disappears is a lost contact (GL-STUDY-31: three phones were once lost from a candidate this way). Changing a number is editorial; removing it needs acknowledgement.
+      if (filled(branch.phone) && !filled(found.phone)) lost.push(`branch-phone:${branch.id}`);
       if (NEW_STATUSES.includes(branch.status) && found.status !== branch.status) pending.push({id: branch.id, status: branch.status, found: found.status});
     }
   }

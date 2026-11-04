@@ -117,7 +117,9 @@
 
 .footer__phone {
   display: block;
-  font-size: 1.25rem;
+  // GL-STUDY-31: every branch now has a phone, so this line is always rendered. At 1.25rem it grew to 40px in 200% text and left the
+  // 320px viewport; phone numbers keep the base size like every other .study-phone-number (test:study17 asserts 16px x factor).
+  font-size: 1rem;
   font-weight: var(--fw-bold);
   color: var(--gl-white);
   text-decoration: none;

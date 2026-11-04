@@ -27,12 +27,16 @@ describe('GL-STUDY-30 branch table',()=>{
     expect(text).not.toMatch(/Альбина|2gis|сотрудник|staff/i);
     for(const b of branches){expect(b.whatsapp).toBeUndefined();expect(b.lat).toBeUndefined();expect(b.lng).toBeUndefined();expect(b.programs).toBeUndefined()}
   });
-  it('has valid tel links where the live table has a phone, and no invented phone where its cell is empty',()=>{
-    // Live sheet (checked 2026-11-04): empty phone cells for Kostanay Plaza, Taraz and the Ekibastuz repair entry.
-    const withoutPhone=branches.filter(b=>!b.phone).map(b=>b.id).sort();
-    expect(withoutPhone).toEqual(['ekibastuz','kostanay-plaza','taraz-konaev']);
-    for(const b of branches.filter(b=>b.phone))expect(phoneHref(b.phone!)).toMatch(/^tel:\+7\d{10}$/);
-    expect(branches.filter(b=>b.phone)).toHaveLength(13);
+  it('keeps every branch phone of the live table (D5 Plaza, D12 Taraz, D13 Ekibastuz, D14 Ust-Kamenogorsk included)',()=>{
+    // Sheet "Лист1", export?format=csv (2026-11-04). The gviz endpoint types column D as a number and silently drops the text cells D5/D12/D13.
+    const byId=(id:string)=>branches.find(b=>b.id===id)!;
+    const expected:Record<string,string>={'kostanay-plaza':'tel:+77078240000','taraz-konaev':'tel:+77758391150','ekibastuz':'tel:+77001323048','ust-kamenogorsk-online':'tel:+77001323048'};
+    for(const[id,href]of Object.entries(expected))expect(phoneHref(byId(id).phone!)).toBe(href);
+    // Two branches may share one number (Ekibastuz and Ust-Kamenogorsk): that is the table, not an error.
+    expect(byId('ekibastuz').phone).toBe(byId('ust-kamenogorsk-online').phone);
+    for(const b of branches)expect(phoneHref(b.phone!)).toMatch(/^tel:\+7\d{10}$/);
+    expect(branches.filter(b=>b.phone)).toHaveLength(16);
+    expect(byId('ekibastuz').status).toBe('repair');
   });
   it('does not give every branch the same offerings',()=>{
     expect(new Set(branches.map(b=>(b.offerings??[]).join('|'))).size).toBeGreaterThan(4);

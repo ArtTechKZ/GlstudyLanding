@@ -53,9 +53,27 @@ describe('GL-STUDY-31 export guard: GL-STUDY-30 content survives an old-format C
     expect(lost).toMatch(/branch-instagram:kostanay-center/);expect(lost).toMatch(/branch-offerings:kostanay-center/);
     expect(lost).toMatch(/branch-status:ekibastuz repair->active/);expect(lost).toMatch(/company\.instagram/);expect(lost).toMatch(/company\.internationalWhatsApp/);
   });
+  it('PROOF for the four protected kinds: an old-format export cannot erase branch statuses, services, packages or contacts',()=>{
+    const lost=findContentLoss(snapshot,legacyFormatSnapshot());
+    // branch statuses: all six non-offline entries (online, 4 x online_launch, repair) would collapse to "active"
+    const statuses=lost.filter(x=>x.startsWith('branch-status:'));
+    expect(statuses.map(x=>x.split(' ')[0].slice('branch-status:'.length)).sort()).toEqual(['almaty-nazarbayev','almaty-online','ekibastuz','kokshetau-online','petropavlovsk-online','ust-kamenogorsk-online']);
+    // services and packages: every id of the five services and three packages is reported
+    for(const s of snapshot.data.services)expect(lost).toContain('services:'+s.id);
+    for(const p of snapshot.data.packages)expect(lost).toContain('packages:'+p.id);
+    // contacts: company contacts and branch phones (an export that carries no branch phone loses all sixteen)
+    for(const f of ['instagram','internationalWhatsApp'])expect(lost).toContain('company.'+f);
+    const noPhones=clone();for(const c of noPhones.data.cities)for(const b of c.branches)delete (b as {phone?:string}).phone;rehash(noPhones);
+    const phones=findContentLoss(snapshot,noPhones).filter(x=>x.startsWith('branch-phone:')).map(x=>x.slice('branch-phone:'.length)).sort();
+    expect(phones).toEqual(snapshot.data.cities.flatMap(c=>c.branches).filter(b=>b.phone).map(b=>b.id).sort());
+    expect(phones).toEqual(expect.arrayContaining(['kostanay-plaza','taraz-konaev','ekibastuz']));
+    // and the write is refused, not merely reported
+    expect(()=>assertNoContentLoss(snapshot,noPhones)).toThrow(/branch-phone:/);
+    expect(()=>assertNoContentLoss(snapshot,legacyFormatSnapshot())).toThrow(/Previous snapshot retained/);
+  });
   it('lets an identical export and an ordinary editorial change through',()=>{
     expect(findContentLoss(snapshot,clone())).toEqual([]);
-    const edited=clone();const branch=edited.data.cities.flatMap(c=>c.branches).find(b=>b.id==='taraz-konaev')!;delete (branch as {phone?:string}).phone;branch.address='Конаева 16';rehash(edited);
+    const edited=clone();const branch=edited.data.cities.flatMap(c=>c.branches).find(b=>b.id==='taraz-konaev')!;branch.phone='+7 775 839 11 51';branch.address='Конаева 16';rehash(edited);
     expect(findContentLoss(snapshot,edited)).toEqual([]);
     const reopened=clone();reopened.data.cities.flatMap(c=>c.branches).find(b=>b.id==='ekibastuz')!.status='active';rehash(reopened);
     expect(findContentLoss(snapshot,reopened)).toEqual([]);

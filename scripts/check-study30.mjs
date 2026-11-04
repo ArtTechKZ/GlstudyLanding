@@ -139,10 +139,11 @@ async function routeChecks(page, route) {
     const ek = await page.locator('[data-branch="ekibastuz"]');
     if (!(await ek.innerText()).includes('Центр на ремонте') || await ek.locator('a[data-whatsapp]').count()) bad.push('Ekibastuz card');
     for (const id of ['ust-kamenogorsk-online', 'kokshetau-online', 'petropavlovsk-online', 'almaty-online']) if (!(await page.locator(`[data-branch="${id}"]`).innerText()).includes('Начинают работу в онлайн-формате')) bad.push('launch note ' + id);
-    // Live sheet (2026-11-04): no phone for Kostanay Plaza, Taraz or Ekibastuz — no number of another branch may appear in their cards.
-    for (const id of ['kostanay-plaza', 'taraz-konaev', 'ekibastuz']) {
+    // Live sheet (export csv, 2026-11-04): each of these branches has its own phone in column D; the card must show exactly that tel: link.
+    const sheetPhones = { 'kostanay-plaza': 'tel:+77078240000', 'taraz-konaev': 'tel:+77758391150', 'ekibastuz': 'tel:+77001323048', 'ust-kamenogorsk-online': 'tel:+77001323048' };
+    for (const [id, want] of Object.entries(sheetPhones)) {
       const tels = await page.locator(`[data-branch="${id}"] a[href^="tel:"]`).evaluateAll(es => es.map(e => e.getAttribute('href')));
-      if (tels.some(h => h !== 'tel:+77055589219')) bad.push(`card ${id} shows a foreign phone ${tels.join()}`);
+      if (tels.length !== 1 || tels[0] !== want) bad.push(`card ${id} phone ${tels.join() || 'missing'} expected ${want}`);
     }
     const req = await page.locator('[data-requisites]').innerText();
     for (const s of ['260640037588', 'проспект Нұрсұлтан Назарбаев, дом 195, кв. 71', 'grandluxe@yandex.ru', '+7 707 310 68 22']) if (!req.includes(s)) bad.push('requisites lacks ' + s);
