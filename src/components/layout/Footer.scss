@@ -268,3 +268,7 @@
 @media(max-width:579px){ .footer__nav { grid-template-columns:repeat(2,minmax(0,1fr)); } }
 
 .footer__mobile-cta, .footer__cta { min-width:0; max-width:100%; overflow-wrap:anywhere; padding-inline:12px; }
+
+// GL-STUDY-31: on phones the fixed WhatsApp bar sits over the bottom of the page. Without this reserve it covered the last
+// footer links (cookie settings, privacy policy, personal-data consent) at maximum scroll, so they could not be seen or tapped.
+@media(max-width:767px){ .footer { padding-bottom: calc(6rem + env(safe-area-inset-bottom)); } }

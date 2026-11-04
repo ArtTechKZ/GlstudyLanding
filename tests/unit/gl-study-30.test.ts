@@ -27,8 +27,14 @@ describe('GL-STUDY-30 branch table',()=>{
     expect(text).not.toMatch(/Альбина|2gis|сотрудник|staff/i);
     for(const b of branches){expect(b.whatsapp).toBeUndefined();expect(b.lat).toBeUndefined();expect(b.lng).toBeUndefined();expect(b.programs).toBeUndefined()}
   });
-  it('has valid tel links and does not give every branch the same offerings',()=>{
-    for(const b of branches)expect(phoneHref(b.phone!)).toMatch(/^tel:\+7\d{10}$/);
+  it('has valid tel links where the live table has a phone, and no invented phone where its cell is empty',()=>{
+    // Live sheet (checked 2026-11-04): empty phone cells for Kostanay Plaza, Taraz and the Ekibastuz repair entry.
+    const withoutPhone=branches.filter(b=>!b.phone).map(b=>b.id).sort();
+    expect(withoutPhone).toEqual(['ekibastuz','kostanay-plaza','taraz-konaev']);
+    for(const b of branches.filter(b=>b.phone))expect(phoneHref(b.phone!)).toMatch(/^tel:\+7\d{10}$/);
+    expect(branches.filter(b=>b.phone)).toHaveLength(13);
+  });
+  it('does not give every branch the same offerings',()=>{
     expect(new Set(branches.map(b=>(b.offerings??[]).join('|'))).size).toBeGreaterThan(4);
     expect(branches.find(b=>b.id==='kostanay-center')!.offerings).toContain('Экзаменационный центр IELTS');
     expect(branches.find(b=>b.id==='astana-rysqulov')!.offerings).toEqual(['Курсы английского языка','Подготовка к IELTS']);

@@ -1,4 +1,8 @@
 .brief-block { margin-block: var(--sp-8); color:var(--gl-black); }
+// GL-STUDY-31, enlarged text (WCAG 1.4.4): long Russian words ("сопровождение", "ДОПОЛНИТЕЛЬНЫЕ") must wrap inside narrow
+// cards and columns instead of spilling out of them. Phone numbers stay atomic (.study-phone-number) by an older rule.
+.brief-block h2, .brief-block h3, .brief-block p, .brief-block li, .brief-block .study-button { overflow-wrap:anywhere; min-width:0; }
+.brief-block__grid > *, .brief-block__grid .study-panel { min-width:0; }
 .brief-block > p, .brief-block li { line-height:1.6; }
 .brief-block > h2 { margin-bottom:var(--sp-4); }
 .brief-block__grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr)); gap:var(--sp-3); margin-top:var(--sp-4); }

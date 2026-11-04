@@ -5,6 +5,8 @@ import type {City,Program,TravelProgram,FaqItem,Review,AdditionalService,Admissi
 export const ALL_CITIES=snapshot.data.cities as City[];
 /** Cities with a /branches/{id} page and a place in the city selectors. */
 export const DEMO_CITIES=ALL_CITIES.filter(city=>city.hasPage!==false);
+/** Branches whose own table row lists Kazakh courses. Nothing is inferred for other branches. */
+export const kazakhBranches=()=>ALL_CITIES.flatMap(c=>c.branches).filter(b=>b.status==='active'&&b.offerings?.includes('Курсы казахского языка'));
 export const DEMO_PROGRAMS=snapshot.data.programs as Program[];
 export const TRAVEL_PROGRAMS=snapshot.data.trips as TravelProgram[];
 export const DEMO_FAQ=snapshot.data.faq as FaqItem[];

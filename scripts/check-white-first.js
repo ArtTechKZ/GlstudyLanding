@@ -15,7 +15,12 @@ const s=await startLocalServer(process.argv.includes('--source')?'dev':'static')
 // CPU capture avoids Chromium GPU tiling artifacts on >16k px mobile pages.
 const b=await chromium.launch({channel:'msedge',args:['--disable-gpu']});
 try {
- for(const locale of ['ru','kk','en']) {
+ // GL-STUDY-31: the public-ru build has no /kk or /en; opening them only produced "language mismatch" on the Russian 404 page.
+ // Locales without pages are reported as NOT APPLICABLE (never as passed); a multi-locale build or --source checks all three.
+ const present=['ru','kk','en'].filter(l=>l==='ru'||process.argv.includes('--source')||fs.existsSync('dist/'+l+'/index.html'));
+ const skipped=['kk','en'].filter(l=>!present.includes(l));
+ if(skipped.length)console.log('NOT APPLICABLE locales without pages in this build (not counted as passed): '+skipped.join(', '));
+ for(const locale of present) {
   const context=await b.newContext({reducedMotion:'reduce'});
   const p=await context.newPage();p.on('pageerror',e=>errors.push(e.message));
   for(const width of [1440,1280,768,390,320]) for(const route of routes) {

@@ -1,5 +1,5 @@
 import {describe,expect,it} from 'vitest';
-import {DEMO_CITIES,DEMO_PROGRAMS,TRAVEL_PROGRAMS,TRIAL_PROCESS} from '../../src/data/demo';
+import {DEMO_CITIES,DEMO_PROGRAMS,TRAVEL_PROGRAMS,TRIAL_PROCESS,kazakhBranches} from '../../src/data/demo';
 import {COMPANY,PLANNED_LANGUAGES,SUMMER_DESTINATIONS} from '../../src/data/company';
 import {createTranslator} from '../../src/i18n/core';
 import {getCatalog,loadCatalog} from '../../src/i18n/catalogs';
@@ -16,10 +16,17 @@ describe('confirmed brief data contracts, not source-file searches',()=>{
     expect([prague.dateStart,prague.dateEnd,prague.ageMin,prague.ageMax]).toEqual(['2027-01-02','2027-01-12',10,undefined]);
     expect([malaysia.dateStart,malaysia.dateEnd,malaysia.ageMin,malaysia.ageMax]).toEqual(['2027-01-03','2027-01-17',10,undefined]);
   });
-  it('keeps main phone and international WhatsApp distinct with no course WhatsApp assumption',()=>{
-    expect(COMPANY.phoneHref).toBe('tel:+77055589219');expect(COMPANY.internationalWhatsApp).toBe('https://wa.me/77073106822');
+  it('uses one confirmed WhatsApp number everywhere; the international department is a phone only',()=>{
+    expect(COMPANY.phoneHref).toBe('tel:+77055589219');expect(COMPANY.internationalWhatsApp).toBe('https://wa.me/77055589219');
+    expect(COMPANY.internationalPhone).toBe('+7 707 310 68 22');
     expect(COMPANY.instagram).toBe('https://www.instagram.com/grandluxe.kz');expect(COMPANY.founded).toBe(2000);
-    expect(PLANNED_LANGUAGES).toHaveLength(4);expect(SUMMER_DESTINATIONS).toHaveLength(5);
+    expect(SUMMER_DESTINATIONS).toHaveLength(5);
+  });
+  it('does not call Kazakh a planned language: the branch table lists Kazakh courses in four Kostanay branches and Rudny only',()=>{
+    expect(PLANNED_LANGUAGES.map(l=>l.id)).toEqual(['czech','chinese','korean']);
+    expect(kazakhBranches().map(b=>b.id)).toEqual(['kostanay-center','kostanay-kzhbi','kostanay-ksk','kostanay-plaza','rudny-center']);
+    const others=DEMO_CITIES.flatMap(c=>c.branches).filter(b=>!kazakhBranches().includes(b));
+    expect(others.some(b=>b.offerings?.includes('Курсы казахского языка'))).toBe(false);
   });
   it.each([
     ['ru','Расписание подбирается индивидуально с менеджером. Групповые занятия — 2–3 раза в неделю.'],

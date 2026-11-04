@@ -70,3 +70,6 @@ body:has(.study-cookie) .footer__mobile-sticky { position: static; }
 .company-requisites dt { font-weight: 700; }
 .company-requisites dd { margin: 0; overflow-wrap: anywhere; }
 @media (max-width: 479px) { .company-requisites dl { grid-template-columns: minmax(0, 1fr); gap: 2px; } .company-requisites dd { margin-bottom: 8px; } }
+
+// GL-STUDY-31: long Instagram handles wrap with enlarged text instead of leaving their card.
+a[href*="instagram.com"] { overflow-wrap:anywhere; }

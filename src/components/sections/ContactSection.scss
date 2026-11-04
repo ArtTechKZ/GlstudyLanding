@@ -2,3 +2,6 @@
 .contact-block__panel { display: flex; flex-direction: column; gap: var(--sp-3); }
 .contact-block__panel > h2, .contact-block__panel > p { margin: 0; }
 .contact-block__hours { font-weight: 700; }
+
+// GL-STUDY-31, enlarged text (WCAG 1.4.4): headings, copy and buttons wrap instead of spilling out; phone numbers stay atomic.
+.contact-block h2, .contact-block p, .contact-block .study-button { overflow-wrap:anywhere; min-width:0; }

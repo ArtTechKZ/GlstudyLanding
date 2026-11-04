@@ -1,4 +1,5 @@
 import {exportApprovedAssets} from './media-export.mjs';
+import {assertNoContentLoss} from './export-guard.mjs';
 import {isWithdrawnMedia} from './media-policy.mjs';
 import fs from 'node:fs';import path from 'node:path';import {pathToFileURL} from 'node:url';import {DirectusDataAdapter} from './directus-adapter.mjs';import {fields,publicFields,contentHash,validateSnapshot} from './content-contract.mjs';
 const keys=['cities','branches','programs','texts','images','trips','faq','reviews','seo','cta','documents','redirects','teachers','schedules'];
@@ -23,7 +24,7 @@ export function mapCmsContent(tables,{now=Date.now(),locales=['ru']}={}){
  // Legal files are never inferred from ordinary public_data: official operator approval is required separately.
  return validateSnapshot({schemaVersion:1,source:'directus-approved-snapshot',revision:contentHash(data),data});
 }
-export async function exportContent({url,token,target='src/data/content-snapshot.json',locales=['ru'],now=Date.now(),fetchImpl=fetch,localIntegration=false}){
+export async function exportContent({url,token,target='src/data/content-snapshot.json',locales=['ru'],now=Date.now(),fetchImpl=fetch,localIntegration=false,acceptedRevision=process.env.GL_ACCEPT_CONTENT_LOSS}){
  const u=new URL(url);if(localIntegration&&!['127.0.0.1','localhost'].includes(u.hostname))throw Error('Local CMS E2E requires loopback');if(!token)throw Error('Build read token required');const adapter=new DirectusDataAdapter({url,token,fetchImpl});
  for(let attempt=0;attempt<3;attempt++){const before=await adapter.revision(),tables={};for(const key of keys)tables[key]=await adapter.read(key,'ru');const after=await adapter.revision();if(before!==after)continue;
  tables.images=tables.images.filter(r=>!isWithdrawnMedia(r));
@@ -32,7 +33,10 @@ export async function exportContent({url,token,target='src/data/content-snapshot
  // The derivative paths are deterministic; approval applies to source fields, before materialization.
  for(const r of approvedImages)r.approval_hash=recordFingerprint(r);
  if(after!==await adapter.revision())continue;
- const snapshot=mapCmsContent(materialized,{now,locales}),resolved=path.resolve(target);fs.mkdirSync(path.dirname(resolved),{recursive:true});const text=JSON.stringify(snapshot,null,2)+'\n';if(fs.existsSync(resolved)&&fs.readFileSync(resolved,'utf8')===text)return {...snapshot,unchanged:true};const temp=resolved+'.'+process.pid+'.tmp';fs.writeFileSync(temp,text);fs.renameSync(temp,resolved);return {...snapshot,unchanged:false};
+ const snapshot=mapCmsContent(materialized,{now,locales}),resolved=path.resolve(target);
+ // GL-STUDY-31: never replace the committed snapshot with an export that drops content the CMS cannot express yet.
+ if(fs.existsSync(resolved)){let existing;try{existing=JSON.parse(fs.readFileSync(resolved,'utf8'))}catch{existing=undefined}if(existing?.data)assertNoContentLoss(existing,snapshot,{acceptedRevision})}
+ fs.mkdirSync(path.dirname(resolved),{recursive:true});const text=JSON.stringify(snapshot,null,2)+'\n';if(fs.existsSync(resolved)&&fs.readFileSync(resolved,'utf8')===text)return {...snapshot,unchanged:true};const temp=resolved+'.'+process.pid+'.tmp';fs.writeFileSync(temp,text);fs.renameSync(temp,resolved);return {...snapshot,unchanged:false};
  }throw Error('CMS changed during export; previous snapshot retained');
 }
 if(process.argv[1]&&import.meta.url===pathToFileURL(process.argv[1]).href){const c=process.env.GL_CMS_ACCESS_FILE?JSON.parse(fs.readFileSync(process.env.GL_CMS_ACCESS_FILE,'utf8')):{url:process.env.DIRECTUS_URL,token:process.env.DIRECTUS_BUILD_TOKEN};const snapshot=await exportContent({...c,target:process.env.GL_CONTENT_SNAPSHOT??'src/data/content-snapshot.json',localIntegration:process.env.GL_CMS_LOCAL==='1'});console.log(JSON.stringify({revision:snapshot.revision,source:snapshot.source,unchanged:snapshot.unchanged,counts:Object.fromEntries(Object.entries(snapshot.data).filter(([,v])=>Array.isArray(v)).map(([k,v])=>[k,v.length]))}))}

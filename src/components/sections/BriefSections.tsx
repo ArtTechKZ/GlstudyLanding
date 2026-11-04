@@ -1,13 +1,18 @@
 import { useCopy } from '../../i18n/copy';
 import { PLANNED_LANGUAGES, SUMMER_DESTINATIONS } from '../../data/company';
 import { CONTACTS } from '../../data/contacts';
-import { ADDITIONAL_SERVICES, ADMISSION_PACKAGES } from '../../data/demo';
+import { ADDITIONAL_SERVICES, ADMISSION_PACKAGES, kazakhBranches } from '../../data/demo';
 import WhatsAppLink from '../ui/WhatsAppLink';
 import './BriefSections.scss';
 export function AdditionalLanguages(){
-  const copy = useCopy();return <section className="brief-block" id="additional-languages" aria-labelledby="languages-heading">
- <h2 className="section-heading" id="languages-heading">{copy("ДОПОЛНИТЕЛЬНЫЕ ЯЗЫКИ")}</h2><p>{copy("Планируем запуск новых направлений, преимущественно онлайн. Открытие конкретных групп ещё не объявлено.")}</p>
- <div className="brief-block__grid">{PLANNED_LANGUAGES.map(p=><article className="study-panel" key={p.id} data-program={`language-${p.id}`}><h3>{copy(p.title)}</h3><p>{copy("Планируемое направление")}</p><WhatsAppLink kind="program" title={p.title} cta={`language-${p.id}`}>{copy("Написать в WhatsApp")}</WhatsAppLink></article>)}</div></section>}
+  const copy = useCopy();const kazakh=kazakhBranches();
+  // A language already taught in a branch is not "planned", even if a stale CMS export still lists it.
+  const planned=PLANNED_LANGUAGES.filter(p=>!(p.id==='kazakh'&&kazakh.length));
+  return <section className="brief-block" id="additional-languages" aria-labelledby="languages-heading">
+ <h2 className="section-heading" id="languages-heading">{copy("ДОПОЛНИТЕЛЬНЫЕ ЯЗЫКИ")}</h2>
+ {kazakh.length>0&&<article className="study-panel" data-program="language-kazakh" data-available="true"><h3>{copy("Казахский")}</h3><p>{copy("Курсы казахского языка проходят в филиалах: ")}{kazakh.map(b=>copy(b.name)).join(', ')}.</p><WhatsAppLink kind="program" title="Курсы казахского языка" cta="language-kazakh">{copy("Написать в WhatsApp")}</WhatsAppLink></article>}
+ <p>{copy("Планируем запуск новых направлений, преимущественно онлайн. Открытие конкретных групп ещё не объявлено.")}</p>
+ <div className="brief-block__grid">{planned.map(p=><article className="study-panel" key={p.id} data-program={`language-${p.id}`}><h3>{copy(p.title)}</h3><p>{copy("Планируемое направление")}</p><WhatsAppLink kind="program" title={p.title} cta={`language-${p.id}`}>{copy("Написать в WhatsApp")}</WhatsAppLink></article>)}</div></section>}
 export function TrialProcess(){
   const copy = useCopy();return <section className="brief-block" id="trial-process" aria-labelledby="trial-heading"><h2 className="section-heading" id="trial-heading">{copy("БЕСПЛАТНЫЙ ПРОБНЫЙ УРОК")}</h2>
  <ol className="brief-block__steps"><li>{copy("Напишите нам в WhatsApp.")}</li><li>{copy("Менеджер свяжется с вами.")}</li><li>{copy("До урока пройдите диагностику уровня.")}</li><li>{copy("Вместе с менеджером подберите группу.")}</li><li>{copy("Познакомьтесь с преподавателем и учениками на бесплатном уроке в действующей группе.")}</li></ol><p>{copy('Групповой пробный урок длится 60 или 90 минут в зависимости от группы. Индивидуальный пробный урок проходит индивидуально; его продолжительность уточняется отдельно.')}</p><p>{copy("Бесплатный Speaking Club доступен всем. Расписание уточняйте у менеджера.")}</p><WhatsAppLink kind="trial" cta="trial-process">{copy("Написать в WhatsApp")}</WhatsAppLink></section>}

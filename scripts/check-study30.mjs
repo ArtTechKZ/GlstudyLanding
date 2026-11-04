@@ -122,6 +122,12 @@ async function routeChecks(page, route) {
     if (!(await page.locator('footer a[href="https://www.instagram.com/grandluxe.kz"]').count())) bad.push('footer instagram missing');
     if (!(await page.locator('footer').innerText()).includes('Приемная и менеджеры: 09:00-19:00')) bad.push('footer hours missing');
     if (!(await page.locator('.footer__mobile-sticky a[data-whatsapp]').count())) bad.push('mobile WhatsApp button missing');
+    // GL-STUDY-31: Kazakh is shown as offered (4 Kostanay branches + Rudny from the branch table), only Czech/Chinese/Korean as planned.
+    const kk = await page.locator('#additional-languages [data-program="language-kazakh"]').innerText();
+    for (const n of ['Костанай — центр', 'Костанай — КЖБИ', 'Костанай — КСК', 'Костанай — ПЛАЗА', 'Рудный']) if (!kk.includes(n)) bad.push('Kazakh branch missing ' + n);
+    if (/Астана|Алматы|Тараз|Планируемое/.test(kk)) bad.push('Kazakh offer must not spread beyond Kostanay/Rudny: ' + kk);
+    const planned = await q('#additional-languages article:not([data-program="language-kazakh"]) h3', 'els=>els.map(e=>e.innerText)');
+    if (planned.join() !== 'Чешский,Китайский,Корейский') bad.push('planned languages ' + planned.join());
     // Anchors used by header, footer and in-page links must exist on the home page.
     for (const id of ['directions', 'travel', 'admissions', 'packages', 'services', 'branches', 'reviews', 'faq', 'contacts', 'contact-whatsapp']) if (!(await page.locator('#' + id).count())) bad.push('anchor #' + id + ' missing');
   }
@@ -133,6 +139,11 @@ async function routeChecks(page, route) {
     const ek = await page.locator('[data-branch="ekibastuz"]');
     if (!(await ek.innerText()).includes('Центр на ремонте') || await ek.locator('a[data-whatsapp]').count()) bad.push('Ekibastuz card');
     for (const id of ['ust-kamenogorsk-online', 'kokshetau-online', 'petropavlovsk-online', 'almaty-online']) if (!(await page.locator(`[data-branch="${id}"]`).innerText()).includes('Начинают работу в онлайн-формате')) bad.push('launch note ' + id);
+    // Live sheet (2026-11-04): no phone for Kostanay Plaza, Taraz or Ekibastuz — no number of another branch may appear in their cards.
+    for (const id of ['kostanay-plaza', 'taraz-konaev', 'ekibastuz']) {
+      const tels = await page.locator(`[data-branch="${id}"] a[href^="tel:"]`).evaluateAll(es => es.map(e => e.getAttribute('href')));
+      if (tels.some(h => h !== 'tel:+77055589219')) bad.push(`card ${id} shows a foreign phone ${tels.join()}`);
+    }
     const req = await page.locator('[data-requisites]').innerText();
     for (const s of ['260640037588', 'проспект Нұрсұлтан Назарбаев, дом 195, кв. 71', 'grandluxe@yandex.ru', '+7 707 310 68 22']) if (!req.includes(s)) bad.push('requisites lacks ' + s);
   }
