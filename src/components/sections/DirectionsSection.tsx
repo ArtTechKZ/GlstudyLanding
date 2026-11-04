@@ -2,6 +2,7 @@ import {useLocale} from '../../i18n/locale-context';
 import { useCopy } from '../../i18n/copy';
 import { useUi, type Translator } from "../../i18n/index";
 import Icon from '../ui/Icon';
+import WhatsAppLink from '../ui/WhatsAppLink';
 import { useDirectionsTrack } from '../../hooks/useDirectionsTrack';
 import { sitePath } from '../../utils/sitePath';
 import {Link} from '../../i18n/Link';
@@ -183,10 +184,12 @@ export default function DirectionsSection() {
                       <span>{t("DirectionsSection.podrobnee")}</span>
                       <Icon name="next" size={14} />
                     </Link>
-                    <a
-                      href="#lead-form"
+                    <WhatsAppLink
+                      kind="program"
+                      title={DEMO_PROGRAMS.find(p => p.id === prog.id)?.title ?? prog.title}
                       className="btn directions__card-cta"
-                    >{t("DirectionsSection.zapisatsya")}</a>
+                      cta={`program-${prog.id}`}
+                    >{copy("Написать в WhatsApp")}</WhatsAppLink>
                   </div>
                 </div>
               </article>

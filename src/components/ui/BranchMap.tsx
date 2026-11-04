@@ -6,6 +6,7 @@ import { useCityContext } from '../../hooks/useCityContext';
 import StudyDialog from './StudyDialog';
 import { BranchDetails } from './BranchDetails';
 import BranchMapLoader from './BranchMapLoader';
+import { MAPS_ENABLED } from '../../config/map';
 export default function BranchMap({ city, branches }: { city: City; branches: Branch[] }) {
   const copy = useCopy();
   const t = useUi();
@@ -14,7 +15,7 @@ export default function BranchMap({ city, branches }: { city: City; branches: Br
   const ref = useRef<HTMLDivElement>(null);
   const points = useMemo(() => branches.filter(b => Number.isFinite(b.lat) && Number.isFinite(b.lng) && Math.abs(b.lat!) <= 90 && Math.abs(b.lng!) <= 180), [branches]);
   useEffect(() => { if (!ref.current || !('IntersectionObserver' in window)) return; const o = new IntersectionObserver(entries => { if (entries.some(e => e.isIntersecting)) { setVisible(true); o.disconnect(); } }, { rootMargin: '150px' }); o.observe(ref.current); return () => o.disconnect(); }, [points.length]);
-  if (points.length === 0) return null;
+  if (!MAPS_ENABLED || points.length === 0) return null;
   const content = <><p>{t("BranchMap.karta")}{copy(city.name)}</p>
     {state === 'loading' && <p role="status">{t("BranchMap.zagruzka.karty")}</p>}{state === 'error' && <div role="alert"><p>{t("BranchMap.ne.udalos.zagruzit.kartu.adresa")}</p><button className="study-button" onClick={() => { setState('loading'); setAttempt(v => v + 1); }}>{t("BranchMap.povtorit.zagruzku")}</button></div>}
     {visible && <BranchMapLoader key={`${city.id}-${attempt}-${expanded}`} branches={points} selected={activeBranch?.id} onSelect={selectBranch} onState={setState} />}

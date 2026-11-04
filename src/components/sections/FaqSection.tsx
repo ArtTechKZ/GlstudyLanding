@@ -1,5 +1,6 @@
 import { useCopy } from '../../i18n/copy';
 import FaqAccordion from '../ui/FaqAccordion';
+import WhatsAppLink from '../ui/WhatsAppLink';
 import { DEMO_FAQ } from '../../data/demo';
 import './FaqSection.scss';
 
@@ -17,8 +18,8 @@ export default function FaqSection() {
               {copy("вопросы")}</h2>
             <p className="faq__sub">
               {copy("Не нашли ответ? Задайте вопрос — мы свяжемся.")}</p>
-            <a href="#lead-form" className="btn btn-primary faq__cta">
-              {copy("Задать вопрос")}</a>
+            <WhatsAppLink kind="general" className="btn btn-primary faq__cta" cta="faq-question">
+              {copy("Задать вопрос в WhatsApp")}</WhatsAppLink>
           </div>
 
           <div className="faq__items">

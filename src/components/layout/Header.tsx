@@ -4,6 +4,7 @@ import LanguagePicker from '../ui/LanguagePicker';
 import { useCopy } from '../../i18n/copy';
 import { useUi, type Translator } from "../../i18n/index";
 import Icon from '../ui/Icon';
+import WhatsAppLink from '../ui/WhatsAppLink';
 import { sitePath } from '../../utils/sitePath';
 import { useState, useEffect, useCallback } from 'react';
 import {useLocation} from 'react-router-dom';
@@ -142,7 +143,7 @@ export default function Header() {
             {/* Phone — only shown when real data available */}
 
             {/* CTA */}
-            <a href={sitePath('/#lead-form')} className="btn btn-violet gl-header__cta">{t("Header.besplatnyy.urok")}</a>
+            <WhatsAppLink kind="trial" className="btn btn-violet gl-header__cta" cta="header-trial">{t("Header.besplatnyy.urok")}</WhatsAppLink>
 
             {/* Mobile hamburger */}
             <button
@@ -218,11 +219,12 @@ export default function Header() {
             </ul>
           </nav>
 
-          <a
-            href={sitePath('/#lead-form')}
+          <WhatsAppLink
+            kind="trial"
             className="btn btn-primary gl-header__mobile-cta"
             onClick={() => setMenuOpen(false)}
-          >{t("Header.poluchit.besplatnyy.urok")}</a>
+            cta="header-mobile-trial"
+          >{t("Header.poluchit.besplatnyy.urok")}</WhatsAppLink>
         </div>
       </div>
 

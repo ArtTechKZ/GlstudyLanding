@@ -1,6 +1,7 @@
 import {Link} from '../../i18n/Link';
 import { useCopy } from '../../i18n/copy';
 import Icon from '../ui/Icon';
+import WhatsAppLink from '../ui/WhatsAppLink';
 import { sitePath } from '../../utils/sitePath';
 
 import './IeltsSection.scss';
@@ -62,8 +63,8 @@ export default function IeltsSection() {
               <Icon name="info" size={18} /> {copy(" Перед обучением проводится диагностика уровня")}</div>
 
             <div className="ielts__actions">
-              <a href="#lead-form" className="btn btn-primary ielts__cta">
-                {copy("Получить консультацию")}</a>
+              <WhatsAppLink kind="program" title="Подготовка к IELTS" className="btn btn-primary ielts__cta" cta="ielts-section">
+                {copy("Написать в WhatsApp")}</WhatsAppLink>
               <Link to="/ielts" className="btn btn-outline-white ielts__more">
                 {copy("Подробнее о курсе →")}</Link>
             </div>

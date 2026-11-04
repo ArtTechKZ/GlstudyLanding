@@ -24,13 +24,18 @@ export interface Branch {
   whatsapp?: string;
   lat?: number;
   lng?: number;
-  schedule?: string;      // e.g. "Пн–Пт 09:00–20:00"
-  programs?: string[];    // Program slugs offered at this branch
+  schedule?: string;      // Class timetable is never invented; reception hours are a company-wide constant.
+  programs?: string[];    // Program slugs offered at this branch (filters the programme cards — leave unset)
+  instagram?: string;     // The branch's own Instagram handle, without @ or URL
+  offerings?: string[];   // Human-readable products of this branch, exactly as supplied in the branch table
   hasIelts?: boolean;
-  status: 'active' | 'coming_soon';
+  // active = open offline centre; online = online only; online_launch = online format starting; repair = centre under repair.
+  status: BranchStatus;
   note?: string;
   photos?: string[];      // Licensed client photos only
 }
+
+export type BranchStatus = 'active' | 'coming_soon' | 'online' | 'online_launch' | 'repair';
 
 export interface City {
   id: string;
@@ -39,6 +44,23 @@ export interface City {
   nameEn?: string;
   branches: Branch[];
   isDefault?: boolean;
+  hasPage?: boolean;      // false: listed only in the branch registry, no /branches/{id} page or selector entry
+}
+
+export interface AdditionalService {
+  id: string;
+  title: string;
+  points: string[];
+  order: number;
+}
+
+export interface AdmissionPackage {
+  id: string;
+  title: string;
+  description: string;
+  duration: string;
+  features: string[];
+  order: number;
 }
 
 // ─── Programs ─────────────────────────────────────────────────────────────────

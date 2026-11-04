@@ -261,6 +261,8 @@
 .footer__inner > *, .footer__nav-col { min-width:0; }
 .footer__nav { grid-template-columns:repeat(3,minmax(0,1fr)); }
 .footer__nav, .footer__contacts { overflow-wrap:anywhere; }
+.footer__contacts > p { margin:0 0 .5rem; }
+.footer__contacts > .footer__contacts-heading { margin-top:1rem; }
 @media(max-width:1023px){ .footer__inner { grid-template-columns:repeat(2,minmax(0,1fr)); } }
 @media(max-width:767px){ .footer__inner { grid-template-columns:minmax(0,1fr); } }
 @media(max-width:579px){ .footer__nav { grid-template-columns:repeat(2,minmax(0,1fr)); } }

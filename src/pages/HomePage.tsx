@@ -1,5 +1,5 @@
 import { useCopy } from '../i18n/copy';
-import { AdditionalLanguages, TrialProcess, AdmissionsSection } from '../components/sections/BriefSections';
+import { AdditionalLanguages, TrialProcess, AdmissionsSection, AdmissionPackages, AdditionalServices } from '../components/sections/BriefSections';
 import HeroSection from '../components/sections/HeroSection';
 import DirectionsSection from '../components/sections/DirectionsSection';
 import OnlineOfflineSection from '../components/sections/OnlineOfflineSection';
@@ -7,7 +7,7 @@ import IeltsSection from '../components/sections/IeltsSection';
 import TravelSection from '../components/sections/TravelSection';
 import BranchesSection from '../components/sections/BranchesSection';
 import ReviewsSection from '../components/sections/ReviewsSection';
-import LeadFormSection from '../components/sections/LeadFormSection';
+import ContactSection from '../components/sections/ContactSection';
 import FaqSection from '../components/sections/FaqSection';
 import { usePageSeo } from '../hooks/usePageSeo';
 import { SEO_METADATA } from '../data/seo';
@@ -33,6 +33,7 @@ export default function HomePage() {
       {/* 5. Зарубежные программы */}
       <TravelSection />
       <AdmissionsSection />
+      <div className="container"><AdmissionPackages /><AdditionalServices /></div>
 
       {/* 6. Филиалы с картой */}
       <BranchesSection />
@@ -42,7 +43,7 @@ export default function HomePage() {
 
       {/* 8. Форма заявки */}
       <div className="container"><TrialProcess /></div>
-      <LeadFormSection />
+      <ContactSection kind="trial" />
 
       {/* 9. FAQ */}
       <FaqSection />

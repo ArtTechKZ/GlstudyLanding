@@ -4,9 +4,9 @@ import {COMPANY,PLANNED_LANGUAGES,SUMMER_DESTINATIONS} from '../../src/data/comp
 import {createTranslator} from '../../src/i18n/core';
 import {getCatalog,loadCatalog} from '../../src/i18n/catalogs';
 describe('confirmed brief data contracts, not source-file searches',()=>{
-  it('keeps the five cities without fabricating branch or IELTS venue records',()=>{
+  it('keeps the five city pages; the 16 branch-table entries are covered by gl-study-30.test.ts',()=>{
     expect(new Set(DEMO_CITIES.map(c=>c.id))).toEqual(new Set(['kostanay','rudny','taraz','astana','almaty']));
-    expect(DEMO_CITIES.flatMap(c=>c.branches)).toEqual([]);
+    expect(DEMO_CITIES.flatMap(c=>c.branches).every(b=>b.lat===undefined&&b.lng===undefined)).toBe(true);
   });
   it('publishes no price on any active programme or trip',()=>{
     for(const p of [...DEMO_PROGRAMS,...TRAVEL_PROGRAMS])expect(p.price).toBeUndefined();
@@ -18,7 +18,7 @@ describe('confirmed brief data contracts, not source-file searches',()=>{
   });
   it('keeps main phone and international WhatsApp distinct with no course WhatsApp assumption',()=>{
     expect(COMPANY.phoneHref).toBe('tel:+77055589219');expect(COMPANY.internationalWhatsApp).toBe('https://wa.me/77073106822');
-    expect(COMPANY.instagram).toBe('https://www.instagram.com/glstudy.kz/');expect(COMPANY.founded).toBe(2000);
+    expect(COMPANY.instagram).toBe('https://www.instagram.com/grandluxe.kz');expect(COMPANY.founded).toBe(2000);
     expect(PLANNED_LANGUAGES).toHaveLength(4);expect(SUMMER_DESTINATIONS).toHaveLength(5);
   });
   it.each([

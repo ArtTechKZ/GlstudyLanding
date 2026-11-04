@@ -5,6 +5,14 @@
 .brief-block__grid .study-panel { display:flex; flex-direction:column; gap:var(--sp-3); }
 .brief-block__grid .study-button { align-self:flex-start; margin-top:auto; }
 .brief-block__steps { padding-left:1.5rem; }
+.brief-block__grid--packages { grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr)); }
+.brief-package h3, .brief-service h3 { margin:0; }
+.brief-package__duration { margin:0; }
+.brief-package__features, .brief-service ul { margin:0; padding-left:0; list-style:none; display:flex; flex-direction:column; gap:var(--sp-2); }
+.brief-package__features li, .brief-service li { position:relative; padding-left:1.75rem; }
+.brief-package__features li::before { content:"✓"; position:absolute; left:0; color:var(--gl-violet); font-weight:800; }
+.brief-service li::before { content:""; position:absolute; left:.35rem; top:.65em; width:.45rem; height:.45rem; border-radius:50%; background:var(--gl-violet); }
+.brief-block__grid .brief-package .study-button, .brief-block__grid .brief-service .study-button { margin-top:auto; }
 .brief-block--admissions { margin:0; background:var(--gl-violet-light); border-radius:var(--radius-2xl); padding:clamp(1.5rem,4vw,3rem); }
 .brief-block--admissions ul { padding-left:1.5rem; margin-block:var(--sp-4); }
 .brief-block__lead { font-weight:800; font-size:var(--fs-h3); }

@@ -44,6 +44,7 @@
     "test:localized-cards": "node scripts/check-localized-cards.js",
     "build:public": "node scripts/build-public.js",
     "test:public": "node scripts/check-public.js",
+    "test:study30": "node scripts/check-study30.mjs",
     "test:full-tz": "node scripts/check-full-tz.js",
     "test:server": "node scripts/check-server.mjs",
     "test:cms": "node scripts/check-cms.mjs",

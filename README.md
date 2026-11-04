@@ -2,7 +2,7 @@
 
 Public preview for review: https://arttechkz.github.io/GlstudyLanding/
 
-This is a Russian-only demonstration, not a commercial launch. Forms validate locally and clearly report that data was not sent. No lead API, Directus, SQLite, CRM or Connect is started on GitHub Pages. Phone and international WhatsApp links do not automatically transfer form fields.
+This is a Russian-only demonstration, not a commercial launch. Contact requests go through prepared WhatsApp links (GL-STUDY-30); opening WhatsApp is never reported as a sent request. No lead API, Directus, SQLite, CRM or Connect is started on GitHub Pages. Phone and international WhatsApp links do not automatically transfer form fields.
 
 ## Build the checked public profile
 
@@ -27,7 +27,9 @@ GL-STUDY-27 improves the review experience using GL_Study_Brief(4): distinct cou
 
 The checked RU DEMO contains 111 files / 22 HTML, aggregate manifest SHA-256 `901c24d8c283348d524463c76a1602aada4ed4af606cb7a20572cfb1cc77cf13`, content revision `989d42c7114100a19fce87b609a17f1d9c5b6d5e0bce6187aa95b3d36405980a`. Per-file records are in [release-manifest.json](release-manifest.json). The aggregate hashes JSON.stringify(records), not the raw manifest JSON file. CMS export and snapshot/release validation apply `cms/media-policy.json`, so old approved records cannot replay the withdrawn media. Private originals and prior Git history are retained.
 
-Validation: lint, typecheck, 191 unit tests, public build, public/browser/SEO checks all pass. Additional focused checks cover 9 routes at 1440/390/320 px and 2 DEMO form submissions without POST or withdrawn media requests. These are desktop browser viewports, not physical Android acceptance.
+GL-STUDY-30 completes the content from the client's materials: all 16 branch-table entries grouped by status (open offline centres, online, online launch, repair), three admission packages and five additional services without prices, one shared WhatsApp helper (`src/features/whatsapp.ts`) replacing the demo forms, client-supplied privacy policy and public offer on the existing legal pages, and hidden maps. Sources, hidden blocks and open discrepancies are in [GL-STUDY-30.md](GL-STUDY-30.md); `npm run test:study30` opens every route at 320/375/768/1440 px.
+
+Validation (GL-STUDY-27 baseline): lint, typecheck, 191 unit tests, public build, public/browser/SEO checks all pass. Additional focused checks cover 9 routes at 1440/390/320 px and 2 DEMO form submissions without POST or withdrawn media requests. These are desktop browser viewports, not physical Android acceptance.
 
 Browser commands default to Microsoft Edge. Set `GL_BROWSER_EXECUTABLE_PATH` to a local Chrome/Chromium binary when Edge is unavailable; alternatively set `GL_BROWSER_CHANNEL=chromium` for Playwright's bundled Chromium. Use `GL_RELEASE_PROFILE=public-ru` for browser/SEO validation of the public output. Stage 27 used Node.js 24.19.0 and Chrome 155 on Linux.
 

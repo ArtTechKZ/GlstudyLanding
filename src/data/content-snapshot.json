@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "source": "directus-approved-snapshot",
-  "revision": "be191b4ae568d7bf7ab982cadd6af11c7fce6ea238711c26d82dbea9baef95db",
+  "revision": "ed374c5519765da1dcbd29c4bf37ae907eda742109450cd2750c2b5c20fe14c5",
   "data": {
     "cities": [
       {
@@ -10,35 +10,289 @@
         "nameKk": "Алматы",
         "nameEn": "Almaty",
         "isDefault": true,
-        "branches": []
+        "branches": [
+          {
+            "id": "almaty-masanchi",
+            "cityId": "almaty",
+            "name": "Алматы — Масанчи",
+            "address": "Масанчи 78, БЦ Алма, офис 400",
+            "phone": "+7 707 954 55 30",
+            "instagram": "glstudy.almaty",
+            "offerings": [
+              "Курсы английского языка",
+              "Подготовка к IELTS",
+              "Подготовка к FLEX",
+              "Образование за рубежом"
+            ],
+            "status": "active"
+          },
+          {
+            "id": "almaty-nazarbayev",
+            "cityId": "almaty",
+            "name": "Алматы — Назарбаева",
+            "phone": "+7 705 444 42 81",
+            "instagram": "glstudy_almaty",
+            "offerings": [
+              "Курсы английского языка",
+              "Подготовка к IELTS",
+              "Подготовка к FLEX"
+            ],
+            "status": "online"
+          },
+          {
+            "id": "almaty-online",
+            "cityId": "almaty",
+            "name": "Алматы — онлайн",
+            "phone": "+7 705 474 46 54",
+            "instagram": "gl_study_global",
+            "offerings": [
+              "Онлайн-курсы"
+            ],
+            "status": "online_launch"
+          }
+        ]
       },
       {
         "id": "astana",
         "name": "Астана",
         "nameKk": "Астана",
         "nameEn": "Astana",
-        "branches": []
+        "branches": [
+          {
+            "id": "astana-kaysenov",
+            "cityId": "astana",
+            "name": "Астана — Касым Кайсенова",
+            "address": "Касым Кайсенова 6 (ЖК Арнау -9)",
+            "phone": "+7 771 137 36 56",
+            "instagram": "grandluxe.kz",
+            "offerings": [
+              "Курсы английского языка",
+              "Подготовка к IELTS",
+              "Подготовка к FLEX"
+            ],
+            "status": "active"
+          },
+          {
+            "id": "astana-rysqulov",
+            "cityId": "astana",
+            "name": "Астана — Турар Рыскулов",
+            "address": "Турар Рыскулов, 1 (Находится за ТРЦ MEGA, район EXPO)",
+            "phone": "+7 776 117 03 71",
+            "instagram": "glstudy_expo",
+            "offerings": [
+              "Курсы английского языка",
+              "Подготовка к IELTS"
+            ],
+            "status": "active"
+          },
+          {
+            "id": "astana-kabanbay",
+            "cityId": "astana",
+            "name": "Астана — Кабанбай Батыра",
+            "address": "Кабанбай батыра 9/4",
+            "phone": "+7 702 735 88 92",
+            "instagram": "glstudypremiere",
+            "offerings": [
+              "Курсы английского языка",
+              "Подготовка к IELTS"
+            ],
+            "status": "active"
+          }
+        ]
       },
       {
         "id": "kostanay",
         "name": "Костанай",
         "nameKk": "Қостанай",
         "nameEn": "Kostanay",
-        "branches": []
+        "branches": [
+          {
+            "id": "kostanay-center",
+            "cityId": "kostanay",
+            "name": "Костанай — центр",
+            "address": "Тауелсыздык 83, каб 305",
+            "phone": "+7 705 558 92 19",
+            "instagram": "glstudy.kz",
+            "offerings": [
+              "Курсы английского языка",
+              "Курсы казахского языка",
+              "Подготовка к IELTS",
+              "Подготовка к FLEX",
+              "Образование за рубежом",
+              "Каникулы за рубежом",
+              "Визовая поддержка",
+              "Переводы документов",
+              "Экзаменационный центр IELTS"
+            ],
+            "status": "active"
+          },
+          {
+            "id": "kostanay-kzhbi",
+            "cityId": "kostanay",
+            "name": "Костанай — КЖБИ",
+            "address": "Абая 22А каб 1 (2 этаж)",
+            "phone": "+7 747 523 95 17",
+            "instagram": "gl_study_kst",
+            "offerings": [
+              "Курсы английского языка",
+              "Курсы казахского языка",
+              "Подготовка к IELTS",
+              "Подготовка к FLEX"
+            ],
+            "status": "active"
+          },
+          {
+            "id": "kostanay-ksk",
+            "cityId": "kostanay",
+            "name": "Костанай — КСК",
+            "address": "Каирбекова 401",
+            "phone": "+7 705 374 14 39",
+            "instagram": "gl_study_ksk",
+            "offerings": [
+              "Курсы английского языка",
+              "Курсы казахского языка",
+              "Подготовка к IELTS",
+              "Подготовка к FLEX"
+            ],
+            "status": "active"
+          },
+          {
+            "id": "kostanay-plaza",
+            "cityId": "kostanay",
+            "name": "Костанай — ПЛАЗА",
+            "address": "Назарбаева 193 (ТРЦ Костанай Плаза)",
+            "phone": "+7 707 824 00 00",
+            "instagram": "gl_study_plaza",
+            "offerings": [
+              "Курсы английского языка",
+              "Курсы казахского языка",
+              "Подготовка к IELTS",
+              "Подготовка к FLEX"
+            ],
+            "status": "active"
+          }
+        ]
       },
       {
         "id": "rudny",
         "name": "Рудный",
         "nameKk": "Рудный",
         "nameEn": "Rudny",
-        "branches": []
+        "branches": [
+          {
+            "id": "rudny-center",
+            "cityId": "rudny",
+            "name": "Рудный",
+            "address": "Косманавтов 10, каб 209",
+            "phone": "+7 705 558 81 57",
+            "instagram": "glstudy_rudny",
+            "offerings": [
+              "Курсы английского языка",
+              "Курсы казахского языка",
+              "Подготовка к IELTS",
+              "Подготовка к FLEX"
+            ],
+            "status": "active"
+          }
+        ]
       },
       {
         "id": "taraz",
         "name": "Тараз",
         "nameKk": "Тараз",
         "nameEn": "Taraz",
-        "branches": []
+        "branches": [
+          {
+            "id": "taraz-konaev",
+            "cityId": "taraz",
+            "name": "Тараз — Конаева",
+            "address": "Конаева 16 (ЖК)",
+            "phone": "+7 775 839 11 50",
+            "instagram": "glstudy_taraz",
+            "offerings": [
+              "Курсы английского языка",
+              "Подготовка к IELTS",
+              "Подготовка к FLEX"
+            ],
+            "status": "active"
+          }
+        ]
+      },
+      {
+        "id": "ekibastuz",
+        "name": "Экибастуз",
+        "nameKk": "Екібастұз",
+        "nameEn": "Ekibastuz",
+        "hasPage": false,
+        "branches": [
+          {
+            "id": "ekibastuz",
+            "cityId": "ekibastuz",
+            "name": "Экибастуз",
+            "phone": "+7 700 132 30 48",
+            "status": "repair"
+          }
+        ]
+      },
+      {
+        "id": "ust-kamenogorsk",
+        "name": "Усть-Каменогорск",
+        "nameKk": "Өскемен",
+        "nameEn": "Ust-Kamenogorsk",
+        "hasPage": false,
+        "branches": [
+          {
+            "id": "ust-kamenogorsk-online",
+            "cityId": "ust-kamenogorsk",
+            "name": "Усть-Каменогорск — онлайн",
+            "phone": "+7 700 132 30 48",
+            "instagram": "glstudy_ust_kamenogorsk",
+            "offerings": [
+              "Онлайн-курсы"
+            ],
+            "status": "online_launch"
+          }
+        ]
+      },
+      {
+        "id": "kokshetau",
+        "name": "Кокшетау",
+        "nameKk": "Көкшетау",
+        "nameEn": "Kokshetau",
+        "hasPage": false,
+        "branches": [
+          {
+            "id": "kokshetau-online",
+            "cityId": "kokshetau",
+            "name": "Кокшетау — онлайн",
+            "phone": "+7 707 558 49 10",
+            "instagram": "glstudy_kokshetau",
+            "offerings": [
+              "Онлайн-курсы"
+            ],
+            "status": "online_launch"
+          }
+        ]
+      },
+      {
+        "id": "petropavlovsk",
+        "name": "Петропавловск",
+        "nameKk": "Петропавл",
+        "nameEn": "Petropavlovsk",
+        "hasPage": false,
+        "branches": [
+          {
+            "id": "petropavlovsk-online",
+            "cityId": "petropavlovsk",
+            "name": "Петропавловск — онлайн",
+            "phone": "+7 701 721 68 46",
+            "instagram": "glstudy_petropavlovsk",
+            "offerings": [
+              "Онлайн-курсы"
+            ],
+            "status": "online_launch"
+          }
+        ]
       }
     ],
     "programs": [
@@ -246,7 +500,7 @@
       "phoneHref": "tel:+77055589219",
       "internationalPhone": "+7 707 310 68 22",
       "internationalWhatsApp": "https://wa.me/77073106822",
-      "instagram": "https://www.instagram.com/glstudy.kz/",
+      "instagram": "https://www.instagram.com/grandluxe.kz",
       "founded": 2000,
       "students": "Более 10 000 учеников",
       "internationalStudents": "Более 2 000 участников зарубежных программ"
@@ -300,6 +554,115 @@
     "seo": [],
     "redirects": [],
     "hiddenRoutes": [],
-    "legal": []
+    "legal": [],
+    "services": [
+      {
+        "id": "career-guidance",
+        "title": "Консультация с профориентологом",
+        "points": [
+          "Вы лучше поймёте свои интересы;",
+          "Определитесь с направлением;",
+          "Выясните, какие навыки нужны для выбранной вами сферы;"
+        ],
+        "order": 1
+      },
+      {
+        "id": "admission-expert",
+        "title": "Консультация с экспертом по поступлению",
+        "points": [
+          "После консультации, будет четко понимание всех возможностей поступления со стипендией;"
+        ],
+        "order": 2
+      },
+      {
+        "id": "universities-scholarships",
+        "title": "Подбор университетов и стипендий",
+        "points": [
+          "Узнаете, как и где искать зарубежные университеты;",
+          "Какие университеты дают стипендию;"
+        ],
+        "order": 3
+      },
+      {
+        "id": "documents-help",
+        "title": "Помощь с документами",
+        "points": [
+          "Напишем мотивационное и рекомендательное письмо;",
+          "Откорректируем вашу заявку на поступление;"
+        ],
+        "order": 4
+      },
+      {
+        "id": "foundation-prep",
+        "title": "Подготовка к Foundation Programme",
+        "points": [
+          "Для школьников, которые поступают после 11 класса в университет;",
+          "Собираются повысить уровень английского языка;"
+        ],
+        "order": 5
+      }
+    ],
+    "packages": [
+      {
+        "id": "full-support",
+        "title": "Полное сопровождение",
+        "description": "Поможем пройти все стадии процесса поступления, от начала и до отъезда",
+        "duration": "24 месяца",
+        "features": [
+          "Кураторская поддержка и контроль 24 месяца;",
+          "Консультации с персональным куратором;",
+          "Консультация с профориентологом для выбора специальности и проработки",
+          "Разработка куратором стратегии по активностям и достижениям до момента поступления;",
+          "Доступ к закрытому сообществу с другими участниками полного сопровождения;",
+          "Разработка основного проекта для получения стипендии — Passion Project;",
+          "Подборка университетов, в которые у вас есть шансы поступить со стипендией;",
+          "Мотивационное письмо;",
+          "Резюме;",
+          "Рекомендательное письмо;",
+          "Дополнительные эссе в университеты, в которые мы вас сопровождаем;"
+        ],
+        "order": 1
+      },
+      {
+        "id": "top-university",
+        "title": "Поступление в ТОП университет",
+        "description": "Поможем подобрать для вас университет, который подходит вам по качествам",
+        "duration": "24 месяца",
+        "features": [
+          "Кураторская поддержка и контроль 24 месяца;",
+          "Консультации с персональным куратором;",
+          "Консультация с профориентологом для выбора специальности и проработки",
+          "Разработка куратором стратегии по активностям и достижениям до момента поступления;",
+          "Доступ к закрытому сообществу с другими участниками полного сопровождения;",
+          "Разработка основного проекта для получения стипендии — Passion Project;",
+          "Подборка университетов, в которые у вас есть шансы поступить со стипендией;",
+          "Мотивационное письмо;",
+          "Резюме;",
+          "Рекомендательное письмо;",
+          "Дополнительные эссе в университеты, в которые мы вас сопровождаем;"
+        ],
+        "order": 2
+      },
+      {
+        "id": "mentoring",
+        "title": "Менторство",
+        "description": "Будем рядом на вашем пути к поступлению за границу. Поможем вам избежать ошибок",
+        "duration": "24 месяца",
+        "features": [
+          "Кураторская поддержка и контроль 24 месяца;",
+          "Консультации с персональным куратором;",
+          "Консультация с профориентологом для выбора специальности и проработки",
+          "Разработка куратором стратегии по активностям и достижениям до момента поступления;",
+          "Доступ к закрытому сообществу с другими участниками полного сопровождения;",
+          "Разработка основного проекта для получения стипендии — Passion Project;",
+          "Подборка университетов, в которые у вас есть шансы поступить со стипендией;",
+          "Мотивационное письмо;",
+          "Резюме;",
+          "Рекомендательное письмо;",
+          "Дополнительные эссе в университеты, в которые мы вас сопровождаем;"
+        ],
+        "order": 3
+      }
+    ]
   }
 }
