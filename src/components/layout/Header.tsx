@@ -57,7 +57,7 @@ export default function Header() {
     const header = document.querySelector<HTMLElement>('.gl-header')!, inner = header.querySelector<HTMLElement>('.gl-header__inner')!;
     const nav = header.querySelector<HTMLElement>('.gl-header__nav-list')!, controls = header.querySelector<HTMLElement>('.gl-header__controls')!, logo = header.querySelector<HTMLElement>('.gl-header__logo')!;
     let frame = 0;
-    const fit = () => { frame = 0; header.dataset.compact = 'false'; const row = nav.getBoundingClientRect(), brand = logo.getBoundingClientRect(), actions = controls.getBoundingClientRect(); const overlaps = nav.offsetWidth > 0 && (row.left < brand.right - 1 || row.right > actions.left + 1); header.dataset.compact = String(innerWidth >= 768 && (actions.right > innerWidth - 12 || overlaps)); };
+    const fit = () => { frame = 0; header.dataset.compact = 'false'; const row = nav.getBoundingClientRect(), brand = logo.getBoundingClientRect(), actions = controls.getBoundingClientRect(); const edge = inner.getBoundingClientRect().right - parseFloat(getComputedStyle(inner).paddingRight); const overlaps = nav.offsetWidth > 0 && (row.left < brand.right - 1 || row.right > actions.left + 1); header.dataset.compact = String(innerWidth >= 768 && (actions.right > edge + 1 || overlaps)); };
     const schedule = () => { if (!frame) frame = requestAnimationFrame(fit); };
     const observer = new ResizeObserver(schedule); [inner,nav,controls].forEach(node => observer.observe(node));
     document.fonts.addEventListener('loadingdone',schedule); addEventListener('resize',schedule); schedule();
@@ -88,9 +88,6 @@ export default function Header() {
       className={`gl-header${scrolled ? ' gl-header--scrolled' : ''}`}
       onKeyDown={handleKeyDown}
     >
-      <div className="demo-banner" role="alert">
-        <Icon name="tools" size={18} />{t("Header.demonstratsionnyy.rezhim.dannye.zaglushki.priyom")}</div>
-
       <div className="gl-header__bar">
         <div className="container gl-header__inner">
           {/* Logo with safe zone */}

@@ -184,14 +184,6 @@
   color: rgba(255, 255, 255, 0.75); // 9.4:1 contrast on black (WCAG AA pass!)
 }
 
-.footer__legal-note {
-  font-size: var(--fs-xs);
-  color: var(--gl-white);
-  background: rgba(255, 255, 255, 0.15);
-  padding: 3px 10px;
-  border-radius: 4px;
-}
-
 .footer__legal-links {
   display: flex;
   gap: var(--sp-3);

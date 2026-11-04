@@ -34,9 +34,9 @@
     background: var(--gl-white); color: var(--gl-black); border-color: var(--border-subtle);
   }
   .surface-orange p, .surface-lime p { padding: 0; }
-  .gl-header__inner { min-height: 88px; height: auto; padding-block: 10px; position: relative; }
-  .gl-header__logo { padding: 0; margin: 12px 16px 24px; }
-  .gl-header__phone { position: absolute; left: calc(var(--gutter) + 16px); bottom: 0; color: var(--gl-black); font-size: .75rem; font-weight: 600; white-space: nowrap; min-height: 24px; }
+  .gl-header__inner { min-height: 88px; height: auto; padding-block: 10px; position: relative; max-width: 1440px; }
+  .gl-header__logo { padding: 0; margin: 12px 16px 24px 0; }
+  .gl-header__phone { position: absolute; left: var(--gutter); bottom: 0; color: var(--gl-black); font-size: .75rem; font-weight: 600; white-space: nowrap; min-height: 24px; }
   .gl-header[data-compact=true] .gl-header__phone { display: none; }
   .gl-header__bar { border-color: var(--border-subtle); }
   .gl-header__city-select { background-color: var(--gl-white); border-color: var(--border-subtle); }
@@ -140,10 +140,9 @@
   .footer { background: var(--gl-white); color: var(--gl-black); border-top: 1px solid var(--border-subtle); }
   .footer__slogan, .footer__tagline, .footer__nav-heading, .footer__contacts-heading,
   .footer__phone, .footer__address, .footer__contact-placeholder, .footer__copy,
-  .footer__legal-note, .footer__nav-col a, .footer__legal-links a { color: var(--gl-black); }
+  .footer__nav-col a, .footer__legal-links a { color: var(--gl-black); }
   .footer__nav-col a:hover, .footer__legal-links a:hover, .footer__phone:hover { color: var(--gl-violet); }
   .footer__slogan { text-transform: none; font-size: 1.25rem; }
-  .footer__legal-note { background: var(--gl-orange-light); }
   .footer__bottom { border-color: var(--border-subtle); }
   .footer__mobile-sticky { background: var(--gl-white); border-color: var(--border-subtle); }
   .footer__whatsapp { color: var(--gl-black); border-color: var(--border-subtle); }
@@ -167,7 +166,7 @@
   }
   @media(max-width: 767px) {
     .gl-header__inner { min-height: 68px; padding-block: 0; }
-    .gl-header__logo { padding: 12px 8px; margin: 0; }
+    .gl-header__logo { padding: 12px 8px 12px 0; margin: 0; }
     .hero__content { gap: 20px; }
     .hero__headline { font-size: clamp(1.85rem, 7.5vw, 3rem); }
     .hero__visual { min-height: 350px; }
