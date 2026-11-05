@@ -110,7 +110,7 @@ async function run() {
     }
     if (!homeHtml) throw Error('Missing home snapshot');
     fs.writeFileSync(shellPath, homeHtml);
-    fs.writeFileSync(path.join(distDir,'404.html'),publicRu ? notFound.ru.html : createLocalized404(notFound,site.base));
+    fs.writeFileSync(path.join(distDir,'404.html'),locales.length===1 ? notFound.ru.html : createLocalized404(notFound,site.base));
   } finally {
     try { await browser?.close(); } finally { await preview?.close(); }
   }

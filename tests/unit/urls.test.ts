@@ -1,5 +1,5 @@
 import {describe,expect,it,vi,afterEach} from 'vitest';
-import {localizedPath,pageHref,parseLocalePath,resolvePage,localizedRoutes} from '../../src/config/locale-routes.js';
+import {localizedPath,pageHref,parseLocalePath,resolvePage,localizedRoutes,approvedLocales} from '../../src/config/locale-routes.js';
 import {sitePath} from '../../src/utils/sitePath';
 import {safePath} from '../../src/features/privacy-model';
 import site from '../../src/config/site.json';
@@ -25,7 +25,7 @@ describe('base, locale and canonical URL functions',()=>{
     expect(resolvePage(value)).toBeUndefined();expect(safePath(value)).toBe('/404');
   });
   it('keeps legal routes and unapproved translations noindex',()=>{
-    for(const route of localizedRoutes)if(['legal','privacyPolicy','personalDataConsent','notFound'].includes(route.seo)||route.locale!=='ru')expect(route.indexable).toBe(false);
+    for(const route of localizedRoutes)if(['legal','privacyPolicy','personalDataConsent','notFound'].includes(route.seo)||!approvedLocales.includes(route.locale))expect(route.indexable).toBe(false);
   });
   it('uses the current locale for normal anchors and leaves external URLs alone',()=>{
     vi.stubGlobal('location',{pathname:site.base+'kk/online/'});

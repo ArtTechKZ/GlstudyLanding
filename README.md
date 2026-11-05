@@ -1,8 +1,8 @@
-# GL Study — RU DEMO
+# GL Study — DEMO (RU/KK/EN)
 
 Public preview for review: https://arttechkz.github.io/GlstudyLanding/
 
-This is a Russian-only demonstration, not a commercial launch. Contact requests go through prepared WhatsApp links (GL-STUDY-30); opening WhatsApp is never reported as a sent request. No lead API, Directus, SQLite, CRM or Connect is started on GitHub Pages. Phone and international WhatsApp links do not automatically transfer form fields.
+This is a demonstration in Russian, Kazakh and English, not a commercial launch. Contact requests go through prepared WhatsApp links (GL-STUDY-30); opening WhatsApp is never reported as a sent request. No lead API, Directus, SQLite, CRM or Connect is started on GitHub Pages. Phone and international WhatsApp links do not automatically transfer form fields.
 
 ## Build the checked public profile
 
@@ -17,11 +17,11 @@ npm run build:public
 npm run test:public
 ```
 
-The public build reads the committed `src/data/content-snapshot.json` and projects RU. The checked projection is retained in `cms/snapshots/public-ru-study24.json`. No private `.qa` inputs, local CMS, admin token or real credentials are required. Checks create ignored local evidence. `dist` is the output, not source; `/GlstudyLanding/` is the public base. `npm run serve:ssg -- --gzip` serves the current static output with true 404 responses. `npm run dev` starts local development; `npm run build:ssg` includes the local RU/KK/EN preview and must not be substituted for the public release.
+The public build reads the committed `src/data/content-snapshot.json` and projects the locales approved in `src/config/translation-approval.json` (currently RU, KK and EN). The checked projection is retained in `cms/snapshots/public-ru-study24.json`. No private `.qa` inputs, local CMS, admin token or real credentials are required. Checks create ignored local evidence. `dist` is the output, not source; `/GlstudyLanding/` is the public base. `npm run serve:ssg -- --gzip` serves the current static output with true 404 responses. `npm run dev` starts local development; `npm run build:ssg` is the unchecked local preview and must not be substituted for the public release.
 
 ## Content and publication
 
-RU publication approval remains true, KK/EN false. KK/EN source dictionaries remain in the repository, while public HTML, client catalogs, navigation and sitemap use RU only. Legal pages are clearly drafts and retain noindex. Pre24 brandbook imagery, licenses and provenance are preserved; withdrawn stage24 media is excluded; see [ASSET_NOTICES.md](ASSET_NOTICES.md).
+RU, KK and EN publication approvals are true. The public HTML, client catalogs, language switcher, hreflang and sitemap include exactly the approved locales; setting a locale back to false removes it from the public build. Legal documents exist only in Russian, so KK/EN legal pages show the Russian source. Legal pages are clearly drafts and retain noindex. Pre24 brandbook imagery, licenses and provenance are preserved; withdrawn stage24 media is excluded; see [ASSET_NOTICES.md](ASSET_NOTICES.md).
 
 GL-STUDY-27 improves the review experience using GL_Study_Brief(4): distinct course descriptions, clear general and international contacts, flexible lesson scheduling, and customer-facing consultation copy. Empty branch selectors, maps and travel galleries are hidden until real data exists. The reviews invitation links explicitly to Instagram; published reviews are still pending. Original GL-STUDY-26 imagery and its withdrawal protections are preserved.
 

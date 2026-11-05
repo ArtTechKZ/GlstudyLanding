@@ -5,6 +5,7 @@ import {installConnect} from '../../src/features/connect';
 import {COMPANY} from '../../src/data/company';
 import site from '../../src/config/site.json';
 import {loadCatalog} from '../../src/i18n/catalogs';
+import {approvedLocales} from '../../src/config/locale-routes.js';
 afterEach(()=>{window.dispatchEvent(new Event('pagehide'));document.body.innerHTML='';vi.unstubAllGlobals()});
 describe('SEO DOM effects',()=>{
   it.each(['ru','kk','en'] as const)('writes a self canonical and correct robots in %s',async locale=>{
@@ -13,7 +14,7 @@ describe('SEO DOM effects',()=>{
     applyPageSeo(prefix+'/online',undefined,doc);
     expect(doc.documentElement.lang).toBe(locale);
     expect(doc.querySelector('link[rel=canonical]')?.getAttribute('href')).toBe(site.origin+site.base+(locale==='ru'?'':locale+'/')+'online/');
-    expect(doc.querySelector('meta[name=robots]')?.getAttribute('content')).toBe(locale==='ru'?'index,follow':'noindex,follow');
+    expect(doc.querySelector('meta[name=robots]')?.getAttribute('content')).toBe(approvedLocales.includes(locale)?'index,follow':'noindex,follow');
     expect(doc.querySelectorAll('link[rel=canonical]')).toHaveLength(1);
   });
   it('keeps legal and unknown pages noindex and updates rather than duplicates metadata',()=>{

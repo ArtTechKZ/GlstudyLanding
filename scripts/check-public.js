@@ -1,4 +1,4 @@
-import {resolvePage} from '../src/config/locale-routes.js';
+import {resolvePage,locales} from '../src/config/locale-routes.js';
 import fs from 'node:fs';
 import assert from 'node:assert/strict';
 import crypto from 'node:crypto';
@@ -11,7 +11,7 @@ import {evidencePath} from './evidence-path.js';
 const urlIndex=process.argv.indexOf('--url');
 const remote=urlIndex>=0?process.argv[urlIndex+1]:undefined;
 if(remote)assert.equal(remote,'https://arttechkz.github.io/GlstudyLanding/');
-const directory=process.env.GL_DIST_DIR??'dist';const files=validatePublicRelease(directory);
+const directory=process.env.GL_DIST_DIR??'dist';const unapproved=['kk','en'].filter(l=>!locales.includes(l)),unapprovedSelector=unapproved.flatMap(l=>[`[data-locale=${l}]`,`link[hreflang=${l}]`]);const files=validatePublicRelease(directory);
 const dir=evidencePath(remote?'.qa/public-live':'.qa/public-local');fs.mkdirSync(dir,{recursive:true});
 const server=remote?undefined:await startStaticServer({directory});
 const base=remote?.replace(/\/$/,'')??server.baseURL;
@@ -32,16 +32,16 @@ try{
     const response=await p.goto(base+route.path+(route.path==='/'?'':'/'),{waitUntil:'networkidle'});
     assert.equal(response.status(),route.target==='404.html'?404:200);
     assert.equal(await p.locator('html').getAttribute('lang'),'ru');
-    assert.equal(await p.locator('h1').count(),1);assert.ok((await p.locator('h1').innerText()).trim());
+    assert.equal(await p.locator('h1:visible').count(),1);assert.ok((await p.locator('h1:visible').innerText()).trim());
     assert.equal(await p.locator('meta[property="og:title"]').getAttribute('content'),await p.title());
     assert.equal(await p.locator('meta[property="og:url"]').getAttribute('content'),await p.locator('link[rel=canonical]').getAttribute('href'));
     assert.ok(await p.locator('meta[name=description]').getAttribute('content'));
     assert.equal(await p.locator('meta[name=robots]').getAttribute('content'),resolvePage(route.path)?.indexable?'index,follow':'noindex,follow');
-    assert.equal(await p.locator('[data-connect-open], [data-locale=kk], [data-locale=en], link[hreflang=kk], link[hreflang=en]').count(),0);
+    assert.equal(await p.locator(['[data-connect-open]',...unapprovedSelector].join(', ')).count(),0);
     assert.ok((await p.locator('link[rel=canonical]').getAttribute('href')).startsWith(site.origin+site.base));
     if(route.target!=='404.html')assert.ok(await p.locator('script[type="application/ld+json"]').count());
     if(route.target==='404.html'||route.path==='/legal')assert.match(await p.locator('meta[name=robots]').getAttribute('content'),/noindex/);
-    results.pages.push({path:route.path,status:response.status(),noJS:true,h1:await p.locator('h1').innerText()});await context.close();
+    results.pages.push({path:route.path,status:response.status(),noJS:true,h1:await p.locator('h1:visible').innerText()});await context.close();
   }
   for(const width of [1440,390,320]){
     const c=await browser.newContext({viewport:{width,height:1000},reducedMotion:'reduce'}),p=await c.newPage();
@@ -56,7 +56,7 @@ try{
     for(const value of await city.locator('option').evaluateAll(es=>es.map(e=>e.value))){await city.selectOption(value);await p.waitForFunction(expected=>new URLSearchParams(location.search).get('city')===expected&&[...document.querySelectorAll('.gl-header__city-select')].some(e=>e.getClientRects().length&&e.value===expected),value);assert.equal(await city.inputValue(),value);assert.equal(new URL(p.url()).searchParams.get('utm_source'),'release20');assert.equal(new URL(p.url()).hash,'#main-content');}
     if(await cityMenu.isVisible()){await p.keyboard.press('Escape');await p.locator('#mobile-menu').waitFor({state:'hidden'});}
     assert.ok(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
-    assert.equal(await p.locator('[data-connect-open],iframe,[data-locale=kk],[data-locale=en]').count(),0);
+    assert.equal(await p.locator(['[data-connect-open]','iframe',...unapprovedSelector].join(',')).count(),0);
     await p.screenshot({path:dir+'/home-'+width+'.png',fullPage:false});
     await p.locator('#directions').scrollIntoViewIfNeeded();
     await p.waitForFunction(()=>document.querySelector('#directions').dataset.trackReady==='true');
@@ -72,9 +72,10 @@ try{
     await p.locator('.footer__contacts').screenshot({path:dir+'/contacts-'+width+'.png'});
     const burger=p.locator('.gl-header__burger');if(await burger.isVisible()){await burger.click();await p.locator('#mobile-menu').waitFor({state:'visible'});await p.keyboard.press('Escape');await p.locator('#mobile-menu').waitFor({state:'hidden'});}
     await p.goto(base+'/ielts/',{waitUntil:'networkidle'});assert.match(await p.locator('h1').innerText(),/IELTS/);
-    for(const path of ['/kk/','/en/']){const r=await p.goto(base+path,{waitUntil:'networkidle'});assert.equal(r.status(),404);assert.equal(await p.locator('html').getAttribute('lang'),'ru');assert.match(await p.locator('main').innerText(),/404|не найдена/i);}
-    results.widths.push({width,keyboard:true,menu:true,cookieFirstClick:true,cityOptions:5,carousel:7,phones:true,unapprovedRoutes:404});await c.close();
+    for(const l of unapproved){const r=await p.goto(base+'/'+l+'/',{waitUntil:'networkidle'});assert.equal(r.status(),404);assert.equal(await p.locator('html').getAttribute('lang'),'ru');assert.match(await p.locator('main').innerText(),/404|не найдена/i);}
+    for(const l of locales.filter(l=>l!=='ru')){const r=await p.goto(base+'/'+l+'/',{waitUntil:'networkidle'});assert.equal(r.status(),200);assert.equal(await p.locator('html').getAttribute('lang'),l);}
+    results.widths.push({width,keyboard:true,menu:true,cookieFirstClick:true,cityOptions:5,carousel:7,phones:true,unapprovedRoutes:404,approvedLocales:locales});await c.close();
   }
   assert.deepEqual(results.errors,[]);assert.deepEqual(results.posts,[]);assert.deepEqual(results.external,[]);
-  console.log('PASS exact served dist, all registered RU routes + technical 404 without JS, assets/MIME, 1440/390/320, city/cookie/menu/keyboard/carousel/phones, KK/EN excluded, no Connect requests or POST.');
+  console.log(`PASS exact served dist, all registered RU routes + technical 404 without JS, assets/MIME, 1440/390/320, city/cookie/menu/keyboard/carousel/phones, approved locales ${locales.join('/')} served, unapproved excluded, no Connect requests or POST.`);
 }finally{fs.writeFileSync(dir+'/results.json',JSON.stringify(results,null,2));await filesContext.close();await browser.close();await server?.close();}

@@ -32,7 +32,8 @@ const approvals=JSON.parse(fs.readFileSync(path.join(projectRoot,'src/config/tra
 for(const locale of ['kk','en'])if(files.some(file=>file.startsWith(locale+'/')))assert.equal(approvals[locale],true,`Local ${locale} translations require separate client/native/legal approval before publication`);
 const permitted = /^(?:\.nojekyll|(?:index|404)\.html|sitemap\.xml|robots\.txt|licenses\/(?:leaflet|lucide|inter-ofl|bebasneue-ofl)\.txt|fonts\/(?:inter-(?:cyrillic(?:-ext)?|greek(?:-ext)?|latin(?:-ext)?|vietnamese)|bebas-neue-latin(?:-ext)?)\.woff2|(?:learning|ielts|branches|legal|travel\/(?:europe-winter-2027|malaysia))\/index\.html|favicon\.svg|assets\/[\w-]+\.(?:js|css|png|woff2)|brand\/[\w-]+\.svg|images\/home\/[\w-]+\.webp)$/;
 for (const file of files) {
-  assert.ok(permitted.test(file)||site.routes.some(route=>route.target===file), `Unexpected dist file: ${file}`);
+  const routeFile=file.replace(/^(?:kk|en)\//,'');
+  assert.ok(permitted.test(file)||permitted.test(routeFile)&&/\.html$/.test(routeFile)||site.routes.some(route=>route.target===routeFile), `Unexpected dist file: ${file}`);
   if (!file.endsWith('.webp')) {
     const content = fs.readFileSync(path.join(dist, file), 'utf8');
     assert.doesNotMatch(content, /-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----|\b(?:gh[pousr]_[A-Za-z0-9]{30,}|github_pat_[A-Za-z0-9_]{30,}|AKIA[A-Z0-9]{16})\b|[A-Z]:[\\/]Users[\\/]/i, `Sensitive dist content: ${file}`);

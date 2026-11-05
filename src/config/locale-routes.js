@@ -4,12 +4,12 @@ import approvals from './translation-approval.json' with { type: 'json' };
 export const approvedLocales = ['ru','kk','en'].filter(locale => approvals[locale] === true);
 // One semantic route registry; locale variants are derived, never separate pages.
 export const publicRu = typeof __GL_PUBLIC_RU__ !== 'undefined' ? __GL_PUBLIC_RU__ : typeof process !== 'undefined' && process.env.GL_RELEASE_PROFILE === 'public-ru';
-export const locales = publicRu ? ['ru'] : ['ru', 'kk', 'en'];
+export const locales = publicRu ? approvedLocales : ['ru', 'kk', 'en'];
 export function parseLocalePath(value) {
   let path = value.split(/[?#]/)[0] || '/';
   if (path.startsWith(site.base)) path = '/' + path.slice(site.base.length);
-  const match = publicRu ? null : path.match(/^\/(kk|en)(?:\/|$)/);
-  const locale = match ? match[1] : 'ru';
+  const match = path.match(/^\/(kk|en)(?:\/|$)/);
+  const locale = match && locales.includes(match[1]) ? match[1] : 'ru';
   const semanticPath = (match ? '/' + path.slice(match[0].length) : path).replace(/\/$/, '') || '/';
   return { locale, semanticPath };
 }

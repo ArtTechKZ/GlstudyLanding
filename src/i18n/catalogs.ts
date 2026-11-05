@@ -1,11 +1,12 @@
 import {CONTENT} from '../data/content';
 import type { Locale } from '../types';
 import { ru } from './ru';
+import approvals from '../config/translation-approval.json';
 import type { UiMessages } from './core';
 const catalogs:Partial<Record<Locale,UiMessages>>={ru};
 const pending:Partial<Record<Locale,Promise<void>>>={};
-// Vite folds this branch so unapproved catalogs are absent from public assets.
-const loaders = __GL_PUBLIC_RU__ ? {} : {kk:()=>import('./kk'),en:()=>import('./en')};
+// Vite folds these branches so unapproved catalogs are absent from public assets.
+const loaders = {...(!__GL_PUBLIC_RU__||approvals.kk)&&{kk:()=>import('./kk')},...(!__GL_PUBLIC_RU__||approvals.en)&&{en:()=>import('./en')}};
 export const getCatalog=(locale:Locale):UiMessages=>({...catalogs[locale],...CONTENT.ui[locale]});
 export function loadCatalog(locale:Locale):Promise<void>{
  if(catalogs[locale])return Promise.resolve();
