@@ -1,8 +1,10 @@
 {
-  "revision": "837eeb5e2f3e02baec461508a9c9886e74527117c02a8fdc5b8ab2a16e44c2f2",
+  "revision": "3f43a49400dbeea46db61fb575398df2935c6638c46ce558fb0daa60ae3ba5ab",
   "upstreamRevision": "3f43a49400dbeea46db61fb575398df2935c6638c46ce558fb0daa60ae3ba5ab",
   "locales": [
-    "ru"
+    "ru",
+    "kk",
+    "en"
   ],
   "profile": "public-ru",
   "delivery": "demo",
