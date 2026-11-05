@@ -18,4 +18,5 @@ export const BRANCH_GROUPS: { status: BranchStatus; heading: string }[] = [
   { status: 'online', heading: 'Онлайн' },
   { status: 'online_launch', heading: 'Запуск онлайн' },
   { status: 'repair', heading: 'Ремонт' },
+  { status: 'coming_soon', heading: 'Скоро открытие' },
 ];

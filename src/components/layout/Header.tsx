@@ -6,7 +6,7 @@ import { useUi, type Translator } from "../../i18n/index";
 import Icon from '../ui/Icon';
 import WhatsAppLink from '../ui/WhatsAppLink';
 import { sitePath } from '../../utils/sitePath';
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import {useLocation} from 'react-router-dom';
 import { useCityContext } from '../../hooks/useCityContext';
 import './Header.scss';
@@ -70,23 +70,27 @@ export default function Header() {
     return () => { if (previous?.isConnected) previous.focus(); };
   }, [menuOpen]);
 
-  // Close menu on Escape
-  const handleKeyDown = useCallback((e: React.KeyboardEvent) => {
-    if (e.key === 'Escape') setMenuOpen(false);
-    if (e.key === 'Tab' && menuOpen) {
+  // Escape and the Tab trap listen on the document: a tap on empty menu space moves focus to <body>.
+  useEffect(() => {
+    if (!menuOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') { setMenuOpen(false); return; }
+      if (e.key !== 'Tab') return;
       const targets = [...document.querySelectorAll<HTMLElement>('#mobile-menu a[href],#mobile-menu button,#mobile-menu select')].filter(node => node.getClientRects().length);
-      const first = targets[0], last = targets.at(-1);
-      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last?.focus(); }
-      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first?.focus(); }
-    }
-  }, [menuOpen, setMenuOpen]);
+      const first = targets[0], last = targets.at(-1), active = document.activeElement as HTMLElement | null;
+      if (!active || !targets.includes(active)) { e.preventDefault(); (e.shiftKey ? last : first)?.focus(); }
+      else if (e.shiftKey && active === first) { e.preventDefault(); last?.focus(); }
+      else if (!e.shiftKey && active === last) { e.preventDefault(); first?.focus(); }
+    };
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+  }, [menuOpen]);
 
   const toggleMenu = () => setMenuOpen(prev => !prev);
 
   return (
     <header
-      className={`gl-header${scrolled ? ' gl-header--scrolled' : ''}`}
-      onKeyDown={handleKeyDown}
+      className={`gl-header${scrolled ? ' gl-header--scrolled' : ''}${menuOpen ? ' gl-header--menu-open' : ''}`}
     >
       <div className="gl-header__bar">
         <div className="container gl-header__inner">

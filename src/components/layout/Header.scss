@@ -9,6 +9,11 @@
   z-index: var(--z-sticky);
   width: 100%;
 
+  // The menu and backdrop live in this stacking context: lift it above the cookie banner and mobile sticky bar.
+  &--menu-open {
+    z-index: calc(var(--z-sticky) + 20);
+  }
+
   &--scrolled .gl-header__bar {
     box-shadow: 0 4px 16px rgba(141, 59, 237, 0.08);
   }

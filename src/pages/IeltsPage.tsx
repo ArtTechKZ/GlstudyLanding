@@ -82,7 +82,7 @@ export default function IeltsPage() {
               textDecoration: 'none'
             }}
           >
-            <Icon name="location" size={18} /> {copy(" Сдача и подготовка в Костанае (#kostanay) →")}</a>
+            <Icon name="location" size={18} /> {copy(" Сдача и подготовка в Костанае →")}</a>
         </div>
 
         {/* Block 1: 4 Modules */}

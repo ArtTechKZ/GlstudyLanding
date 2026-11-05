@@ -18,10 +18,10 @@ export default function LegalPage() {
 
   useEffect(() => {
     if (hash) {
-      const el = document.querySelector(hash);
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth' });
-      }
+      // A hash such as #1 or a Cyrillic anchor is not a valid CSS selector.
+      let el: HTMLElement | null = null;
+      try { el = document.getElementById(decodeURIComponent(hash.slice(1))); } catch { /* Malformed anchor. */ }
+      el?.scrollIntoView({ behavior: 'smooth' });
     }
   }, [hash]);
 

@@ -11,6 +11,7 @@ import './Footer.scss';
 import BranchPicker from '../ui/BranchPicker';
 import { usePrivacy } from '../../features/privacy';
 
+// The SSG HTML carries the build year; after New Year the client shows the current one without a hydration error.
 const CURRENT_YEAR = new Date().getFullYear();
 
 export default function Footer() {
@@ -109,7 +110,7 @@ export default function Footer() {
       <div className="footer__bottom">
         <div className="container footer__bottom-inner">
           <p className="footer__copy">
-            © {copy(year)}{t("Footer.gl.study.vse.prava.zashchishcheny")}</p>
+            © <span suppressHydrationWarning>{year}</span>{t("Footer.gl.study.vse.prava.zashchishcheny")}</p>
           <p className="footer__copy footer__requisites" data-footer-requisites><span lang="ru">{COMPANY_REQUISITES.shortName}</span> · {t("Footer.bin")} <span className="study-phone-number">{COMPANY_REQUISITES.bin}</span> · <Link to="/branches#requisites">{t("Footer.rekvizity")}</Link></p>
           <div className="footer__legal-links">
             <button type="button" data-consent-settings onClick={settings} style={{ color: 'var(--gl-black)', textDecoration: 'underline', minHeight: 44 }}>{t("Footer.nastroyki.cookie")}</button>
