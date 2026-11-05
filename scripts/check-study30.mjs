@@ -119,7 +119,7 @@ async function routeChecks(page, route) {
     if (cards.length !== 7 || cards.some(x => x !== 'program')) bad.push('direction cards ' + cards.join(','));
     if (!(await page.locator('footer a[href="tel:+77073106822"]').count())) bad.push('footer international phone missing');
     if (!(await page.locator('footer a[href="mailto:grandluxe@yandex.ru"]').count())) bad.push('footer email missing');
-    if (!(await page.locator('footer a[href="https://www.instagram.com/grandluxe.kz"]').count())) bad.push('footer instagram missing');
+    if (!(await page.locator('footer a[href="https://www.instagram.com/glsudy.kz/"]').count())) bad.push('footer instagram missing');
     if (!(await page.locator('footer').innerText()).includes('Приемная и менеджеры: 09:00-19:00')) bad.push('footer hours missing');
     if (!(await page.locator('.footer__mobile-sticky a[data-whatsapp]').count())) bad.push('mobile WhatsApp button missing');
     // GL-STUDY-31: Kazakh is shown as offered (4 Kostanay branches + Rudny from the branch table), only Czech/Chinese/Korean as planned.

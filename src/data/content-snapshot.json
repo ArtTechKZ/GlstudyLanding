@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "source": "directus-approved-snapshot",
-  "revision": "3f43a49400dbeea46db61fb575398df2935c6638c46ce558fb0daa60ae3ba5ab",
+  "revision": "5f958f318cce90987186f6e4ccc2250230b5cafb78e0026ddb535de7b109b787",
   "data": {
     "cities": [
       {
@@ -500,7 +500,7 @@
       "phoneHref": "tel:+77055589219",
       "internationalPhone": "+7 707 310 68 22",
       "internationalWhatsApp": "https://wa.me/77055589219",
-      "instagram": "https://www.instagram.com/grandluxe.kz",
+      "instagram": "https://www.instagram.com/glsudy.kz/",
       "founded": 2000,
       "students": "Более 10 000 учеников",
       "internationalStudents": "Более 2 000 участников зарубежных программ"

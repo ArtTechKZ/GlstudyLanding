@@ -8,8 +8,8 @@ export const CONTACTS = {
   internationalPhone: '+7 707 310 68 22',
   internationalPhoneHref: 'tel:+77073106822',
   email: 'grandluxe@yandex.ru',
-  instagramHandle: 'grandluxe.kz',
-  instagramUrl: 'https://www.instagram.com/grandluxe.kz',
+  instagramHandle: 'glsudy.kz',
+  instagramUrl: 'https://www.instagram.com/glsudy.kz/',
   /** Reception and managers only — this is NOT a class timetable and carries no weekdays. */
   receptionHours: 'Приемная и менеджеры: 09:00-19:00',
 } as const;

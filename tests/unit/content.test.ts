@@ -1,6 +1,7 @@
 import {describe,expect,it} from 'vitest';
 import {DEMO_CITIES,DEMO_PROGRAMS,TRAVEL_PROGRAMS,TRIAL_PROCESS,kazakhBranches} from '../../src/data/demo';
 import {COMPANY,PLANNED_LANGUAGES,SUMMER_DESTINATIONS} from '../../src/data/company';
+import {CONTACTS,instagramUrl} from '../../src/data/contacts';
 import {createTranslator} from '../../src/i18n/core';
 import {getCatalog,loadCatalog} from '../../src/i18n/catalogs';
 describe('confirmed brief data contracts, not source-file searches',()=>{
@@ -19,7 +20,11 @@ describe('confirmed brief data contracts, not source-file searches',()=>{
   it('uses one confirmed WhatsApp number everywhere; the international department is a phone only',()=>{
     expect(COMPANY.phoneHref).toBe('tel:+77055589219');expect(COMPANY.internationalWhatsApp).toBe('https://wa.me/77055589219');
     expect(COMPANY.internationalPhone).toBe('+7 707 310 68 22');
-    expect(COMPANY.instagram).toBe('https://www.instagram.com/grandluxe.kz');expect(COMPANY.founded).toBe(2000);
+    expect(COMPANY.instagram).toBe('https://www.instagram.com/glsudy.kz/');
+    expect(CONTACTS.instagramHandle).toBe('glsudy.kz');
+    expect(CONTACTS.instagramUrl).toBe(COMPANY.instagram);
+    expect(instagramUrl(CONTACTS.instagramHandle)).toBe(COMPANY.instagram);
+    expect(COMPANY.founded).toBe(2000);
     expect(SUMMER_DESTINATIONS).toHaveLength(5);
   });
   it('does not call Kazakh a planned language: the branch table lists Kazakh courses in four Kostanay branches and Rudny only',()=>{
